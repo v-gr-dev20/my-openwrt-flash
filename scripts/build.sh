@@ -8,16 +8,26 @@ function main()
 	typeset -a searchPlan
 	typeset projectPath=
 	typeset suffix=-docker-img
+	typeset projectName=
 
 	# Формируем план поиска Dockerfile
 	if [ -z "$1" ] ;then
 		searchPlan=( "${searchPlan[@]}" "$( pwd )" )
 		searchPlan=( "${searchPlan[@]}" "$( dirname "$( readlink -m "$0" )" )" )
 		searchPlan=( "${searchPlan[@]}" "$( dirname "${searchPlan[-1]}" )" )
-	elif [ "$1" == "$( basename "$1" )" ] ;then
+	elif [[ "$1" == "$( basename "$1" )" && ! $1 =~ ^(\.|\.\.|\/)$ ]] ;then
 		searchPlan=( "${searchPlan[@]}" "$( readlink -m "$1" )" )
-		searchPlan=( "${searchPlan[@]}" "$( readlink -m "${1}${suffix}" )" )
-		searchPlan=( "${searchPlan[@]}" "$( readlink -m "../${1}${suffix}" )" )
+		searchPlan=( "${searchPlan[@]}" "${searchPlan[-1]}${suffix}" )
+		searchPlan=( "${searchPlan[@]}" "$( pwd )" )
+		searchPlan=( "${searchPlan[@]}" "$( dirname "$( readlink -m "$0" )" )/$1" )
+		searchPlan=( "${searchPlan[@]}" "${searchPlan[-1]}${suffix}" )
+		searchPlan=( "${searchPlan[@]}" "$( dirname "$( readlink -m "$0" )" )" )
+		searchPlan=( "${searchPlan[@]}" "$( dirname "${searchPlan[-1]}" )/$1" )
+		searchPlan=( "${searchPlan[@]}" "${searchPlan[-1]}${suffix}" )
+		searchPlan=( "${searchPlan[@]}" "$( dirname "$( dirname "$( readlink -m "$0" )" )" )" )
+		searchPlan=( "${searchPlan[@]}" "$( readlink -m "../$1" )" )
+		searchPlan=( "${searchPlan[@]}" "${searchPlan[-1]}${suffix}" )
+		projectName=$1
 	else
 		searchPlan=( "${searchPlan[@]}" "$( readlink -m "$1" )" )
 	fi
@@ -29,7 +39,7 @@ function main()
 	done
 
 	# Получаем имя docker-образа
-	projectName=$( echo "${projectPath}" |sed 's/^\///' )
+	projectName=${projectName:-$( echo "${projectPath}" |sed 's/^\///' )}
 	while [ "$( basename "$projectName" )" == "Dockerfile" ] ;do
 		projectName=$( dirname "$projectName" )
 	done
