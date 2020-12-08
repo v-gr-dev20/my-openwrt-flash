@@ -5,10 +5,16 @@
 
 function main()
 {
-	typeset -a searchPlan
-	typeset projectPath=
+	# этот суффикс будет добавлен при поиске к вариантам пути Dockerfile
 	typeset suffix=-docker-img
+	# упорядоченный список путей поиска Dockerfile
+	typeset -a searchPlan
+	# путь к Dockerfile
+	typeset projectPath=
+	# имя docker-образа
 	typeset projectName=
+	# имя Dockerfile
+	typeset DockerfileName=
 
 	# Формируем план поиска Dockerfile
 	if [ -z "$1" ] ;then
@@ -45,16 +51,21 @@ function main()
 	done
 	projectName=$( basename "$projectName" |sed 's/\('${suffix}'\)\{1,\}$//g' |sed 's/^[\.\/]$//g' )
 
-	# Запускаем сборку docker-образа
+	# Получаем путь и имя Dockerfile
 	if [ -f "$projectPath" ] ;then
-		docker build ${projectName:+-t "$projectName"} -f "$( basename "$projectPath" )" "$( dirname "$projectPath" )"
+		DockerfileName=$( basename "$projectPath" )
+		projectPath=$( dirname "$projectPath" )
 	elif [[ -d "$projectPath" && -f "$projectPath/Dockerfile" ]] ;then
-		docker build ${projectName:+-t "$projectName"} "${projectPath}"
+		DockerfileName=Dockerfile
 	else
 	# либо выбрасываем ошибку
 		echo "Error: Dockerfile project not found!"
 		exit 1
 	fi
+
+	# Запускаем сборку docker-образа
+	echo "$projectPath/$DockerfileName"
+	docker build ${projectName:+-t "$projectName"} -f  "$projectPath/$DockerfileName" "$projectPath"
 }
 
 main "$@"
