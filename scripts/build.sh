@@ -49,7 +49,7 @@ function main()
 	while [ "$( basename "$projectName" )" == "Dockerfile" ] ;do
 		projectName=$( dirname "$projectName" )
 	done
-	projectName=$( basename "$projectName" |sed 's/\('${suffix}'\)\{1,\}$//g' |sed 's/^[\.\/]$//g' )
+	projectName=$( basename "$projectName" |sed 's/\('${suffix}'\)\{1,\}$//g' |sed 's/^[\.\/]$//g' |tr -s '[:upper:]' '[:lower:]' )
 
 	# Получаем путь и имя Dockerfile
 	if [ -f "$projectPath" ] ;then
