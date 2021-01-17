@@ -2,12 +2,12 @@
 # Скрипт-обертка для запуска в Windows одноименного bash-скрипта в среде wsl2-debian.
 # Скрипт определяет месторасположение целевого bash-скрипта непосредственно рядом с собственным месторасположением.
 
-function main( [Parameter( Position = 0 )][string] $thisScriptPath, [Parameter( Position = 1 )][string[]] $commandLineArgs )
+function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 {
 	clear
 	
 	# Получаем путь и имя проекта - имя родительской папки скрипта на 2 уровня выше
-	$thisScriptDirPath = $thisScriptPath |Split-Path -parent
+	$thisScriptDirPath = $ThisScriptPath |Split-Path -parent
 	$projectPath = $thisScriptDirPath |Split-Path -parent
 	$projectName = $projectPath |Split-Path -Leaf
 	<#assert#> if( [string]::IsNullOrEmpty( $projectName ) ) { throw }
@@ -19,7 +19,7 @@ function main( [Parameter( Position = 0 )][string] $thisScriptPath, [Parameter( 
 	<#assert#> if( [string]::IsNullOrEmpty( $projectMountPoint ) ) { throw }
 
 	# Получаем имя скрипта
-	$thisScriptShortName = ( Get-ChildItem $thisScriptPath ).Basename
+	$thisScriptShortName = ( Get-ChildItem $ThisScriptPath ).Basename
 	$thisScriptDirName = $thisScriptDirPath |Split-Path -Leaf
 
 	# формируем строку с параметрами командной строки
@@ -42,7 +42,7 @@ function convertPathToMountPoint( [Parameter( Position = 0 )][string] $path )
 function convertToStringWithQuotas( [Parameter( Position = 0 )][string[]] $items )
 {
 	$result = ""
-	foreach ( $item in $items ) {
+	foreach( $item in $items ) {
 		if( $item -match "\s" ) {
 			$result = "${result} `\`"${item}`\`""
 		} else {
@@ -52,21 +52,6 @@ function convertToStringWithQuotas( [Parameter( Position = 0 )][string[]] $items
 	$result
 }
 
-# Выводит подсказку
-function help( [Parameter( Position = 0 )][string] $thisScriptPath )
-{
-	$commandName = $thisScriptPath |Split-Path -Leaf
-	"Usage:
-		${commandName}
-		${commandName} parameter1 [ parameter2 ... ]
-		${commandName} -h | --help
-	"
-}
-
 # Точка входа
-if( -not [string]::IsNullOrEmpty( $Args[0] ) -and $Args[0].ToLower() -in @( "-h", "--help" ) ) {
-	help $MyInvocation.MyCommand.Path
-	exit
-}
-
-main $MyInvocation.MyCommand.Path $Args
+[string] $ThisScriptPath = $MyInvocation.MyCommand.Path
+main $Args

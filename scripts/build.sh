@@ -68,4 +68,25 @@ function main()
 	docker build ${projectName:+-t "$projectName"} -f  "$projectPath/$DockerfileName" "$projectPath"
 }
 
+# Выводит подсказку
+function outputHelp()
+{
+	commandName=$( basename "$0" )
+	if [ ".sh" == ".${commandName##*.}" ] ;then
+		commandName="${commandName%.*}"
+	fi
+	echo \
+"	Usage:
+		$commandName
+		$commandName dockerImageName | dockerImagePath
+		$commandName -h | --help
+"
+}
+
+# Точка входа
+if( [ -z "$1" ] || echo "$1" |grep -E '\-h|\-help' > /dev/null );then
+	outputHelp
+	exit
+fi
+
 main "$@"
