@@ -1,4 +1,7 @@
 # !Powershell
+# Общие фукции
+# Для включения функций в код скрипта (include) использовать следующую строку
+# . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 
 # Считывает параметры программы из файла config.json
 function getConfig()
