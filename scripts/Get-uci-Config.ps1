@@ -6,7 +6,8 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 	getFile
 }
 
-. "./common.ps1"
+# Общие функции
+. "$( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )"
 
 # Сохраняет файл конфигурации openwrt/uci
 function getFile()

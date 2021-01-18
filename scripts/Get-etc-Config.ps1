@@ -11,7 +11,8 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 	getFile( $file )
 }
 
-. "./common.ps1"
+# Общие функции
+. "$( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )"
 
 # Сохраняет файл конфигурации openwrt/etc/config/$file
 #	$file - имя файла конфигурации
