@@ -7,11 +7,11 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 	if( -not $commandLineArgs -eq $null ) {
 		$file = $commandLineArgs[0]
 	}
-	getFileAndSave( $file )
+	getFileAndSave $file
 }
 
-# Общие функции
-. "$( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )"
+# include
+. $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 
 # Сохраняет файл конфигурации openwrt/etc/config/$file
 #	$file - имя файла конфигурации
@@ -20,7 +20,7 @@ function getFileAndSave( [Parameter( Position = 0 )][string] $file )
 	<#assert#> if( [string]::IsNullOrEmpty( $file ) ) { throw }
 	$deviceURN = $config.user + "@" + $config.server
 	$deviceName = $config.projectName
-	$projectPath = getProject( $deviceName )
+	$projectPath = getProject $deviceName
 	scp "${deviceURN}:/etc/config/$file" "$projectPath/rootfs/etc/config/"
 }
 
@@ -51,5 +51,5 @@ if( 2 -lt $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", 
 	outputHelp
 	exit
 }
-$config = getConfig( $Args[0] )
+$config = getConfig $Args[0]
 main( $Args | Select-Object -Skip 1 )

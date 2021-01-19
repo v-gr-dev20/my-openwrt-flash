@@ -6,15 +6,13 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 	restartNetwork
 }
 
-# Общие функции
-. "$( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )"
+# include
+. $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 
 # Выполняет рестарт сети на хосте
 function restartNetwork()
 {
 	$deviceURN = $config.user + "@" + $config.server
-	$deviceName = $config.projectName
-	$projectPath = getProject( $deviceName )
 	ssh $deviceURN "(( /etc/init.d/network restart ;sleep 10 ;if ! ping -w1 8.8.8.8 > /dev/null ;then reboot ;fi )&)&"
 }
 
@@ -37,5 +35,5 @@ if( 1 -lt $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", 
 	outputHelp
 	exit
 }
-$config = getConfig( $Args[0] )
+$config = getConfig $Args[0]
 main( $Args | Select-Object -Skip 1 )

@@ -6,15 +6,15 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 	getFile
 }
 
-# Общие функции
-. "$( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )"
+# include
+. $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 
 # Сохраняет файл конфигурации openwrt/uci
 function getFile()
 {
 	$deviceURN = $config.user + "@" + $config.server
 	$deviceName = $config.projectName
-	$projectPath = getProject( $deviceName )
+	$projectPath = getProject $deviceName
 	ssh $deviceURN "uci show" > "$projectPath/${deviceName}-uci"
 }
 
@@ -37,5 +37,5 @@ if( 1 -lt $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", 
 	outputHelp
 	exit
 }
-$config = getConfig( $Args[0] )
+$config = getConfig $Args[0]
 main( $Args | Select-Object -Skip 1 )
