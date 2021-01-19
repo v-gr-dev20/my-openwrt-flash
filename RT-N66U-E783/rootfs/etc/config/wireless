@@ -1,0 +1,17 @@
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option hwmode '11g'
+	option path 'pci0000:00/0000:00:01.0/bcma1:1'
+	option txpower '20'
+	option channel '7'
+
+config wifi-iface 'default_radio0'
+	option device 'radio0'
+	option network 'lan'
+	option mode 'ap'
+	option ieee80211w '1'
+	option encryption 'psk2'
+	option ssid 'ASUS12'
+	option key 'password'\''s changed'
+
