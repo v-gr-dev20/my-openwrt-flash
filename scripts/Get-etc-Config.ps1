@@ -3,12 +3,11 @@
 
 function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 {
-	$projectName, $projectPath = getProjectNP
-	$file = $commandLineArgs[0]
-	if( [string]::IsNullOrEmpty( $file ) ) {
-		$file = '*'
+	$file = '*'
+	if( -not $commandLineArgs -eq $null ) {
+		$file = $commandLineArgs[0]
 	}
-	getFile( $file )
+	getFileAndSave( $file )
 }
 
 # Общие функции
@@ -16,13 +15,13 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 
 # Сохраняет файл конфигурации openwrt/etc/config/$file
 #	$file - имя файла конфигурации
-function getFile( [Parameter( Position = 0 )][string] $file )
+function getFileAndSave( [Parameter( Position = 0 )][string] $file )
 {
-	$deviceURN = $config.user + "@" + $config.server
-	$deviceName = $config.device
 	<#assert#> if( [string]::IsNullOrEmpty( $file ) ) { throw }
-	$projectName, $projectPath = getProjectNP
-	scp "${deviceURN}:/etc/config/$file" "$projectPath/$deviceName/etc/config/"
+	$deviceURN = $config.user + "@" + $config.server
+	$deviceName = $config.projectName
+	$projectPath = getProject( $deviceName )
+	scp "${deviceURN}:/etc/config/$file" "$projectPath/rootfs/etc/config/"
 }
 
 # Сохраняет все файлы конфигурации openwrt/uci
@@ -39,18 +38,18 @@ function outputHelp()
 		$commandName = [System.IO.Path]::GetFileNameWithoutExtension( $commandName )
 	}
 "	Usage:
-		$commandName	*
-		$commandName	ddns | dhcp | dropbear | firewall | fstab | luci
-		$commandName	network | system | ubootenv | ucitrack | uhttpd | wireless
-		$commandName	-h | --help
+		$commandName <device>	*
+		$commandName <device>	ddns | dhcp | dropbear | firewall | fstab | luci
+		$commandName <device>	network | system | ubootenv | ucitrack | uhttpd | wireless
+		$commandName -h | --help
 "
 }
 
 # Точка входа
 [string] $ThisScriptPath = $MyInvocation.MyCommand.Path
-$config = getConfig
-if( 1 -lt $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) {
+if( 2 -lt $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) {
 	outputHelp
 	exit
 }
-main $Args
+$config = getConfig( $Args[0] )
+main( $Args | Select-Object -Skip 1 )

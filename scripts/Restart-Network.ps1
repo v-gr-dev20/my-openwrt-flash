@@ -13,8 +13,8 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 function restartNetwork()
 {
 	$deviceURN = $config.user + "@" + $config.server
-	$deviceName = $config.device
-	$projectName, $projectPath = getProjectNP
+	$deviceName = $config.projectName
+	$projectPath = getProject( $deviceName )
 	ssh $deviceURN "(( /etc/init.d/network restart ;sleep 10 ;if ! ping -w1 8.8.8.8 > /dev/null ;then reboot ;fi )&)&"
 }
 
@@ -26,16 +26,16 @@ function outputHelp()
 		$commandName = [System.IO.Path]::GetFileNameWithoutExtension( $commandName )
 	}
 "	Usage:
-		$commandName
+		$commandName <device>
 		$commandName	-h | --help
 "
 }
 
 # Точка входа
 [string] $ThisScriptPath = $MyInvocation.MyCommand.Path
-$config = getConfig
-if( 0 -lt $Args.Count ) {
+if( 1 -lt $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) {
 	outputHelp
 	exit
 }
-main $Args
+$config = getConfig( $Args[0] )
+main( $Args | Select-Object -Skip 1 )
