@@ -35,5 +35,5 @@ if( 1 -lt $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", 
 	outputHelp
 	exit
 }
-$config = getConfig $Args[0]
+New-Variable -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
 main( $Args | Select-Object -Skip 1 )
