@@ -8,14 +8,29 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 
 # include
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
+. $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
 # Сохраняет файл конфигурации openwrt/uci
 function getFile()
 {
-	$deviceURN = $config.user + "@" + $config.server
 	$deviceName = $config.projectName
 	$projectPath = getProject $deviceName
-	ssh $deviceURN "uci show" > "$projectPath/${deviceName}-uci"
+	$anURNpartOfConfig = getURNpartFromConfig $config
+	Invoke-Command-by-SSH $anURNpartOfConfig "uci show" > "$projectPath/${deviceName}-uci"
+}
+
+# Извлекает из конфига адресную часть удаленного хоста
+function getURNpartFromConfig()
+{
+	$result = @{}
+	# получаем срез конфига по следующим требуемым полям
+	"user", "server", "URN", "URNs" `
+	| ForEach-Object {
+		if( $PSItem -in $config.Keys ) {
+			$result[$PSItem] = $config[$PSItem]
+		}
+	}
+	$result
 }
 
 # Выводит подсказку
