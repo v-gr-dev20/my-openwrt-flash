@@ -19,20 +19,6 @@ function getFile()
 	Invoke-Command-by-SSH $anURNpartOfConfig "uci show" > "$projectPath/${deviceName}-uci"
 }
 
-# Извлекает из конфига адресную часть удаленного хоста
-function getURNpartFromConfig()
-{
-	$result = @{}
-	# получаем срез конфига по следующим требуемым полям
-	"user", "server", "URN", "URNs" `
-	| ForEach-Object {
-		if( $PSItem -in $config.Keys ) {
-			$result[$PSItem] = $config[$PSItem]
-		}
-	}
-	$result
-}
-
 # Выводит подсказку
 function outputHelp()
 {
