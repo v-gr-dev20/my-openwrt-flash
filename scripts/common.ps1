@@ -23,3 +23,16 @@ function getProject( [Parameter( Position = 0 )][string] $projectName )
 	$projectPath
 }
 
+# Извлекает из конфига адресную часть удаленного хоста
+function getURNpartFromConfig()
+{
+	$result = @{}
+	# получаем срез конфига по следующим требуемым полям
+	"user", "server", "URN", "URNs" `
+	| ForEach-Object {
+		if( $PSItem -in $config.Keys ) {
+			$result[$PSItem] = $config[$PSItem]
+		}
+	}
+	$result
+}
