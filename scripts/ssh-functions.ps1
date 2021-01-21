@@ -9,14 +9,14 @@
 #	2) [string]$config.URN - вида "user@hostname.or.ip",
 #	3) [array]$config.URNs - вида @( "user@hostname.or.ip", ... ),
 #	4) [hashtable[]]$config.URNs - вида @( { user:"userName", server:"hostname.or.ip" }, ... ),
-function get-URNs-chain( [Parameter( Position = 0 )] $config )
+function Get-URNs-Chain( [Parameter( Position = 0 )] $config )
 {
 	$result = New-Object System.Collections.Generic.List[System.String]
 	if( [string] -eq  $config.GetType() ) {
 		$result.Add( $config )
 	} elseif( [Object[]] -eq  $config.GetType() ) {
 		$config |ForEach-Object {
-			$result.Add( $( get-URNs-chain $PSItem ) )
+			$result.Add( $( Get-URNs-Chain $PSItem ) )
 		}
 	} elseif( $null -ne $config.server ) {
 		[string]$urn = $config.server
@@ -27,9 +27,19 @@ function get-URNs-chain( [Parameter( Position = 0 )] $config )
 	} elseif( $null -ne $config.URN ) {
 		$result.Add( [string]$config.URN )
 	} elseif( $null -ne $config.URNs ) {
-		$result += $( get-URNs-chain $config.URNs )
+		$result += $( Get-URNs-Chain $config.URNs )
 	}
 	$result
+}
+
+# Извлекает из конфига последний или единственный URN хоста вида "user@hostname.or.ip"
+function Get-Host-URN ( [Parameter( Position = 0 )] $config )
+{	
+	[string[]]$anURNsChain = Get-URNs-Chain $config
+	if( 0 -eq $anURNsChain.Count ) {
+		return $null
+	}
+	$anURNsChain[-1]
 }
 
 # Формирует подстроку параметров командной строки ssh для доступа к удаленному серверу
@@ -38,24 +48,24 @@ function get-URNs-chain( [Parameter( Position = 0 )] $config )
 #	"-J user1@hostname1.or.ip,user2@hostname2.or.ip user3@hostname3.or.ip"
 function form-ssh-parameters( [Parameter( Position = 0 )] $config )
 {
-	[array]$URNsChain = get-URNs-chain $config
+	[array]$anURNsChain = Get-URNs-Chain $config
 
-	if( 0 -eq $URNsChain.Count ) {
+	if( 0 -eq $anURNsChain.Count ) {
 		return ''
 	}
 
 	[string]$result = ''
-	if( 2 -le $URNsChain.Count ) {
-		$result += '-J ' + $URNsChain[0]
-		if( 3 -le $URNsChain.Count ) {
-			$URNsChain[ 1..( $URNsChain.Count-2 ) ] `
+	if( 2 -le $anURNsChain.Count ) {
+		$result += '-J ' + $anURNsChain[0]
+		if( 3 -le $anURNsChain.Count ) {
+			$anURNsChain[ 1..( $anURNsChain.Count-2 ) ] `
 			|ForEach-Object {
 				$result += ',' + $PSItem
 			}
 		}
 		$result += ' '
 	}
-	$result += $URNsChain[-1]
+	$result += $anURNsChain[-1]
 
 	$result
 }
@@ -68,5 +78,40 @@ function Invoke-Command-by-SSH( [Parameter( Position = 0 )] $config, [Parameter(
 	<#assert#> if( [string]::IsNullOrEmpty( $parametersAsString ) -and -not [string]::IsNullOrEmpty( $command ) ) { throw }
 	[string[]]$parameters = -split $parametersAsString
 	ssh $parameters "$command"
+}
+
+# Выполняет копирование файлов с/на удаленного сервера с помощью scp
+# Параметры scp формируются из конфига
+function Invoke-SCP( [Parameter( Position = 0 )] $config,
+	[Parameter( Position = 1 )][string] $source,
+	[Parameter( Position = 2 )][string] $destination )
+{
+	$parametersAsString = form-ssh-parameters $config
+	[string[]]$parameters = -split $parametersAsString
+	# формируем параметры доступа к удаленному серверу
+	if( -not [string]::IsNullOrEmpty( $parameters[-1] ) ) {
+		$endURN = $parameters[-1]
+		# проверяем вхождение URN хоста в путях к файлам
+		if( ( ( $endURN.Length -lt $source.Length ) -and ( ( $endURN + ":" ) -ieq  $source.Substring( 0, $endURN.Length+1 ) )
+			) -or ( ( $endURN.Length -lt $destination.Length ) -and ( ( $endURN + ":" ) -ieq $destination.Substring( 0, $endURN.Length+1 ) ) )
+		  )
+		{
+			# убираем лишний хост в цепочке, т.к. он указан в пути к файлам на удаленном хосте
+			if( 1 -eq $parameters.Count ) {
+				$parameters = @()
+			} else {
+				$parameters = $parameters[0..( $parameters.Count-2 )]
+			}
+		} else {
+			# добавляем хост в конец цепочки доступа, т.к. его нет в пути к файлам на удаленном хосте
+			if( 1 -eq $parameters.Count ) {
+				$parameters = @( '-J', $parameters[0] )
+			} else {
+				$parameters[-2] += ',' + $parameters[-1]
+				$parameters = $parameters[0..( $parameters.Count-2 )]
+			}
+		}
+	}
+	scp $parameters "$source" "$destination"
 }
 
