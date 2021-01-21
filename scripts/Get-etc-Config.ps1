@@ -7,21 +7,23 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 	if( -not $commandLineArgs -eq $null ) {
 		$file = $commandLineArgs[0]
 	}
-	getFileAndSave $file
+	getFileAndSave $file > $null
 }
 
 # include
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
+. $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
-# Сохраняет файл конфигурации openwrt/etc/config/$file
-#	$file - имя файла конфигурации
+# Сохраняет файл конфигурации openwrt:/etc/config/$file
+#	$file - имя файла конфигурации, либо *
 function getFileAndSave( [Parameter( Position = 0 )][string] $file )
 {
 	<#assert#> if( [string]::IsNullOrEmpty( $file ) ) { throw }
-	$deviceURN = $config.user + "@" + $config.server
+	$deviceURN = Get-Host-URN $config
+	<#assert#> if( [string]::IsNullOrEmpty( $deviceURN ) ) { throw }
 	$deviceName = $config.projectName
 	$projectPath = getProject $deviceName
-	scp "${deviceURN}:/etc/config/$file" "$projectPath/rootfs/etc/config/"
+	Invoke-SCP $config "${deviceURN}:/etc/config/$file" "$projectPath/rootfs/etc/config/"
 }
 
 # Сохраняет все файлы конфигурации openwrt/uci
