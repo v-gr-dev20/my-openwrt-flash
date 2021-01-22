@@ -8,12 +8,13 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 
 # include
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
+. $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
 # Выполняет рестарт сети на хосте
 function restartNetwork()
 {
-	$deviceURN = $config.user + "@" + $config.server
-	ssh $deviceURN "(( /etc/init.d/network restart ;sleep 10 ;if ! ping -w1 8.8.8.8 > /dev/null ;then reboot ;fi )&)&"
+	$anURNpartOfConfig = getURNpartFromConfig $config
+	Invoke-Command-by-SSH $anURNpartOfConfig "(( /etc/init.d/network restart ;sleep 10 ;if ! ping -w1 8.8.8.8 > /dev/null ;then reboot ;fi )&)&"
 }
 
 # Выводит подсказку
