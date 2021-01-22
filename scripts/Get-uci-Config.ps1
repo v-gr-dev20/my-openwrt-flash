@@ -1,22 +1,25 @@
 # !Powershell
-# Скрипт сохраняет файлы конфигурации openwrt/uci из удаленного устройства через ssh
+# Скрипт сохраняет файлы конфигурации openwrt:uci из удаленного устройства через ssh
 
 function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 {
-	getFile
+	$deviceName = $config.projectName
+	$projectPath = getProject $deviceName
+	$anURNpartOfConfig = getURNpartFromConfig $config
+	if( -not ( Test-Path $projectPath -PathType Container ) ) {
+		mkdir -p "$projectPath" > $null
+	}
+	getAndSaveUciConfig $anURNpartOfConfig "$projectPath/${deviceName}-uci"
 }
 
 # include
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
-# Сохраняет файл конфигурации openwrt/uci
-function getFile()
+# Сохраняет файл конфигурации openwrt:uci
+function getAndSaveUciConfig ( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $file )
 {
-	$deviceName = $config.projectName
-	$projectPath = getProject $deviceName
-	$anURNpartOfConfig = getURNpartFromConfig $config
-	Invoke-Command-by-SSH $anURNpartOfConfig "uci show" > "$projectPath/${deviceName}-uci"
+	Invoke-Command-by-SSH $config "uci show" > "$file"
 }
 
 # Выводит подсказку

@@ -3,7 +3,8 @@
 
 function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 {
-	restartNetwork
+	$anURNpartOfConfig = getURNpartFromConfig $config
+	restartNetwork $anURNpartOfConfig
 }
 
 # include
@@ -11,10 +12,9 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
 # Выполняет рестарт сети на хосте
-function restartNetwork()
+function restartNetwork( [Parameter( Position = 0 )] $config )
 {
-	$anURNpartOfConfig = getURNpartFromConfig $config
-	Invoke-Command-by-SSH $anURNpartOfConfig "(( /etc/init.d/network restart ;sleep 10 ;if ! ping -w1 8.8.8.8 > /dev/null ;then reboot ;fi )&)&"
+	Invoke-Command-by-SSH $config "(( /etc/init.d/network restart ;sleep 10 ;if ! ping -w1 8.8.8.8 > /dev/null ;then reboot ;fi )&)&"
 }
 
 # Выводит подсказку

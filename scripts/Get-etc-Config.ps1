@@ -1,13 +1,22 @@
 # !Powershell
-# Скрипт сохраняет файлы конфигурации openwrt/etc/config/* из удаленного устройства через ssh
+# Скрипт сохраняет файлы конфигурации openwrt:/etc/config/* из удаленного устройства через ssh
 
 function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 {
-	$file = '*'
-	if( -not $commandLineArgs -eq $null ) {
-		$file = $commandLineArgs[0]
+	$anURNpartOfConfig = getURNpartFromConfig $config
+	$deviceName = $config.projectName
+	$projectPath = getProject $deviceName
+	$targetPath = "$projectPath/rootfs/etc/config/"
+	if( -not ( Test-Path $targetPath -PathType Container ) ) {
+		mkdir -p "$targetPath" > $null
 	}
-	getFileAndSave $file > $null
+
+	if( 0 -eq $commandLineArgs.Count ) {
+		getAllFilesAndSave $anURNpartOfConfig $targetPath > $null
+	} else {
+		$file=$commandLineArgs[0]
+		getFileAndSave $anURNpartOfConfig $file $targetPath > $null
+	}
 }
 
 # include
@@ -16,20 +25,19 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 
 # Сохраняет файл конфигурации openwrt:/etc/config/$file
 #	$file - имя файла конфигурации, либо *
-function getFileAndSave( [Parameter( Position = 0 )][string] $file )
+function getFileAndSave( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $file,
+	[Parameter( Position = 2 )][string] $targetPath )
 {
 	<#assert#> if( [string]::IsNullOrEmpty( $file ) ) { throw }
 	$deviceURN = Get-Host-URN $config
 	<#assert#> if( [string]::IsNullOrEmpty( $deviceURN ) ) { throw }
-	$deviceName = $config.projectName
-	$projectPath = getProject $deviceName
-	Invoke-SCP $config "${deviceURN}:/etc/config/$file" "$projectPath/rootfs/etc/config/"
+	Invoke-SCP $config "${deviceURN}:/etc/config/$file" $targetPath
 }
 
-# Сохраняет все файлы конфигурации openwrt/uci
-function getAllFiles()
+# Сохраняет все файлы конфигурации openwrt:uci
+function getAllFilesAndSave( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $targetPath )
 {
-	getFile '*'
+	getFileAndSave $config '*' $targetPath
 }
 
 # Выводит подсказку
