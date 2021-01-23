@@ -123,3 +123,8 @@ function Invoke-SCP( [Parameter( Position = 0 )] $config,
 	scp $parameters "$source" "$destination"
 }
 
+# Выполняет скрипт на удаленном хосте
+function Invoke-Script-by-SSH( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script )
+{
+	Get-Content $script |Invoke-Command-by-SSH $config 'script=/tmp/$$-sh;cat -|sed ''s/\r$//g''>$script && sh $script; rm $script'
+}
