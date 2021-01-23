@@ -14,7 +14,8 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 # Выполняет рестарт сети на хосте
 function restartNetwork( [Parameter( Position = 0 )] $config )
 {
-	Invoke-Command-by-SSH $config "(( /etc/init.d/network restart ;sleep 10 ;if ! ping -w1 8.8.8.8 > /dev/null ;then reboot ;fi )&)&"
+	$doRestartScriptPath = $( Join-Path -Path "$( $ThisScriptPath |Split-Path -parent )" -ChildPath "do-restart-network-on-host.sh" )
+	Get-Content "$doRestartScriptPath" |Invoke-Command-by-SSH $config 'cat - |sed ''s/\r$//g'' |sh -s -'
 }
 
 # Выводит подсказку
