@@ -15,7 +15,7 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 function restartNetwork( [Parameter( Position = 0 )] $config )
 {
 	$doRestartScriptPath = $( Join-Path -Path "$( $ThisScriptPath |Split-Path -parent )" -ChildPath "do-restart-network-on-host.sh" )
-	Get-Content "$doRestartScriptPath" |Invoke-Command-by-SSH $config 'cat - |sed ''s/\r$//g'' |sh -s -'
+	Get-Content "$doRestartScriptPath" |Invoke-Command-by-SSH $config 'script=/tmp/$$-sh;cat -|sed ''s/\r$//g''>$script && sh $script; rm $script'
 }
 
 # Выводит подсказку
