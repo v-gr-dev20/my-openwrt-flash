@@ -143,7 +143,6 @@ function Invoke-SCP( [Parameter( Position = 0 )] $config,
 function Invoke-Script-by-SSH( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
 	[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
-	$scriptArgsLine = convertToStringWithQuotas $scriptArgs
-	$commandLine = 'script=/tmp/$$-sh;cat -|sed ''s/\r$//g''>$script && sh $script' + $scriptArgsLine + '; rm $script'
-	Get-Content $script |Invoke-Command-by-SSH $config $commandLine
+	$invokeScriptCommand = 'script=/tmp/$$-sh; wrappedRun(){ sh $script \"$@\"; rm $script; } ;cat -|sed ''s/\r$//g''>$script && wrappedRun'
+	Get-Content $script |Invoke-Command-by-SSH $config $invokeScriptCommand $scriptArgs
 }
