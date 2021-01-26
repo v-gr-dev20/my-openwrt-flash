@@ -1,0 +1,24 @@
+diff --git a/squashfs/squashfs-tools/mksquashfs.c b/squashfs/squashfs-tools/mksquashfs.c
+index 6353b1fc2..bea9fca15 100644
+--- a/squashfs/squashfs-tools/mksquashfs.c
++++ b/squashfs/squashfs-tools/mksquashfs.c
+@@ -34,6 +34,7 @@
+ #include <stdio.h>
+ #include <stddef.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <errno.h>
+diff --git a/squashfs/squashfs-tools/unsquashfs.h b/squashfs/squashfs-tools/unsquashfs.h
+index ecd0bb46d..e32180f47 100644
+--- a/squashfs/squashfs-tools/unsquashfs.h
++++ b/squashfs/squashfs-tools/unsquashfs.h
+@@ -31,6 +31,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <string.h>
