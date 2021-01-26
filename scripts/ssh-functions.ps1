@@ -14,7 +14,7 @@ function Get-URNs-Chain( [Parameter( Position = 0 )] $config )
 	$result = New-Object System.Collections.Generic.List[System.String]
 	if( [string] -eq  $config.GetType() ) {
 		$result.Add( $config )
-	} elseif( [Object[]] -eq  $config.GetType() ) {
+	} elseif( $config.GetType() -in [Object[]],[String[]] ) {
 		$config |ForEach-Object {
 			$result.Add( $( Get-URNs-Chain $PSItem ) )
 		}
@@ -48,7 +48,7 @@ function Get-Host-URN ( [Parameter( Position = 0 )] $config )
 #	"-J user1@hostname1.or.ip,user2@hostname2.or.ip user3@hostname3.or.ip"
 function form-ssh-parameters( [Parameter( Position = 0 )] $config )
 {
-	[array]$anURNsChain = Get-URNs-Chain $config
+	[string[]]$anURNsChain = Get-URNs-Chain $config
 
 	if( 0 -eq $anURNsChain.Count ) {
 		return ''
@@ -67,6 +67,20 @@ function form-ssh-parameters( [Parameter( Position = 0 )] $config )
 	}
 	$result += $anURNsChain[-1]
 
+	$result
+}
+
+# Преобразует массив строк вида @("w1 w2", "w3", "w4") в строку вида '"w1 w2" w3 w4'
+function convertToStringWithQuotas( [Parameter( Position = 0 )][string[]] $items )
+{
+	$result = ""
+	foreach( $item in $items ) {
+		if( $item -match "\s" ) {
+			$result = "${result} `\`"${item}`\`""
+		} else {
+			$result = "${result} ${item}"
+		}
+	}
 	$result
 }
 
@@ -124,7 +138,10 @@ function Invoke-SCP( [Parameter( Position = 0 )] $config,
 }
 
 # Выполняет скрипт на удаленном хосте
-function Invoke-Script-by-SSH( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script )
+function Invoke-Script-by-SSH( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
+	[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
-	Get-Content $script |Invoke-Command-by-SSH $config 'script=/tmp/$$-sh;cat -|sed ''s/\r$//g''>$script && sh $script; rm $script'
+	$scriptArgsLine = convertToStringWithQuotas $scriptArgs
+	$commandLine = 'script=/tmp/$$-sh;cat -|sed ''s/\r$//g''>$script && sh $script' + $scriptArgsLine + '; rm $script'
+	Get-Content $script |Invoke-Command-by-SSH $config $commandLine
 }
