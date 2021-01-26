@@ -37,7 +37,7 @@ function startFlashFromServiceHost( [Parameter( Position = 0 )] $serviceConfig, 
 	<#assert#> if( 0 -eq $serviceURNsChain.Count ) { throw }
 	$serviceHost = $serviceURNsChain[-1]
 	Invoke-SCP $serviceConfig $firmwareBin "${serviceHost}:${firmwarePathOnServiceHost}" `
-	&& Invoke-Script-by-SSH $serviceConfig $flashScriptPath $firmwarePathOnServiceHost
+	&& Invoke-Script-by-SSH $serviceConfig $flashScriptPath $firmwarePathOnServiceHost |%{ "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`t$_" }
 }
 
 # Выводит подсказку

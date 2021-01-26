@@ -21,7 +21,7 @@ function sysupgrade( [Parameter( Position = 0 )] $config, [Parameter( Position =
 	<#assert#> if( 0 -eq $anURNsChain.Count ) { throw }
 	$targetURN = $anURNsChain[-1]
 	Invoke-SCP $config $firmwareBin "${targetURN}:${firmwarePathOnServiceHost}" `
-	&& Invoke-Command-by-SSH $config "sysupgrade" $firmwarePathOnServiceHost
+	&& Invoke-Command-by-SSH $config "sysupgrade" $firmwarePathOnServiceHost |%{ "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`t$_" }
 }
 
 # Выводит подсказку
