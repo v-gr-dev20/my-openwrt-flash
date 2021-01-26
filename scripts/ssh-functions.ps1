@@ -91,15 +91,17 @@ function Invoke-Command-by-SSH
 	[CmdletBinding()]
 	param(
 		[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
+		[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
 		# и здесь магия Powershell: ValueFromPipeline
 		[Parameter( ValueFromPipeline )][PSObject[]]$inputLine
 	)
 
 	$parametersAsString = form-ssh-parameters $config
 	<#assert#> if( [string]::IsNullOrEmpty( $parametersAsString ) -and -not [string]::IsNullOrEmpty( $command ) ) { throw }
-	[string[]]$parameters = -split $parametersAsString
+	[string[]]$sshParameters = -split $parametersAsString
+	$commandArgsLine = convertToStringWithQuotas $commndArgs
 	# и здесь магия Powershell: $input
-	$input |ssh $parameters "$command"
+	$input |ssh $sshParameters "$command" $commandArgsLine
 }
 
 # Выполняет копирование файлов с/на удаленного сервера с помощью scp
