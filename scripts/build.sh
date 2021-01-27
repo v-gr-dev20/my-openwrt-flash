@@ -5,10 +5,10 @@
 
 function main()
 {
-	local projectName projectPath DockerfileName DockerfilePath
 	# Находим файлы docker
-	GetProject $1 |{ read projectName; read projectPath; read DockerfileName; read DockerfilePath; }
-
+	local -a projectData
+	readarray -t projectData < <( GetProject "$1" )
+	local projectName="${projectData[0]}" projectPath="${projectData[1]}" DockerfileName="${projectData[2]}" DockerfilePath="${projectData[3]}"
 	[ -n "$DockerfilePath" ] && { 
 		echo "${projectName}: ${DockerfilePath}"
 
