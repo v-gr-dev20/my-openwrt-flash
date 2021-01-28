@@ -1,6 +1,7 @@
 # !Powershell
 # Скрипт-обертка для запуска в Windows одноименного bash-скрипта в среде wsl2-debian.
-# Скрипт определяет месторасположение целевого bash-скрипта непосредственно рядом с собственным месторасположением.
+# Целевой bash-скрипт должен располагаться непосредственно рядом и его имя без расширения
+#	должно соответствовать имени данного вызывающего скрипта-обертки.
 
 function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 {
@@ -25,7 +26,7 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 	# формируем строку с параметрами командной строки
 	$paramsToString = ( convertToStringWithQuotas $commandLineArgs )
 	
-	# Запускаем систему сборки для проекта
+	# Запускаем целевой bash-скрипт
 	bash -c "'$( convertPathToMountPoint `"${thisScriptDirPath}`")/${thisScriptShortName}.sh' $paramsToString"
 }
 
