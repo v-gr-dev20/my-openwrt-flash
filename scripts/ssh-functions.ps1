@@ -92,6 +92,7 @@ function Invoke-Command-by-SSH
 	param(
 		[Parameter( Mandatory = $false )][switch] $MustSaveLog,
 		[Parameter( Mandatory = $false )][String] $SaveLogTo,
+		[Parameter( Mandatory = $false )][switch] $WithTimestamp,
 		[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
 		[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
 		# и здесь магия Powershell: ValueFromPipeline
@@ -108,6 +109,12 @@ function Invoke-Command-by-SSH
 	}
 	$sshTargetCommandBlock = $sshOriginalCommandBlock
 
+	if( $WithTimestamp ) {
+		$withTimestampInnerCommandBlock = $sshTargetCommandBlock
+		$sshTargetCommandBlock = {
+			$input |Invoke-Command -ScriptBlock $withTimestampInnerCommandBlock |%{ "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`t$_" }
+		}
+	}
 	if( $MustSaveLog -xor -not [string]::IsNullOrEmpty( $SaveLogTo ) ) {
 		if( -not $MustSaveLog ) {
 			$MustSaveLog = [switch]$true
@@ -175,10 +182,11 @@ function Invoke-SCP( [Parameter( Position = 0 )] $config,
 function Invoke-Script-by-SSH(
 	[Parameter( Mandatory = $false )][switch] $MustSaveLog,
 	[Parameter( Mandatory = $false )][String] $SaveLogTo,
+	[Parameter( Mandatory = $false )][switch] $WithTimestamp,
 	[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
 	[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
 	$invokeScriptCommand = 'script=/tmp/$$-sh; wrappedRun(){ sh --login $script \"$@\"; rm $script; } ;cat -|sed ''s/\r$//g''>$script && wrappedRun'
-	Get-Content $script |Invoke-Command-by-SSH -MustSaveLog:$MustSaveLog -SaveLogTo:$SaveLogTo`
+	Get-Content $script |Invoke-Command-by-SSH -MustSaveLog:$MustSaveLog -SaveLogTo:$SaveLogTo -WithTimestamp:$WithTimestamp `
 		$config $invokeScriptCommand $scriptArgs
 }
