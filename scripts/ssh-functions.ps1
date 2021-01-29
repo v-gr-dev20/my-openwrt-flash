@@ -90,6 +90,8 @@ function Invoke-Command-by-SSH
 {
 	[CmdletBinding()]
 	param(
+		[Parameter( Mandatory = $false )][switch] $MustSaveLog,
+		[Parameter( Mandatory = $false )][String] $SaveLogTo,
 		[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
 		[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
 		# и здесь магия Powershell: ValueFromPipeline
@@ -100,8 +102,38 @@ function Invoke-Command-by-SSH
 	<#assert#> if( [string]::IsNullOrEmpty( $parametersAsString ) -and -not [string]::IsNullOrEmpty( $command ) ) { throw }
 	[string[]]$sshParameters = -split $parametersAsString
 	$commandArgsLine = convertToStringWithQuotas $commndArgs
+
+	$sshOriginalCommandBlock = {
+		$input |ssh $sshParameters "$command" $commandArgsLine
+	}
+	$sshTargetCommandBlock = $sshOriginalCommandBlock
+
+	if( $MustSaveLog -xor -not [string]::IsNullOrEmpty( $SaveLogTo ) ) {
+		if( -not $MustSaveLog ) {
+			$MustSaveLog = [switch]$true
+		} else {
+			# имя лог-файла по-умолчанию
+			$H = $sshParameters[-1] -replace '^.+\@(.+)$','$1'
+			$T = Get-Date -Format 'yyyy-MM-dd-HHmmss'
+			$SaveLogTo = "${env:userprofile}/Windows Terminal/${T}-${H}.log"
+		}
+	}
+	if( $MustSaveLog ) {
+		$withLogInnerCommandBlock = $sshTargetCommandBlock
+		$sshTargetCommandBlock = {
+			$null = Start-Transcript -UseMinimalHeader -Append $SaveLogTo
+			try
+			{
+				$input |Invoke-Command -ScriptBlock $withLogInnerCommandBlock 2>&1 |Out-Host
+			}
+			finally
+			{
+				$null = Stop-Transcript
+			}
+		}
+	}
 	# и здесь магия Powershell: $input
-	$input |ssh $sshParameters "$command" $commandArgsLine
+	$input |Invoke-Command -ScriptBlock $sshTargetCommandBlock
 }
 
 # Выполняет копирование файлов с/на удаленного сервера с помощью scp
@@ -140,9 +172,13 @@ function Invoke-SCP( [Parameter( Position = 0 )] $config,
 }
 
 # Выполняет скрипт на удаленном хосте
-function Invoke-Script-by-SSH( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
+function Invoke-Script-by-SSH(
+	[Parameter( Mandatory = $false )][switch] $MustSaveLog,
+	[Parameter( Mandatory = $false )][String] $SaveLogTo,
+	[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
 	[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
 	$invokeScriptCommand = 'script=/tmp/$$-sh; wrappedRun(){ sh --login $script \"$@\"; rm $script; } ;cat -|sed ''s/\r$//g''>$script && wrappedRun'
-	Get-Content $script |Invoke-Command-by-SSH $config $invokeScriptCommand $scriptArgs
+	Get-Content $script |Invoke-Command-by-SSH -MustSaveLog:$MustSaveLog -SaveLogTo:$SaveLogTo`
+		$config $invokeScriptCommand $scriptArgs
 }
