@@ -1,7 +1,9 @@
 # !Powershell
 # Скрипт запускает команду на удаленном хосте через ssh
 
-function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
+function main( [Parameter( Position = 0 )][string[]] $commandLineArgs,
+	# и здесь магия Powershell: ValueFromPipeline
+	[Parameter( ValueFromPipeline )][PSObject[]]$inputLine )
 {
 	<#assert#> if( 0 -eq $commandLineArgs.Count ) { throw }
 
@@ -11,7 +13,7 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 	if( 2 -le $commandLineArgs.Count ) {
 		$commandArgs = $commandLineArgs[1..( $commandLineArgs.Count-1 )]
 	}
-	Invoke-Command-by-SSH $anURNpartOfConfig $command $commandArgs
+	$input |Invoke-Command-by-SSH $anURNpartOfConfig $command $commandArgs
 }
 
 # include
@@ -40,4 +42,4 @@ if( 1 -eq $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", 
 	exit
 }
 New-Variable -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
-main( $Args | Select-Object -Skip 1 )
+$input |main( $Args | Select-Object -Skip 1 )
