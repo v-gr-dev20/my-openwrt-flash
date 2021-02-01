@@ -72,12 +72,20 @@ function form-ssh-parameters( [Parameter( Position = 0 )] $config )
 
 # Выполняет команду на удаленном сервере
 # Параметры ssh формируются из конфига
-function Invoke-Command-by-SSH( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command )
+function Invoke-Command-by-SSH
 {
+	[CmdletBinding()]
+	param(
+		[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
+		# и здесь магия Powershell: ValueFromPipeline
+		[Parameter( ValueFromPipeline )][PSObject[]]$inputLine
+	)
+
 	$parametersAsString = form-ssh-parameters $config
 	<#assert#> if( [string]::IsNullOrEmpty( $parametersAsString ) -and -not [string]::IsNullOrEmpty( $command ) ) { throw }
 	[string[]]$parameters = -split $parametersAsString
-	ssh $parameters "$command"
+	# и здесь магия Powershell: $input
+	$input |ssh $parameters "$command"
 }
 
 # Выполняет копирование файлов с/на удаленного сервера с помощью scp
