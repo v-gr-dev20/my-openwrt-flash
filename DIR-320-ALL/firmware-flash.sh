@@ -33,7 +33,7 @@ do
 try
 done
 echo "*** Start Flashing **** "
-atftp --no-source-port-checking -p -l $firmwarePath 192.168.0.1
+atftp --no-source-port-checking --verbose -p -l $firmwarePath 192.168.0.1
 result=$?
 [[ 0 -eq $result ]] \
 	&& echo "Firmware successfully loaded!" \
