@@ -4,20 +4,22 @@
 # . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 
 # Считывает параметры программы из файла config.json
-function getConfig()
+function getConfig( [Parameter( Position = 0 )][string] $projectName )
 {
-	$projectName, $projectPath = getProjectNP
-	Get-Content "$projectPath/config.json" |ConvertFrom-Json -AsHashtable
+	$projectPath = getProject( $projectName )
+	$result = Get-Content "$projectPath/config.json" |ConvertFrom-Json -AsHashtable
+	$result.projectName = $projectName
+	$result
 }
 
-# Возвращает имя и путь проекта - имя родительской папки скрипта на 2 уровня выше
-function getProjectNP()
+# Возвращает путь проекта
+function getProject( [Parameter( Position = 0 )][string] $projectName )
 {
 	$thisScriptDirPath = $ThisScriptPath |Split-Path -parent
-	$projectPath = $thisScriptDirPath |Split-Path -parent
-	$projectName = $projectPath |Split-Path -Leaf
+	$projectPath = Join-Path -Path ( $thisScriptDirPath |Split-Path -parent ) -ChildPath $projectName
 	<#assert#> if( [string]::IsNullOrEmpty( $projectName ) ) { throw }
 	<#assert#> if( [string]::IsNullOrEmpty( $projectPath ) ) { throw }
 
-	$projectName, $projectPath
+	$projectPath
 }
+
