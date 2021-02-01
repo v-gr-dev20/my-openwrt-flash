@@ -1,0 +1,43 @@
+# !Powershell
+# Общие фукции
+# Для включения функций в код скрипта (include) использовать следующую строку
+# . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
+
+# Считывает параметры программы из файла config.json
+function getConfig( [Parameter( Position = 0 )][string] $projectName )
+{
+	$projectPath = getProject( $projectName )
+	$result = Get-Content "$projectPath/config.json" |ConvertFrom-Json -AsHashtable
+	$result.projectName = $projectName
+	$result
+}
+
+# Возвращает путь проекта
+function getProject( [Parameter( Position = 0 )][string] $projectName )
+{
+	$thisScriptDirPath = $ThisScriptPath |Split-Path -parent
+	$projectPath = Join-Path -Path ( $thisScriptDirPath |Split-Path -parent ) -ChildPath $projectName
+	<#assert#> if( [string]::IsNullOrEmpty( $projectName ) ) { throw }
+	<#assert#> if( [string]::IsNullOrEmpty( $projectPath ) ) { throw }
+
+	$projectPath
+}
+
+# Извлекает из конфига адресную часть удаленного хоста
+function getURNpartFromConfig()
+{
+	Select-Hashtable-by-Keys $config "user","server","URN","URNs"
+}
+
+# Копирует hashtable в части указанного набора ключей
+function Select-Hashtable-by-Keys( [Parameter( Position = 0 )][hashtable] $map, [Parameter( Position = 1 )][string[]] $keys )
+{
+	$result = @{}
+	# получаем срез конфига по следующим требуемым полям
+	$keys |ForEach-Object {
+		if( $PSItem -in $map.Keys ) {
+			$result[$PSItem] = $config[$PSItem]
+		}
+	}
+	$result
+}
