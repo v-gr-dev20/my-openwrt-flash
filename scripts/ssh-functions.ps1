@@ -90,9 +90,9 @@ function Invoke-Command-by-SSH
 {
 	[CmdletBinding()]
 	param(
-		[Parameter( Mandatory = $false )][switch] $MustSaveLog,
+		[Parameter( Mandatory = $false )][switch] $MustSaveLog = $true,
 		[Parameter( Mandatory = $false )][String] $SaveLogTo,
-		[Parameter( Mandatory = $false )][switch] $WithTimestamp,
+		[Parameter( Mandatory = $false )][switch] $WithTimestamp = $true,
 		[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
 		[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
 		# и здесь магия Powershell: ValueFromPipeline
@@ -180,9 +180,9 @@ function Invoke-SCP( [Parameter( Position = 0 )] $config,
 
 # Выполняет скрипт на удаленном хосте
 function Invoke-Script-by-SSH(
-	[Parameter( Mandatory = $false )][switch] $MustSaveLog,
+	[Parameter( Mandatory = $false )][switch] $MustSaveLog = $true,
 	[Parameter( Mandatory = $false )][String] $SaveLogTo,
-	[Parameter( Mandatory = $false )][switch] $WithTimestamp,
+	[Parameter( Mandatory = $false )][switch] $WithTimestamp = $true,
 	[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
 	[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
