@@ -1,19 +1,22 @@
 # !Powershell
 # Скрипт запускает команду на удаленном хосте через ssh
 
-function main( [Parameter( Position = 0 )][string[]] $commandLineArgs,
-	# и здесь магия Powershell: ValueFromPipeline
-	[Parameter( ValueFromPipeline )][PSObject[]]$inputLine )
+function main
 {
-	<#assert#> if( 0 -eq $commandLineArgs.Count ) { throw }
+	[CmdletBinding( PositionalBinding = $false )]
+	param(
+		[Parameter( Mandatory = $false )][switch] $WithoutLog,
+		[Parameter( Mandatory = $false )][String] $SaveLogTo,
+		[Parameter( Mandatory = $false )][switch] $WithoutTimestamp,
+		[Parameter( Mandatory = $true, Position = 0 )][string] $command,
+		[Parameter( Mandatory = $false, Position = 1, ValueFromRemainingArguments = $true )][string[]] $commandArgs,
+		# и здесь магия Powershell: ValueFromPipeline
+		[Parameter( Mandatory = $false, ValueFromPipeline )][PSObject[]]$inputLine
+	)
 
 	$anURNpartOfConfig = getURNpartFromConfig $config
-	$command = $commandLineArgs[0]
-	$commandArgs = @()
-	if( 2 -le $commandLineArgs.Count ) {
-		$commandArgs = $commandLineArgs[1..( $commandLineArgs.Count-1 )]
-	}
-	$input |Invoke-Command-by-SSH $anURNpartOfConfig $command $commandArgs
+	$input |Invoke-Command-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo -WithTimestamp:( -not $WithoutTimestamp ) `
+		$anURNpartOfConfig $command $commandArgs
 }
 
 # include
@@ -42,4 +45,4 @@ if( 1 -eq $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", 
 	exit
 }
 New-Variable -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
-$input |main( $Args | Select-Object -Skip 1 )
+$input |Invoke-Command { $input| main @Args } -ArgumentList ( $Args |Select-Object -Skip 1 )

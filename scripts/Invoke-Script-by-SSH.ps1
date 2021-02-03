@@ -1,19 +1,24 @@
 # !Powershell
 # Скрипт запускает sh-скрипт на удаленном хосте через ssh
 
-function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
+function main
 {
-	<#assert#> if( 0 -eq $commandLineArgs.Count ) { throw }
+	[CmdletBinding( PositionalBinding = $false )]
+	param(
+		[Parameter( Mandatory = $false )][switch] $WithoutLog,
+		[Parameter( Mandatory = $false )][String] $SaveLogTo,
+		[Parameter( Mandatory = $false )][switch] $WithoutTimestamp,
+		[Parameter( Mandatory = $true, Position = 0 )][string] $script,
+		[Parameter( Mandatory = $false, Position = 1, ValueFromRemainingArguments = $true )][string[]] $scriptArgs
+	)
 
 	$deviceName = $config.projectName
 	$projectPath = getProject $deviceName
-	$scriptPath = $( Join-Path -Path $projectPath -ChildPath $commandLineArgs[0] )
+	$scriptPath = $( Join-Path -Path $projectPath -ChildPath $script )
 	$anURNpartOfConfig = getURNpartFromConfig $config
-	$scriptArgs = @()
-	if( 2 -le $commandLineArgs.Count ) {
-		$scriptArgs = $commandLineArgs[1..( $commandLineArgs.Count-1 )]
-	}
-	Invoke-Script-by-SSH $anURNpartOfConfig $scriptPath $scriptArgs
+	
+	Invoke-Script-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo -WithTimestamp:( -not $WithoutTimestamp ) `
+		$anURNpartOfConfig $scriptPath $scriptArgs
 }
 
 # include
@@ -40,4 +45,4 @@ if( 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) {
 	exit
 }
 New-Variable -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
-main( $Args | Select-Object -Skip 1 )
+Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip 1 )
