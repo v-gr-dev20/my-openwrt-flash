@@ -14,7 +14,7 @@ function Get-URNs-Chain( [Parameter( Position = 0 )] $config )
 	$result = New-Object System.Collections.Generic.List[System.String]
 	if( [string] -eq  $config.GetType() ) {
 		$result.Add( $config )
-	} elseif( [Object[]] -eq  $config.GetType() ) {
+	} elseif( $config.GetType() -in [Object[]],[String[]] ) {
 		$config |ForEach-Object {
 			$result.Add( $( Get-URNs-Chain $PSItem ) )
 		}
@@ -48,7 +48,7 @@ function Get-Host-URN ( [Parameter( Position = 0 )] $config )
 #	"-J user1@hostname1.or.ip,user2@hostname2.or.ip user3@hostname3.or.ip"
 function form-ssh-parameters( [Parameter( Position = 0 )] $config )
 {
-	[array]$anURNsChain = Get-URNs-Chain $config
+	[string[]]$anURNsChain = Get-URNs-Chain $config
 
 	if( 0 -eq $anURNsChain.Count ) {
 		return ''
@@ -70,22 +70,86 @@ function form-ssh-parameters( [Parameter( Position = 0 )] $config )
 	$result
 }
 
+# Преобразует массив строк вида @("w1 w2", "w3", "w4") в строку вида '"w1 w2" w3 w4'
+function convertToStringWithQuotas( [Parameter( Position = 0 )][string[]] $items )
+{
+	$result = ""
+	foreach( $item in $items ) {
+		if( $item -match "\s" ) {
+			$result = "${result} `\`"${item}`\`""
+		} else {
+			$result = "${result} ${item}"
+		}
+	}
+	$result
+}
+
 # Выполняет команду на удаленном сервере
 # Параметры ssh формируются из конфига
 function Invoke-Command-by-SSH
 {
 	[CmdletBinding()]
 	param(
+		[Parameter( Mandatory = $false )][switch] $MustSaveLog = $true,
+		[Parameter( Mandatory = $false )][String] $SaveLogTo,
+		[Parameter( Mandatory = $false )][String] $RunLogHeader,
+		[Parameter( Mandatory = $false )][switch] $WithTimestamp = $true,
 		[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
+		[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
 		# и здесь магия Powershell: ValueFromPipeline
 		[Parameter( ValueFromPipeline )][PSObject[]]$inputLine
 	)
 
 	$parametersAsString = form-ssh-parameters $config
 	<#assert#> if( [string]::IsNullOrEmpty( $parametersAsString ) -and -not [string]::IsNullOrEmpty( $command ) ) { throw }
-	[string[]]$parameters = -split $parametersAsString
+	[string[]]$sshParameters = -split $parametersAsString
+	$commandArgsLine = convertToStringWithQuotas $commndArgs
+
+	if( $MustSaveLog -xor -not [string]::IsNullOrEmpty( $SaveLogTo ) ) {
+		if( -not $MustSaveLog ) {
+			$MustSaveLog = [switch]$true
+		} else {
+			# имя лог-файла по-умолчанию
+			$H = $sshParameters[-1] -replace '^.+\@(.+)$','$1'
+			$T = Get-Date -Format 'yyyy-MM-dd-HHmmss'
+			$SaveLogTo = "${env:userprofile}/Windows Terminal/${T}-${H}.log"
+		}
+	}
+	if( [string]::IsNullOrEmpty( $RunLogHeader ) ) {
+		$RunLogHeader = "command: $command"
+	}
+	$sshOriginalCommandBlock = {
+		if( $MustSaveLog ) {
+			Write-Output "Remote session: ssh $sshParameters"
+			Write-Output "Run $RunLogHeader"
+			Write-Output "Arguments: $commndArgs"
+		}
+		$input |ssh $sshParameters "$command" $commandArgsLine
+	}
+	$sshTargetCommandBlock = $sshOriginalCommandBlock
+
+	if( $WithTimestamp ) {
+		$withTimestampInnerCommandBlock = $sshTargetCommandBlock
+		$sshTargetCommandBlock = {
+			$input |Invoke-Command -ScriptBlock $withTimestampInnerCommandBlock |%{ "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`t$_" }
+		}
+	}
+	if( $MustSaveLog ) {
+		$withLogInnerCommandBlock = $sshTargetCommandBlock
+		$sshTargetCommandBlock = {
+			$null = Start-Transcript -UseMinimalHeader -Append $SaveLogTo
+			try
+			{
+				$input |Invoke-Command -ScriptBlock $withLogInnerCommandBlock 2>&1 |Out-Host
+			}
+			finally
+			{
+				$null = Stop-Transcript
+			}
+		}
+	}
 	# и здесь магия Powershell: $input
-	$input |ssh $parameters "$command"
+	$input |Invoke-Command -ScriptBlock $sshTargetCommandBlock
 }
 
 # Выполняет копирование файлов с/на удаленного сервера с помощью scp
@@ -124,7 +188,15 @@ function Invoke-SCP( [Parameter( Position = 0 )] $config,
 }
 
 # Выполняет скрипт на удаленном хосте
-function Invoke-Script-by-SSH( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script )
+function Invoke-Script-by-SSH(
+	[Parameter( Mandatory = $false )][switch] $MustSaveLog = $true,
+	[Parameter( Mandatory = $false )][String] $SaveLogTo,
+	[Parameter( Mandatory = $false )][switch] $WithTimestamp = $true,
+	[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
+	[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
-	Get-Content $script |Invoke-Command-by-SSH $config 'script=/tmp/$$-sh;cat -|sed ''s/\r$//g''>$script && sh $script; rm $script'
+	$invokeScriptCommand = 'script=/tmp/$$-sh; wrappedRun(){ sh --login $script \"$@\"; rm $script; } ;cat -|sed ''s/\r$//g''>$script && wrappedRun'
+	Get-Content $script |Invoke-Command-by-SSH -MustSaveLog:$MustSaveLog -SaveLogTo:$SaveLogTo `
+		-WithTimestamp:$WithTimestamp -RunLogHeader:"script $script" `
+		$config $invokeScriptCommand $scriptArgs
 }
