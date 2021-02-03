@@ -92,6 +92,7 @@ function Invoke-Command-by-SSH
 	param(
 		[Parameter( Mandatory = $false )][switch] $MustSaveLog = $true,
 		[Parameter( Mandatory = $false )][String] $SaveLogTo,
+		[Parameter( Mandatory = $false )][String] $RunLogHeader,
 		[Parameter( Mandatory = $false )][switch] $WithTimestamp = $true,
 		[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
 		[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
@@ -104,17 +105,6 @@ function Invoke-Command-by-SSH
 	[string[]]$sshParameters = -split $parametersAsString
 	$commandArgsLine = convertToStringWithQuotas $commndArgs
 
-	$sshOriginalCommandBlock = {
-		$input |ssh $sshParameters "$command" $commandArgsLine
-	}
-	$sshTargetCommandBlock = $sshOriginalCommandBlock
-
-	if( $WithTimestamp ) {
-		$withTimestampInnerCommandBlock = $sshTargetCommandBlock
-		$sshTargetCommandBlock = {
-			$input |Invoke-Command -ScriptBlock $withTimestampInnerCommandBlock |%{ "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`t$_" }
-		}
-	}
 	if( $MustSaveLog -xor -not [string]::IsNullOrEmpty( $SaveLogTo ) ) {
 		if( -not $MustSaveLog ) {
 			$MustSaveLog = [switch]$true
@@ -123,6 +113,25 @@ function Invoke-Command-by-SSH
 			$H = $sshParameters[-1] -replace '^.+\@(.+)$','$1'
 			$T = Get-Date -Format 'yyyy-MM-dd-HHmmss'
 			$SaveLogTo = "${env:userprofile}/Windows Terminal/${T}-${H}.log"
+		}
+	}
+	if( [string]::IsNullOrEmpty( $RunLogHeader ) ) {
+		$RunLogHeader = "command: $command"
+	}
+	$sshOriginalCommandBlock = {
+		if( $MustSaveLog ) {
+			Write-Output "Remote session: ssh $sshParameters"
+			Write-Output "Run $RunLogHeader"
+			Write-Output "Arguments: $commndArgs"
+		}
+		$input |ssh $sshParameters "$command" $commandArgsLine
+	}
+	$sshTargetCommandBlock = $sshOriginalCommandBlock
+
+	if( $WithTimestamp ) {
+		$withTimestampInnerCommandBlock = $sshTargetCommandBlock
+		$sshTargetCommandBlock = {
+			$input |Invoke-Command -ScriptBlock $withTimestampInnerCommandBlock |%{ "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`t$_" }
 		}
 	}
 	if( $MustSaveLog ) {
@@ -187,6 +196,7 @@ function Invoke-Script-by-SSH(
 	[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
 	$invokeScriptCommand = 'script=/tmp/$$-sh; wrappedRun(){ sh --login $script \"$@\"; rm $script; } ;cat -|sed ''s/\r$//g''>$script && wrappedRun'
-	Get-Content $script |Invoke-Command-by-SSH -MustSaveLog:$MustSaveLog -SaveLogTo:$SaveLogTo -WithTimestamp:$WithTimestamp `
+	Get-Content $script |Invoke-Command-by-SSH -MustSaveLog:$MustSaveLog -SaveLogTo:$SaveLogTo `
+		-WithTimestamp:$WithTimestamp -RunLogHeader:"script $script" `
 		$config $invokeScriptCommand $scriptArgs
 }
