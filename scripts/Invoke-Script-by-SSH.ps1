@@ -15,8 +15,14 @@ function main
 	$deviceName = $config.projectName
 	$projectPath = getProject $deviceName
 	$scriptPath = $( Join-Path -Path $projectPath -ChildPath $script )
+	if( Test-Path -Path $scriptPath ) {
+		$scriptPath = Resolve-Path -Path $scriptPath
+	} elseif( Test-Path -Path $script ) {
+		$scriptPath = Resolve-Path -Path $script
+	}
 	$anURNpartOfConfig = getURNpartFromConfig $config
 	
+	<#assert#> if( -not ( Test-Path -Path $scriptPath ) ) { throw }
 	Invoke-Script-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo -WithTimestamp:( -not $WithoutTimestamp ) `
 		$anURNpartOfConfig $scriptPath $scriptArgs
 }
