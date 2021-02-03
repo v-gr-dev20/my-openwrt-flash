@@ -19,7 +19,7 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 # Сохраняет файл конфигурации openwrt:uci
 function getAndSaveUciConfig ( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $file )
 {
-	Invoke-Command-by-SSH $config "uci show" > "$file"
+	Invoke-Command-by-SSH $config -MustSaveLog:$false -WithTimestamp:$false uci show > "$file"
 }
 
 # Выводит подсказку
