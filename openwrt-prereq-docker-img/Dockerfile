@@ -3,6 +3,7 @@ FROM debian:latest
 RUN apt -y update \
  && apt -y install \
 		nano \
+		binwalk \
 		mc \
 		openssh-server
 
