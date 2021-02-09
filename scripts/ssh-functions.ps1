@@ -127,7 +127,7 @@ function Invoke-Command-by-SSH
 		if( $MustSaveLog ) {
 			Write-Output "Remote session: ssh $sshParameters"
 			Write-Output "Run $RunLogHeader"
-			Write-Output "Arguments: $commndArgs"
+			Write-Output "Arguments: $( convertToStringWithQuotas $commndArgs '`"' )"
 		}
 		$input |ssh $sshParameters "$command" $commandArgsLine
 	}
