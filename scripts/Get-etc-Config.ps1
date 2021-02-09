@@ -31,6 +31,10 @@ function getFileAndSave( [Parameter( Position = 0 )] $config, [Parameter( Positi
 	<#assert#> if( [string]::IsNullOrEmpty( $file ) ) { throw }
 	$deviceURN = Get-Host-URN $config
 	<#assert#> if( [string]::IsNullOrEmpty( $deviceURN ) ) { throw }
+
+	# предварительно удаляем целевые файлы
+	Remove-Item "${targetPath}/$file" -Force
+
 	Invoke-SCP $config "${deviceURN}:/etc/config/$file" $targetPath
 }
 
