@@ -32,6 +32,12 @@ function Get-URNs-Chain( [Parameter( Position = 0 )] $config )
 	$result
 }
 
+# Извлекает из конфига адресную часть удаленного хоста
+function getURNpartFromConfig()
+{
+	Select-Hashtable-by-Keys $config "user","server","URN","URNs"
+}
+
 # Извлекает из конфига последний или единственный URN хоста вида "user@hostname.or.ip"
 function Get-Host-URN ( [Parameter( Position = 0 )] $config )
 {	
@@ -205,3 +211,6 @@ function Invoke-Script-by-SSH(
 		-WithTimestamp:$WithTimestamp -RunLogHeader:"script $script" `
 		$config $invokeScriptCommand $scriptArgs
 }
+
+# include
+. $( Join-Path -Path "$( $PSCommandPath |Split-Path -parent )" -ChildPath "common.ps1" )
