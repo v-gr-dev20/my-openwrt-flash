@@ -170,7 +170,7 @@ function Invoke-SCP( [Parameter( Mandatory, Position = 0 )] $config,
 {
 	[string[]]$parameters = get-ssh-parameters $config
 	# формируем параметры доступа к удаленному серверу
-	if( -not [string]::IsNullOrEmpty( $parameters[-1] ) ) {
+	if( 1 -le $parameters.Count -and -not [string]::IsNullOrEmpty( $parameters[-1] ) ) {
 		$endURN = $parameters[-1]
 		# проверяем вхождение URN хоста в путях к файлам
 		if( ( ( $endURN.Length -lt $source.Length ) -and ( ( $endURN + ":" ) -ieq  $source.Substring( 0, $endURN.Length+1 ) )
@@ -186,7 +186,7 @@ function Invoke-SCP( [Parameter( Mandatory, Position = 0 )] $config,
 		} else {
 			# добавляем хост в конец цепочки доступа, т.к. его нет в пути к файлам на удаленном хосте
 			if( 1 -eq $parameters.Count ) {
-				$parameters = @( '-J', $parameters[0] )
+				$parameters = @( '-J' + $parameters[0] )
 			} else {
 				$parameters[-2] += ',' + $parameters[-1]
 				$parameters = $parameters[0..( $parameters.Count-2 )]
