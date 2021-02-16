@@ -50,30 +50,28 @@ function Get-Host-URN ( [Parameter( Position = 0 )] $config )
 	$anURNsChain[-1]
 }
 
-# Формирует подстроку параметров командной строки ssh для доступа к удаленному серверу
-# В простом случае выдает результат вида: "user@hostname.or.ip"
+# Извлекает из конфига и формирует последовательность параметров командной строки ssh для доступа к удаленному серверу
+# В простом случае выдает результат вида: @( "user@hostname.or.ip" )
 # Для цепочки из 3 адресов выдает результат вида:
-#	"-J user1@hostname1.or.ip,user2@hostname2.or.ip user3@hostname3.or.ip"
-function form-ssh-parameters( [Parameter( Mandatory, Position = 0 )] $config )
+#	@( "-Juser1@hostname1.or.ip,user2@hostname2.or.ip", "user3@hostname3.or.ip" )
+function get-ssh-parameters( [Parameter( Mandatory, Position = 0 )] $config )
 {
 	[string[]]$anURNsChain = Get-URNs-Chain $config
 
 	if( 0 -eq $anURNsChain.Count ) {
-		return ''
+		return @()
 	}
-
-	[string]$result = ''
+	$result = New-Object Collections.Generic.List[string]
 	if( 2 -le $anURNsChain.Count ) {
-		$result += '-J ' + $anURNsChain[0]
+		$result.Add( '-J' + $anURNsChain[0] )
 		if( 3 -le $anURNsChain.Count ) {
 			$anURNsChain[ 1..( $anURNsChain.Count-2 ) ] `
 			|ForEach-Object {
-				$result += ',' + $PSItem
+				$result[-1] += ',' + $PSItem
 			}
 		}
-		$result += ' '
 	}
-	$result += $anURNsChain[-1]
+	$result.Add( $anURNsChain[-1] )
 
 	$result
 }
@@ -108,15 +106,14 @@ function Invoke-Command-by-SSH
 		[String] $RunLogHeader,
 		[switch] $WithTimestamp = $true,
 		[Parameter( Mandatory, Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
-		[Parameter( Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
+		[Parameter( Position = 2, ValueFromRemainingArguments )][string[]] $commandArgs,
 		# и здесь магия Powershell: ValueFromPipeline
 		[Parameter( ValueFromPipeline )][PSObject[]]$inputLine
 	)
 
-	$parametersAsString = form-ssh-parameters $config
-	<#assert#> if( [string]::IsNullOrEmpty( $parametersAsString ) -and -not [string]::IsNullOrEmpty( $command ) ) { throw }
-	[string[]]$sshParameters = -split $parametersAsString
-	$commandArgsLine = joinToStringWithQuotas $commndArgs
+	[string[]]$sshParameters = get-ssh-parameters $config
+	<#assert#> if( 0 -eq $sshParameters.Count -or [string]::IsNullOrEmpty( $command ) ) { throw }
+	$commandArgsLine = joinToStringWithQuotas $commandArgs
 
 	if( $MustSaveLog -xor -not [string]::IsNullOrEmpty( $SaveLogTo ) ) {
 		if( -not $MustSaveLog ) {
@@ -133,9 +130,9 @@ function Invoke-Command-by-SSH
 	}
 	$sshOriginalCommandBlock = {
 		if( $MustSaveLog ) {
-			Write-Output "Remote session: ssh $sshParameters"
+			Write-Output "Remote session: ssh $( joinToStringWithQuotas $sshParameters '`"' )"
 			Write-Output "Run $RunLogHeader"
-			Write-Output "Arguments: $( joinToStringWithQuotas $commndArgs '`"' )"
+			Write-Output "Arguments: $( joinToStringWithQuotas $commandArgs '`"' )"
 		}
 		$input |ssh $sshParameters "$command" $commandArgsLine
 	}
@@ -171,8 +168,7 @@ function Invoke-SCP( [Parameter( Mandatory, Position = 0 )] $config,
 	[Parameter( Mandatory, Position = 1 )][string] $source,
 	[Parameter( Position = 2 )][string] $destination )
 {
-	$parametersAsString = form-ssh-parameters $config
-	[string[]]$parameters = -split $parametersAsString
+	[string[]]$parameters = get-ssh-parameters $config
 	# формируем параметры доступа к удаленному серверу
 	if( -not [string]::IsNullOrEmpty( $parameters[-1] ) ) {
 		$endURN = $parameters[-1]
