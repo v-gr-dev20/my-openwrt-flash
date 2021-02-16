@@ -79,7 +79,7 @@ function form-ssh-parameters( [Parameter( Mandatory, Position = 0 )] $config )
 }
 
 # Преобразует массив строк вида @("w1 w2", "w3", "w4") в строку вида '"w1 w2" w3 w4'
-function convertToStringWithQuotas( [Parameter( Position = 0 )][string[]] $items,
+function joinToStringWithQuotas( [Parameter( Position = 0 )][string[]] $items,
 		[Parameter( Position = 1 )][string] $firstQuote = "`\`"",
 		[Parameter( Position = 2 )][string] $secondQuote )
 {
@@ -116,7 +116,7 @@ function Invoke-Command-by-SSH
 	$parametersAsString = form-ssh-parameters $config
 	<#assert#> if( [string]::IsNullOrEmpty( $parametersAsString ) -and -not [string]::IsNullOrEmpty( $command ) ) { throw }
 	[string[]]$sshParameters = -split $parametersAsString
-	$commandArgsLine = convertToStringWithQuotas $commndArgs
+	$commandArgsLine = joinToStringWithQuotas $commndArgs
 
 	if( $MustSaveLog -xor -not [string]::IsNullOrEmpty( $SaveLogTo ) ) {
 		if( -not $MustSaveLog ) {
@@ -135,7 +135,7 @@ function Invoke-Command-by-SSH
 		if( $MustSaveLog ) {
 			Write-Output "Remote session: ssh $sshParameters"
 			Write-Output "Run $RunLogHeader"
-			Write-Output "Arguments: $( convertToStringWithQuotas $commndArgs '`"' )"
+			Write-Output "Arguments: $( joinToStringWithQuotas $commndArgs '`"' )"
 		}
 		$input |ssh $sshParameters "$command" $commandArgsLine
 	}
