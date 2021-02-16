@@ -168,32 +168,32 @@ function Invoke-SCP( [Parameter( Mandatory, Position = 0 )] $config,
 	[Parameter( Mandatory, Position = 1 )][string] $source,
 	[Parameter( Position = 2 )][string] $destination )
 {
-	[string[]]$parameters = get-ssh-parameters $config
+	[string[]]$sshParameters = get-ssh-parameters $config
 	# формируем параметры доступа к удаленному серверу
-	if( 1 -le $parameters.Count -and -not [string]::IsNullOrEmpty( $parameters[-1] ) ) {
-		$endURN = $parameters[-1]
+	if( 1 -le $sshParameters.Count -and -not [string]::IsNullOrEmpty( $sshParameters[-1] ) ) {
+		$endURN = $sshParameters[-1]
 		# проверяем вхождение URN хоста в путях к файлам
 		if( ( ( $endURN.Length -lt $source.Length ) -and ( ( $endURN + ":" ) -ieq  $source.Substring( 0, $endURN.Length+1 ) )
 			) -or ( ( $endURN.Length -lt $destination.Length ) -and ( ( $endURN + ":" ) -ieq $destination.Substring( 0, $endURN.Length+1 ) ) )
 		  )
 		{
 			# убираем лишний хост в цепочке, т.к. он указан в пути к файлам на удаленном хосте
-			if( 1 -eq $parameters.Count ) {
-				$parameters = @()
+			if( 1 -eq $sshParameters.Count ) {
+				$sshParameters = @()
 			} else {
-				$parameters = $parameters[0..( $parameters.Count-2 )]
+				$sshParameters = $sshParameters[0..( $sshParameters.Count-2 )]
 			}
 		} else {
 			# добавляем хост в конец цепочки доступа, т.к. его нет в пути к файлам на удаленном хосте
-			if( 1 -eq $parameters.Count ) {
-				$parameters = @( '-J' + $parameters[0] )
+			if( 1 -eq $sshParameters.Count ) {
+				$sshParameters = @( '-J' + $sshParameters[0] )
 			} else {
-				$parameters[-2] += ',' + $parameters[-1]
-				$parameters = $parameters[0..( $parameters.Count-2 )]
+				$sshParameters[-2] += ',' + $sshParameters[-1]
+				$sshParameters = $sshParameters[0..( $sshParameters.Count-2 )]
 			}
 		}
 	}
-	scp $parameters "$source" "$destination"
+	scp $sshParameters "$source" "$destination"
 }
 
 # Выполняет скрипт на удаленном хосте
