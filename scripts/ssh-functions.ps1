@@ -28,6 +28,8 @@ function Get-URNs-Chain( [Parameter( Position = 0 )] $config )
 		$result.Add( [string]$config.URN )
 	} elseif( $null -ne $config.URNs ) {
 		$result += $( Get-URNs-Chain $config.URNs )
+	} elseif( $null -ne $config.ssh ) {
+		$result += $( Get-URNs-Chain $config.ssh )
 	}
 	$result
 }
@@ -35,7 +37,7 @@ function Get-URNs-Chain( [Parameter( Position = 0 )] $config )
 # Извлекает из конфига адресную часть удаленного хоста
 function getURNpartFromConfig()
 {
-	Select-Hashtable-by-Keys $config "user","server","URN","URNs"
+	Select-Hashtable-by-Keys $config "user","server","URN","URNs","ssh"
 }
 
 # Извлекает из конфига последний или единственный URN хоста вида "user@hostname.or.ip"
