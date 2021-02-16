@@ -9,7 +9,7 @@
 #	2) [string]$config.URN - вида "user@hostname.or.ip",
 #	3) [array]$config.URNs - вида @( "user@hostname.or.ip", ... ),
 #	4) [hashtable[]]$config.URNs - вида @( { user:"userName", server:"hostname.or.ip" }, ... ),
-function Get-URNs-Chain( [Parameter( Position = 0 )] $config )
+function Get-URNs-Chain( [Parameter( Mandatory, Position = 0 )] $config )
 {
 	$result = New-Object System.Collections.Generic.List[System.String]
 	if( [string] -eq  $config.GetType() ) {
@@ -54,7 +54,7 @@ function Get-Host-URN ( [Parameter( Position = 0 )] $config )
 # В простом случае выдает результат вида: "user@hostname.or.ip"
 # Для цепочки из 3 адресов выдает результат вида:
 #	"-J user1@hostname1.or.ip,user2@hostname2.or.ip user3@hostname3.or.ip"
-function form-ssh-parameters( [Parameter( Position = 0 )] $config )
+function form-ssh-parameters( [Parameter( Mandatory, Position = 0 )] $config )
 {
 	[string[]]$anURNsChain = Get-URNs-Chain $config
 
@@ -103,12 +103,12 @@ function Invoke-Command-by-SSH
 {
 	[CmdletBinding()]
 	param(
-		[Parameter( Mandatory = $false )][switch] $MustSaveLog = $true,
-		[Parameter( Mandatory = $false )][String] $SaveLogTo,
-		[Parameter( Mandatory = $false )][String] $RunLogHeader,
-		[Parameter( Mandatory = $false )][switch] $WithTimestamp = $true,
-		[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
-		[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
+		[switch] $MustSaveLog = $true,
+		[String] $SaveLogTo,
+		[String] $RunLogHeader,
+		[switch] $WithTimestamp = $true,
+		[Parameter( Mandatory, Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
+		[Parameter( Position = 2, ValueFromRemainingArguments )][string[]] $commndArgs,
 		# и здесь магия Powershell: ValueFromPipeline
 		[Parameter( ValueFromPipeline )][PSObject[]]$inputLine
 	)
@@ -167,8 +167,8 @@ function Invoke-Command-by-SSH
 
 # Выполняет копирование файлов с/на удаленного сервера с помощью scp
 # Параметры scp формируются из конфига
-function Invoke-SCP( [Parameter( Position = 0 )] $config,
-	[Parameter( Position = 1 )][string] $source,
+function Invoke-SCP( [Parameter( Mandatory, Position = 0 )] $config,
+	[Parameter( Mandatory, Position = 1 )][string] $source,
 	[Parameter( Position = 2 )][string] $destination )
 {
 	$parametersAsString = form-ssh-parameters $config
@@ -202,11 +202,11 @@ function Invoke-SCP( [Parameter( Position = 0 )] $config,
 
 # Выполняет скрипт на удаленном хосте
 function Invoke-Script-by-SSH(
-	[Parameter( Mandatory = $false )][switch] $MustSaveLog = $true,
-	[Parameter( Mandatory = $false )][String] $SaveLogTo,
-	[Parameter( Mandatory = $false )][switch] $WithTimestamp = $true,
-	[Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
-	[Parameter( Mandatory = $false, Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
+	[switch] $MustSaveLog = $true,
+	[String] $SaveLogTo,
+	[switch] $WithTimestamp = $true,
+	[Parameter( Mandatory, Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
+	[Parameter( Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
 	$invokeScriptCommand = 'script=/tmp/$$-sh; wrappedRun(){ sh --login $script \"$@\"; rm $script; } ;cat -|sed ''s/\r$//g''>$script && wrappedRun'
 	Get-Content $script |Invoke-Command-by-SSH -MustSaveLog:$MustSaveLog -SaveLogTo:$SaveLogTo `
