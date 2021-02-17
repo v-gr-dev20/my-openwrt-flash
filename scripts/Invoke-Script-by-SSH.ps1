@@ -7,6 +7,7 @@ function main
 		[switch] $WithoutLog,
 		[String] $SaveLogTo,
 		[switch] $WithoutTimestamp,
+		[string] $Description,
 		[Parameter( Mandatory, Position = 0 )][string] $script,
 		[Parameter( Position = 1, ValueFromRemainingArguments = $true )][string[]] $scriptArgs
 	)
@@ -28,7 +29,8 @@ function main
 	$anURNpartOfConfig = getURNpartFromConfig $config
 	
 	<#assert#> if( -not ( Test-Path -Path $scriptPath ) ) { throw }
-	Invoke-Script-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo -WithTimestamp:( -not $WithoutTimestamp ) `
+	Invoke-Script-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo `
+		-WithTimestamp:( -not $WithoutTimestamp )  -Description:"$Description" `
 		$anURNpartOfConfig $scriptPath $scriptArgs
 }
 

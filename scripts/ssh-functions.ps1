@@ -105,6 +105,7 @@ function Invoke-Command-by-SSH
 		[String] $SaveLogTo,
 		[String] $RunLogHeader,
 		[switch] $WithTimestamp = $true,
+		[string] $Description,
 		[Parameter( Mandatory, Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
 		[Parameter( Position = 2, ValueFromRemainingArguments )][string[]] $commandArgs,
 		# и здесь магия Powershell: ValueFromPipeline
@@ -131,8 +132,13 @@ function Invoke-Command-by-SSH
 	$sshOriginalCommandBlock = {
 		if( $MustSaveLog ) {
 			Write-Output "Remote session: ssh $( joinToStringWithQuotas $sshParameters '`"' )"
+			if( -not [string]::IsNullOrEmpty( $Description ) ) {
+				Write-Output "Description: $Description"
+			}
 			Write-Output "Run $RunLogHeader"
-			Write-Output "Arguments: $( joinToStringWithQuotas $commandArgs '`"' )"
+			if( -not [string]::IsNullOrEmpty( $commandArgs ) ) {
+				Write-Output "Arguments: $( joinToStringWithQuotas $commandArgs '`"' )"
+			}
 		}
 		$input |ssh $sshParameters "$command" $commandArgsLine
 	}
@@ -201,12 +207,13 @@ function Invoke-Script-by-SSH(
 	[switch] $MustSaveLog = $true,
 	[String] $SaveLogTo,
 	[switch] $WithTimestamp = $true,
+	[string] $Description,
 	[Parameter( Mandatory, Position = 0 )] $config, [Parameter( Position = 1 )][string] $script,
 	[Parameter( Position = 2, ValueFromRemainingArguments )][string[]] $scriptArgs )
 {
 	$invokeScriptCommand = 'script=/tmp/$$-sh; wrappedRun(){ sh --login $script \"$@\"; rm $script; } ;cat -|sed ''s/\r$//g''>$script && wrappedRun'
 	Get-Content $script |Invoke-Command-by-SSH -MustSaveLog:$MustSaveLog -SaveLogTo:$SaveLogTo `
-		-WithTimestamp:$WithTimestamp -RunLogHeader:"script $script" `
+		-WithTimestamp:$WithTimestamp -Description:"$Description" -RunLogHeader:"script $script" `
 		$config $invokeScriptCommand $scriptArgs
 }
 

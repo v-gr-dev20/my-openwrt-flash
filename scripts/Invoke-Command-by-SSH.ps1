@@ -7,6 +7,7 @@ function main
 		[switch] $WithoutLog,
 		[string] $SaveLogTo,
 		[switch] $WithoutTimestamp,
+		[string] $Description,
 		[Parameter( Mandatory, Position = 0 )][string] $command,
 		[Parameter( Position = 1, ValueFromRemainingArguments = $true )][string[]] $commandArgs,
 		# и здесь магия Powershell: ValueFromPipeline
@@ -14,7 +15,8 @@ function main
 	)
 
 	$anURNpartOfConfig = getURNpartFromConfig $config
-	$input |Invoke-Command-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo -WithTimestamp:( -not $WithoutTimestamp ) `
+	$input |Invoke-Command-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo `
+		-WithTimestamp:( -not $WithoutTimestamp ) -Description:"$Description" `
 		$anURNpartOfConfig $command $commandArgs
 }
 
