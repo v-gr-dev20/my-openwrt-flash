@@ -4,6 +4,7 @@ RUN apt -y update \
  && apt -y install \
 		nano \
 		binwalk \
+		squashfs-tools \
 		mc \
 		openssh-server
 
