@@ -11,7 +11,7 @@ main() {
 	echo mount "$realTargetPath" '<-' $mappedTargetPath
 	docker run --rm -it -v ${realTargetPath}:${mappedTargetPath} "$projectName" \
 		cp -v \
-		/root/sources/openwrt/openwrt-imagebuilder-19.07.7-brcm47xx-legacy.Linux-x86_64/bin/targets/brcm47xx/legacy/openwrt-19.07.7-brcm47xx-legacy-asus-wl-500gp-v2-squashfs.trx \
+		/root/openwrt/bin/targets/brcm47xx/legacy/openwrt-19.07.7-brcm47xx-legacy-asus-wl-500gp-v2-squashfs.trx \
 		$mappedTargetPath/
 }
 
