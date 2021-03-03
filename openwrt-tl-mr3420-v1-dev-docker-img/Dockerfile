@@ -1,0 +1,11 @@
+FROM openwrt-git:latest
+
+WORKDIR /root/openwrt
+
+RUN echo "\
+CONFIG_TARGET_ar71xx=y							\n\
+CONFIG_TARGET_ar71xx_tiny=y						\n\
+CONFIG_TARGET_ar71xx_tiny_DEVICE_tl-mr3420-v1=y	\n\
+" >> configdiff \
+ && cp configdiff .config \
+ && make defconfig
