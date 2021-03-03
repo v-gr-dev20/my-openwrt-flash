@@ -1,0 +1,11 @@
+FROM openwrt-git:latest
+
+WORKDIR /root/openwrt
+
+RUN echo "\
+CONFIG_TARGET_brcm47xx=y						\n\
+CONFIG_TARGET_brcm47xx_legacy=y					\n\
+CONFIG_TARGET_brcm47xx_legacy_Broadcom-b43=y	\n\
+" >> configdiff \
+ && cp configdiff .config \
+ && make defconfig
