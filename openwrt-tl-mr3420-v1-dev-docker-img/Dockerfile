@@ -36,5 +36,23 @@ CONFIG_PACKAGE_kmod-ledtrig-netdev=y			\n\
 RUN FORCE_UNSAFE_CONFIGURE=1 \
 	make -j5
 
+WORKDIR /root/openwrt/build_dir/target-mipsel_mips32_musl/openwrt-imagebuilder-brcm47xx-legacy.Linux-x86_64
+RUN FORCE_UNSAFE_CONFIGURE=1 IGNORE_ERRORS=1 \
+	make image PROFILE="Broadcom-b43" PACKAGES="\
+		base-files \
+		busybox mtd uci nvram \
+		swconfig \
+		kmod-usb2 kmod-usb-ohci \
+		kmod-fs-ext4 ubox block-mount kmod-scsi-core kmod-usb-storage \
+		kmod-leds-gpio kmod-gpio-button-hotplug \
+		kmod-ledtrig-default-on kmod-ledtrig-timer kmod-ledtrig-netdev \
+		-libiwinfo -iwinfo -iw-full -wireless-regdb -kmod-cfg80211 -kmod-mac80211 -wpad -wpad-mini -wpad-basic-wolfssl -hostapd-common \
+		-kmod-ath -kmod-ath9k-common -kmod-ath9k \
+		-ppp-mod-pppoe -kmod-pppox -kmod-pppoe -kmod-ppp -ppp \
+		uclient-fetch opkg \
+		-odhcpd \
+		dnsmasq odhcpd-ipv6only odhcp6c \
+"
+
 WORKDIR /root/openwrt
 RUN find . -name openwrt-ar71xx-tiny-tl-mr3420-v1-squashfs*.bin -type f -ls
