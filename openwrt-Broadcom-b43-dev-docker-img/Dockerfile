@@ -12,3 +12,10 @@ CONFIG_TARGET_brcm47xx_legacy_Broadcom-b43=y	\n\
 
 RUN FORCE_UNSAFE_CONFIGURE=1 \
 	make -j5 toolchain/install
+
+RUN echo "\
+CONFIG_IB=y										\n\
+CONFIG_IB_STANDALONE=y							\n\
+" >> configdiff \
+ && cp configdiff .config \
+ && make defconfig
