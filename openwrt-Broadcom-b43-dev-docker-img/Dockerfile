@@ -17,6 +17,7 @@ RUN echo "\
 CONFIG_IB=y										\n\
 CONFIG_IB_STANDALONE=y							\n\
 CONFIG_JSON_OVERVIEW_IMAGE_INFO=y				\n\
+CONFIG_KERNEL_SWAP=y							\n\
 " >> configdiff \
  && cp configdiff .config \
  && make defconfig
