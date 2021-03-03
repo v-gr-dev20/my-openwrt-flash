@@ -16,6 +16,7 @@ RUN FORCE_UNSAFE_CONFIGURE=1 \
 RUN echo "\
 CONFIG_IB=y										\n\
 CONFIG_IB_STANDALONE=y							\n\
+CONFIG_JSON_OVERVIEW_IMAGE_INFO=y				\n\
 " >> configdiff \
  && cp configdiff .config \
  && make defconfig
