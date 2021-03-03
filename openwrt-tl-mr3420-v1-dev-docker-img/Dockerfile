@@ -12,3 +12,10 @@ CONFIG_TARGET_ar71xx_tiny_DEVICE_tl-mr3420-v1=y	\n\
 
 RUN FORCE_UNSAFE_CONFIGURE=1 \
 	make -j5 toolchain/install
+
+RUN echo "\
+CONFIG_IB=y										\n\
+CONFIG_IB_STANDALONE=y							\n\
+" >> configdiff \
+ && cp configdiff .config \
+ && make defconfig
