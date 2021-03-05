@@ -43,5 +43,5 @@ if( 1 -eq $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", 
 	outputHelp
 	exit
 }
-New-Variable -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
+New-Variable -Scope script -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
 $input |Invoke-Command { $input| main @Args } -ArgumentList ( $Args |Select-Object -Skip 1 )

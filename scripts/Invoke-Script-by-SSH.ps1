@@ -55,5 +55,5 @@ if( 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) {
 	outputHelp
 	exit
 }
-New-Variable -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
+New-Variable -Scope script -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
 Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip 1 )
