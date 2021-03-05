@@ -33,6 +33,7 @@ CONFIG_PACKAGE_usb-modeswitch=y					\n\
 CONFIG_PACKAGE_kmod-usb-net=y					\n\
 CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y			\n\
 CONFIG_PACKAGE_usbutils=y						\n\
+CONFIG_PACKAGE_autossh=y						\n\
 " >> configdiff \
  && cp configdiff .config \
  && make defconfig
@@ -66,6 +67,9 @@ RUN FORCE_UNSAFE_CONFIGURE=1 IGNORE_ERRORS=1 \
 # Вспомогательные утилиты для проверки подключения устройств в usb (модема, HDD, flash)
 		usbutils \
 		usb-modeswitch \
+#
+# Утилита для поддержания удаленного соединения
+		autossh \
 "
 
 WORKDIR /root/openwrt
