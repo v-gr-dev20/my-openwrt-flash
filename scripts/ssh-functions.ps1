@@ -105,6 +105,7 @@ function Invoke-Command-by-SSH
 		[String] $SaveLogTo,
 		[String] $RunLogHeader,
 		[switch] $WithTimestamp = $true,
+		[string] $RedirectStandardOutput,
 		[string] $Description,
 		[Parameter( Mandatory, Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
 		[Parameter( Position = 2, ValueFromRemainingArguments )][string[]] $commandArgs,
@@ -140,7 +141,12 @@ function Invoke-Command-by-SSH
 				Write-Output "Arguments: $( joinToStringWithQuotas $commandArgs '`"' )"
 			}
 		}
-		$input |ssh $sshParameters "$command" $commandArgsLine
+		if( [string]::IsNullOrEmpty( $RedirectStandardOutput ) ) {
+			$input |ssh $sshParameters "$command" $commandArgsLine
+		} else {
+			Start-Process -NoNewWindow -RedirectStandardOutput $RedirectStandardOutput -Wait `
+				'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
+		}
 	}
 	$sshTargetCommandBlock = $sshOriginalCommandBlock
 
