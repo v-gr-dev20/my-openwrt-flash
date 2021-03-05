@@ -29,6 +29,10 @@ CONFIG_PACKAGE_odhcpd-ipv6only=y				\n\
 CONFIG_PACKAGE_kmod-ledtrig-default-on=y		\n\
 CONFIG_PACKAGE_kmod-ledtrig-timer=y				\n\
 CONFIG_PACKAGE_kmod-ledtrig-netdev=y			\n\
+CONFIG_PACKAGE_usb-modeswitch=y					\n\
+CONFIG_PACKAGE_kmod-usb-net=y					\n\
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y			\n\
+CONFIG_PACKAGE_usbutils=y						\n\
 " >> configdiff \
  && cp configdiff .config \
  && make defconfig
@@ -52,6 +56,17 @@ RUN FORCE_UNSAFE_CONFIGURE=1 IGNORE_ERRORS=1 \
 		uclient-fetch opkg \
 		-odhcpd \
 		dnsmasq odhcpd-ipv6only odhcp6c \
+#
+# https://gist.github.com/bjoern-r/1345e8a17f4acf41006330e688af1441
+# https://global-hotspot.ru/openwrt-huawei-e3372/
+# https://geek-speak.ru/forums/topic/%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-usb-%D0%BC%D0%BE%D0%B4%D0%B5%D0%BC%D0%B0-%D0%B2-hilink-%D0%BD%D0%B0-openwrt-19-07-3/
+#
+# Реквизиты для подключения модема Huawei, прошитого в Hilink
+		kmod-usb-net kmod-usb-net-cdc-ether \
+#
+# Вспомогательные утилиты для проверки подключения устройств в usb (модема, HDD, flash)
+		usbutils \
+		usb-modeswitch \
 "
 
 WORKDIR /root/openwrt
