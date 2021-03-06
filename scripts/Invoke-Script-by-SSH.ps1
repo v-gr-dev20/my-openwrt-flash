@@ -14,11 +14,17 @@ function main
 
 	$deviceName = $config.projectName
 	$projectPath = getProject $deviceName
-	$scriptPath = $( Join-Path -Path $projectPath -ChildPath $script )
-	if( Test-Path -Path $scriptPath ) {
-		$scriptPath = Resolve-Path -Path $scriptPath
-	} elseif( Test-Path -Path $script ) {
-		$scriptPath = Resolve-Path -Path $script
+	$scriptPath = $null
+	foreach( $item in @(
+				$script,
+				$( Join-Path $projectPath $script ),
+				$( Join-Path $projectPath "../scripts" $script )
+			) )
+	{
+		if( Test-Path -Path $item ) {
+			$scriptPath = Resolve-Path -Path $item
+			break
+		}
 	}
 	$anURNpartOfConfig = getURNpartFromConfig $config
 	

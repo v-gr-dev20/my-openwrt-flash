@@ -8,6 +8,10 @@ function getConfig( [Parameter( Position = 0 )][string] $projectName )
 {
 	$projectPath = getProject( $projectName )
 	$result = Get-Content "$projectPath/config.json" |ConvertFrom-Json -AsHashtable
+	# вызов без параметров - считаем папку скрипта папкой проекта
+	if( [string]::IsNullOrEmpty( $projectName ) ) {
+		$projectName = $ThisScriptPath |Split-Path -parent |Split-Path -leaf
+	}
 	$result.projectName = $projectName
 	$result
 }
@@ -16,8 +20,12 @@ function getConfig( [Parameter( Position = 0 )][string] $projectName )
 function getProject( [Parameter( Position = 0 )][string] $projectName )
 {
 	$thisScriptDirPath = $ThisScriptPath |Split-Path -parent
-	$projectPath = Join-Path -Path ( $thisScriptDirPath |Split-Path -parent ) -ChildPath $projectName
-	<#assert#> if( [string]::IsNullOrEmpty( $projectName ) ) { throw }
+	# вызов без параметров - считаем папку скрипта папкой проекта
+	if( [string]::IsNullOrEmpty( $projectName ) ) {
+		$projectPath = $thisScriptDirPath
+	} else {
+		$projectPath = Join-Path -Path ( $thisScriptDirPath |Split-Path -parent ) -ChildPath $projectName
+	}
 	<#assert#> if( [string]::IsNullOrEmpty( $projectPath ) ) { throw }
 
 	$projectPath
