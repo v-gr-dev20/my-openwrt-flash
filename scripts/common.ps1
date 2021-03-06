@@ -31,12 +31,6 @@ function getProject( [Parameter( Position = 0 )][string] $projectName )
 	$projectPath
 }
 
-# Извлекает из конфига адресную часть удаленного хоста
-function getURNpartFromConfig()
-{
-	Select-Hashtable-by-Keys $config "user","server","URN","URNs"
-}
-
 # Копирует hashtable в части указанного набора ключей
 function Select-Hashtable-by-Keys( [Parameter( Position = 0 )][hashtable] $map, [Parameter( Position = 1 )][string[]] $keys )
 {

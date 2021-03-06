@@ -3,13 +3,12 @@
 
 function main
 {
-	[CmdletBinding( PositionalBinding = $false )]
 	param(
-		[Parameter( Mandatory = $false )][switch] $WithoutLog,
-		[Parameter( Mandatory = $false )][String] $SaveLogTo,
-		[Parameter( Mandatory = $false )][switch] $WithoutTimestamp,
-		[Parameter( Mandatory = $true, Position = 0 )][string] $script,
-		[Parameter( Mandatory = $false, Position = 1, ValueFromRemainingArguments = $true )][string[]] $scriptArgs
+		[switch] $WithoutLog,
+		[String] $SaveLogTo,
+		[switch] $WithoutTimestamp,
+		[Parameter( Mandatory, Position = 0 )][string] $script,
+		[Parameter( Position = 1, ValueFromRemainingArguments = $true )][string[]] $scriptArgs
 	)
 
 	$deviceName = $config.projectName
