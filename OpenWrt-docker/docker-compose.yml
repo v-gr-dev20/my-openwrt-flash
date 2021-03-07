@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  openwrt:
+    build: .
+    container_name: openwrt-test
+    privileged: true
+    networks:
+      lan:
+        ipv4_address: 192.168.100.2
+      wan:
+        ipv4_address: 10.0.0.2
+    volumes:
+      - ./openvpn:/etc/openvpn
+    tty: true
+    stdin_open: true
+
+networks:
+  lan:
+    driver: macvlan
+    driver_opts:
+      parent: eth0  # замените на ваш интерфейс
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+  wan:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
