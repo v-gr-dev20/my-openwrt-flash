@@ -3,6 +3,9 @@
 # Для включения функций в код скрипта (include) использовать следующую строку
 # . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
+# include
+. $( Join-Path -Path "$( $PSCommandPath |Split-Path -parent )" -ChildPath "common.ps1" )
+
 # Извлекает из конфига последовательность адресов @( "user@hostname.or.ip", ... )
 # Последовательность адресов определяется в конфиге одним из способов:
 #	1) [string]$config.user, [string]$config.server (имя или IP-адрес),
@@ -144,8 +147,15 @@ function Invoke-Command-by-SSH
 		if( [string]::IsNullOrEmpty( $RedirectStandardOutput ) ) {
 			$input |ssh $sshParameters "$command" $commandArgsLine
 		} else {
-			Start-Process -NoNewWindow -RedirectStandardOutput $RedirectStandardOutput -Wait `
+			$RedirectStandardError = New-TemporaryFile
+			Start-Process -NoNewWindow -Wait `
+				-RedirectStandardOutput:$RedirectStandardOutput `
+				-RedirectStandardError:$RedirectStandardError `
 				'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
+			if( 0 -lt $RedirectStandardError.Length ) {
+				Get-Content $RedirectStandardError.FullName
+			}
+			Remove-Item $RedirectStandardError.FullName -force
 		}
 	}
 	$sshTargetCommandBlock = $sshOriginalCommandBlock
@@ -223,5 +233,17 @@ function Invoke-Script-by-SSH(
 		$config $invokeScriptCommand $scriptArgs
 }
 
-# include
-. $( Join-Path -Path "$( $PSCommandPath |Split-Path -parent )" -ChildPath "common.ps1" )
+# Копирует и перезаписывает указанные файлы с удаленного хоста в локальную папку
+function Get-Files( [Parameter( Mandatory, Position = 0 )] $config,
+	[Parameter( Mandatory, Position = 1 )][string[]] $remoteFiles,
+	[Parameter( Position = 2 )][string] $localDestinationDirectory = ( Get-Location ).Path )
+{
+	if( 0 -eq $remoteFiles.Count ) {
+		return
+	}
+	$tempFile = New-TemporaryFile
+	Invoke-Command-by-SSH -MustSaveLog:$false -WithTimestamp:$false -RedirectStandardOutput:"$( $tempFile.FullName )" `
+			$config 'tar' ( '-cf','-' + $remoteFiles )
+	tar -C "$localDestinationDirectory" -xf "$( $tempFile.FullName )"
+	Remove-Item $tempFile.FullName -force
+}

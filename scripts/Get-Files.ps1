@@ -5,24 +5,15 @@ function main( [Parameter( Mandatory )][string[]] $files,
 		[string] $destination = ( Join-Path ( getProject $config.projectName ) "rootfs" ) )
 {
 	$anURNpartOfConfig = getURNpartFromConfig $config
-	getFiles $anURNpartOfConfig -remoteFiles:$files -localDestinationDirectory:$destination 
+	if( !( Test-Path $destination ) ) {
+		New-Item -Path $destination -ItemType Directory > $null
+	}
+	Get-Files $anURNpartOfConfig -remoteFiles:$files -localDestinationDirectory:$destination 
 }
 
 # include
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
-
-# Выполняет копирование файлов
-function getFiles( [Parameter( Mandatory, Position = 0 )] $config,
-	[Parameter( Mandatory )][string[]] $remoteFiles,
-	[Parameter( Mandatory )][string] $localDestinationDirectory )
-{
-	$tempFile = New-TemporaryFile
-	Invoke-Command-by-SSH -MustSaveLog:$false -WithTimestamp:$false -RedirectStandardOutput:"$( $tempFile.FullName )" `
-			$config 'tar' ( '-cf','-' + $remoteFiles )
-	tar -C "$localDestinationDirectory" -xf "$( $tempFile.FullName )"
-	Remove-Item $tempFile.FullName -force
-}
 
 # Выводит подсказку
 function outputHelp()
