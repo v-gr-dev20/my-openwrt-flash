@@ -147,8 +147,15 @@ function Invoke-Command-by-SSH
 		if( [string]::IsNullOrEmpty( $RedirectStandardOutput ) ) {
 			$input |ssh $sshParameters "$command" $commandArgsLine
 		} else {
-			Start-Process -NoNewWindow -RedirectStandardOutput $RedirectStandardOutput -Wait `
+			$RedirectStandardError = New-TemporaryFile
+			Start-Process -NoNewWindow -Wait `
+				-RedirectStandardOutput:$RedirectStandardOutput `
+				-RedirectStandardError:$RedirectStandardError `
 				'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
+			if( 0 -lt $RedirectStandardError.Length ) {
+				Get-Content $RedirectStandardError.FullName
+			}
+			Remove-Item $RedirectStandardError.FullName -force
 		}
 	}
 	$sshTargetCommandBlock = $sshOriginalCommandBlock
