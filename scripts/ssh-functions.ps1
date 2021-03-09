@@ -3,6 +3,9 @@
 # Для включения функций в код скрипта (include) использовать следующую строку
 # . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
+# include
+. $( Join-Path -Path "$( $PSCommandPath |Split-Path -parent )" -ChildPath "common.ps1" )
+
 # Извлекает из конфига последовательность адресов @( "user@hostname.or.ip", ... )
 # Последовательность адресов определяется в конфиге одним из способов:
 #	1) [string]$config.user, [string]$config.server (имя или IP-адрес),
@@ -222,6 +225,3 @@ function Invoke-Script-by-SSH(
 		-WithTimestamp:$WithTimestamp -Description:"$Description" -RunLogHeader:"script $script" `
 		$config $invokeScriptCommand $scriptArgs
 }
-
-# include
-. $( Join-Path -Path "$( $PSCommandPath |Split-Path -parent )" -ChildPath "common.ps1" )
