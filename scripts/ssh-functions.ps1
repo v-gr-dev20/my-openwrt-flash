@@ -229,8 +229,11 @@ function Invoke-Script-by-SSH(
 # Копирует и перезаписывает указанные файлы с удаленного хоста в локальную папку
 function Get-Files( [Parameter( Mandatory, Position = 0 )] $config,
 	[Parameter( Mandatory, Position = 1 )][string[]] $remoteFiles,
-	[Parameter( Mandatory, Position = 2 )][string] $localDestinationDirectory )
+	[Parameter( Position = 2 )][string] $localDestinationDirectory = ( Get-Location ).Path )
 {
+	if( 0 -eq $remoteFiles.Count ) {
+		return
+	}
 	$tempFile = New-TemporaryFile
 	Invoke-Command-by-SSH -MustSaveLog:$false -WithTimestamp:$false -RedirectStandardOutput:"$( $tempFile.FullName )" `
 			$config 'tar' ( '-cf','-' + $remoteFiles )
