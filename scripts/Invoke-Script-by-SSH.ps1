@@ -7,6 +7,7 @@ function main
 		[switch] $WithoutLog,
 		[String] $SaveLogTo,
 		[switch] $WithoutTimestamp,
+		[string] $Description,
 		[Parameter( Mandatory, Position = 0 )][string] $script,
 		[Parameter( Position = 1, ValueFromRemainingArguments = $true )][string[]] $scriptArgs
 	)
@@ -28,7 +29,8 @@ function main
 	$anURNpartOfConfig = getURNpartFromConfig $config
 	
 	<#assert#> if( -not ( Test-Path -Path $scriptPath ) ) { throw }
-	Invoke-Script-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo -WithTimestamp:( -not $WithoutTimestamp ) `
+	Invoke-Script-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo `
+		-WithTimestamp:( -not $WithoutTimestamp )  -Description:"$Description" `
 		$anURNpartOfConfig $scriptPath $scriptArgs
 }
 
@@ -55,5 +57,5 @@ if( 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) {
 	outputHelp
 	exit
 }
-New-Variable -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
+New-Variable -Scope script -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
 Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip 1 )
