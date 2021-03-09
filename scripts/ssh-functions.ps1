@@ -225,3 +225,15 @@ function Invoke-Script-by-SSH(
 		-WithTimestamp:$WithTimestamp -Description:"$Description" -RunLogHeader:"script $script" `
 		$config $invokeScriptCommand $scriptArgs
 }
+
+# Копирует и перезаписывает указанные файлы с удаленного хоста в локальную папку
+function Get-Files( [Parameter( Mandatory, Position = 0 )] $config,
+	[Parameter( Mandatory, Position = 1 )][string[]] $remoteFiles,
+	[Parameter( Mandatory, Position = 2 )][string] $localDestinationDirectory )
+{
+	$tempFile = New-TemporaryFile
+	Invoke-Command-by-SSH -MustSaveLog:$false -WithTimestamp:$false -RedirectStandardOutput:"$( $tempFile.FullName )" `
+			$config 'tar' ( '-cf','-' + $remoteFiles )
+	tar -C "$localDestinationDirectory" -xf "$( $tempFile.FullName )"
+	Remove-Item $tempFile.FullName -force
+}
