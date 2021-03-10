@@ -16,3 +16,7 @@ config interface 'lan'
 	option ip6assign '60'
 	option ipaddr '192.168.21.1'
 
+config interface 'lte'
+	option ifname 'eth1'
+	option proto 'dhcp'
+
