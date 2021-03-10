@@ -1,47 +1,42 @@
 # !Powershell
-# Скрипт сохраняет файлы конфигурации openwrt:/etc/config/* из удаленного устройства через ssh
+# Скрипт сохраняет в локальной папке файлы конфигурации openwrt:/etc,/usr/lib c удаленного устройства через ssh
 
 function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 {
 	$anURNpartOfConfig = getURNpartFromConfig $config
 	$deviceName = $config.projectName
 	$projectPath = getProject $deviceName
-	$targetPath = "$projectPath/rootfs/etc/config/"
-	if( -not ( Test-Path $targetPath -PathType Container ) ) {
-		mkdir -p "$targetPath" > $null
+	$localTargetRoot = "$projectPath/rootfs"
+	if( -not ( Test-Path $localTargetRoot -PathType Container ) ) {
+		mkdir -p "$localTargetRoot" > $null
 	}
 
-	if( 0 -eq $commandLineArgs.Count ) {
-		getAllFilesAndSave $anURNpartOfConfig $targetPath > $null
-	} else {
-		$file=$commandLineArgs[0]
-		getFileAndSave $anURNpartOfConfig $file $targetPath > $null
-	}
+	getAndSyncOpenwrtConfig $anURNpartOfConfig $localTargetRoot > $null 2>&1
 }
 
 # include
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
-# Сохраняет файл конфигурации openwrt:/etc/config/$file
-#	$file - имя файла конфигурации, либо *
-function getFileAndSave( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $file,
-	[Parameter( Position = 2 )][string] $targetPath )
+# Синхронизирует файлы конфигурации openwrt в локальной папке (добавляются новые, удаляются отсутствующие, перезаписываются измененные)
+function getAndSyncOpenwrtConfig( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $localTargetRoot )
 {
-	<#assert#> if( [string]::IsNullOrEmpty( $file ) ) { throw }
+	<#assert#> if( [string]::IsNullOrEmpty( $localTargetRoot ) ) { throw }
 	$deviceURN = Get-Host-URN $config
 	<#assert#> if( [string]::IsNullOrEmpty( $deviceURN ) ) { throw }
 
 	# предварительно удаляем целевые файлы
-	Remove-Item "${targetPath}/$file" -Force
+	Remove-Item "${localTargetRoot}/*" -Force -Recurse -Confirm:$false
 
-	Invoke-SCP $config "${deviceURN}:/etc/config/$file" $targetPath
-}
-
-# Сохраняет все файлы конфигурации openwrt:uci
-function getAllFilesAndSave( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $targetPath )
-{
-	getFileAndSave $config '*' $targetPath
+	# перечисление файлов конфигурации openwrt
+	[string[]]$openwrtConfigItems = @(
+		'/etc/config',
+		'/etc/opkg.conf',
+		'/etc/opkg/customfeeds.conf',
+		'/etc/opkg/distfeeds.conf',
+		'/usr/lib/opkg/status'
+	)
+	Get-Files $config $openwrtConfigItems $localTargetRoot
 }
 
 # Выводит подсказку
