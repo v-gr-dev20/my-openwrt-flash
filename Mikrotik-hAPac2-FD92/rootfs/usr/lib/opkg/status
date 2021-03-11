@@ -485,6 +485,15 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623663352
 Auto-Installed: yes
 
+Package: autossh
+Version: 1.4g-2
+Depends: libc
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/config/autossh 263375ae66cd9e2c2115315f741539da87764e18cdcbb794b06d3a80c4dd7270
+Installed-Time: 1623692615
+
 Package: speedtest-netperf
 Version: 1.0.0-1
 Depends: libc, netperf

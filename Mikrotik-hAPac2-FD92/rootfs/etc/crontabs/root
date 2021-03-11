@@ -1,0 +1,2 @@
+# reset network if the connection to the administrative host is lost
+5 * * * *	[ "$( /usr/bin/ssh -fT -y -K 60 -i /etc/dropbear/dropbear_rsa_host_key admin@grigorovich-fam4.ddns.net ssh -T -y -K30 -i /etc/dropbear/dropbear_rsa_host_key -p8022 root@127.0.0.1 /usr/bin/dropbearkey -y -f /etc/dropbear/dropbear_rsa_host_key 2>/dev/null |/bin/grep '^ssh-rsa ' )" == "$( /usr/bin/dropbearkey -y -f /etc/dropbear/dropbear_rsa_host_key 2>/dev/null |/bin/grep '^ssh-rsa ' )" ] || /etc/init.d/autossh restart
