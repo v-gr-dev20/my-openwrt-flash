@@ -6,3 +6,21 @@ config 'global'
 	option	delay_root	'5'
 	option	check_fs	'0'
 
+config 'swap'
+	option	uuid	'e6b9f836-7b8d-4eb5-a5fd-3bd509238784'
+	option	enabled	'0'
+
+config 'swap'
+	option	uuid	'67eb3f60-d021-4d03-a87c-adc4f64d2eb4'
+	option	enabled	'0'
+
+config 'mount'
+	option	target	'/mnt/sda3'
+	option	uuid	'0a7a0fe9-d62e-4e2a-9293-fb8d0a727e06'
+	option	enabled	'0'
+
+config 'mount'
+	option	target	'/mnt/sda4'
+	option	uuid	'9e1ad72b-070c-46b5-80b7-fde4dcdd4c4d'
+	option	enabled	'0'
+
