@@ -34,6 +34,9 @@ CONFIG_PACKAGE_kmod-usb-net=y					\n\
 CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y			\n\
 CONFIG_PACKAGE_usbutils=y						\n\
 CONFIG_PACKAGE_autossh=y						\n\
+CONFIG_PACKAGE_e2fsprogs=y						\n\
+CONFIG_PACKAGE_fdisk=y							\n\
+CONFIG_PACKAGE_luci=y							\n\
 " >> configdiff \
  && cp configdiff .config \
  && make defconfig
@@ -41,6 +44,9 @@ CONFIG_PACKAGE_autossh=y						\n\
 RUN FORCE_UNSAFE_CONFIGURE=1 \
 	make -j5
 
+# Сборка docker-образа с итоговым образом openwrt-прошивки,
+#	префикс '-' исключает модуль из итоговой прошивки,
+#	не смотря на '-', исключенный модуль доступен отдельно в расширенном наборе пакетов
 WORKDIR /root/openwrt/build_dir/target-mipsel_mips32_musl/openwrt-imagebuilder-brcm47xx-legacy.Linux-x86_64
 RUN FORCE_UNSAFE_CONFIGURE=1 IGNORE_ERRORS=1 \
 	make image PROFILE="Broadcom-b43" PACKAGES="\
@@ -51,26 +57,39 @@ RUN FORCE_UNSAFE_CONFIGURE=1 IGNORE_ERRORS=1 \
 		kmod-fs-ext4 ubox block-mount kmod-scsi-core kmod-usb-storage \
 		kmod-leds-gpio kmod-gpio-button-hotplug \
 		kmod-ledtrig-default-on kmod-ledtrig-timer kmod-ledtrig-netdev \
-		-libiwinfo -iwinfo -iw-full -wireless-regdb -kmod-cfg80211 -kmod-mac80211 -wpad -wpad-mini -wpad-basic-wolfssl -hostapd-common \
-		-kmod-ath -kmod-ath9k-common -kmod-ath9k \
-		-ppp-mod-pppoe -kmod-pppox -kmod-pppoe -kmod-ppp -ppp \
 		uclient-fetch opkg \
+#
+# Исключены модули WiFi
+		-libiwinfo -iwinfo -iw -iw-full -wireless-regdb -kmod-cfg80211 -kmod-mac80211 -wpad -wpad-mini -wpad-basic-wolfssl -hostapd-common \
+		-kmod-ath -kmod-ath9k-common -kmod-ath9k \
+#
+# Исключены модули ppp, pppoe
+		-ppp-mod-pppoe -kmod-pppox -kmod-pppoe -kmod-ppp -ppp \
+#
+# Исключен IPv4-odhcpd (его функции покрывает dnsmasq), оставлен только IPv6-odhcpd
 		-odhcpd \
 		dnsmasq odhcpd-ipv6only odhcp6c \
 #
+# Реквизиты для подключения модема Huawei, прошитого в Hilink
 # https://gist.github.com/bjoern-r/1345e8a17f4acf41006330e688af1441
 # https://global-hotspot.ru/openwrt-huawei-e3372/
 # https://geek-speak.ru/forums/topic/%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-usb-%D0%BC%D0%BE%D0%B4%D0%B5%D0%BC%D0%B0-%D0%B2-hilink-%D0%BD%D0%B0-openwrt-19-07-3/
-#
-# Реквизиты для подключения модема Huawei, прошитого в Hilink
 		kmod-usb-net kmod-usb-net-cdc-ether \
 #
 # Вспомогательные утилиты для проверки подключения устройств в usb (модема, HDD, flash)
 		usbutils \
+#
+# Утилита переключения из CD-режима usb-модема для возможности доступа к microSD
 		usb-modeswitch \
 #
 # Утилита для поддержания удаленного соединения
 		autossh \
+#
+# Утилиты для форматирования дисков (исключены)
+		-e2fsprogs -fdisk \
+#
+# Web-GUI (исключен)
+		-luci \
 "
 
 WORKDIR /root/openwrt
