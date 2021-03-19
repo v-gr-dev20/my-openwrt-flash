@@ -108,6 +108,7 @@ function Invoke-Command-by-SSH
 		[String] $SaveLogTo,
 		[String] $RunLogHeader,
 		[switch] $WithTimestamp = $true,
+		[string] $RedirectStandardInput,
 		[string] $RedirectStandardOutput,
 		[string] $Description,
 		[Parameter( Mandatory, Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
@@ -145,17 +146,31 @@ function Invoke-Command-by-SSH
 			}
 		}
 		if( [string]::IsNullOrEmpty( $RedirectStandardOutput ) ) {
-			$input |ssh $sshParameters "$command" $commandArgsLine
-		} else {
-			$RedirectStandardError = New-TemporaryFile
-			Start-Process -NoNewWindow -Wait `
-				-RedirectStandardOutput:$RedirectStandardOutput `
-				-RedirectStandardError:$RedirectStandardError `
-				'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
-			if( 0 -lt $RedirectStandardError.Length ) {
-				Get-Content $RedirectStandardError.FullName
+			if( [string]::IsNullOrEmpty( $RedirectStandardInput ) ) {
+				$input |ssh $sshParameters "$command" $commandArgsLine
+			} else {
+				Start-Process -NoNewWindow -Wait `
+					-RedirectStandardInput:$RedirectStandardInput `
+					'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
 			}
-			Remove-Item $RedirectStandardError.FullName -force
+		} else {
+			$redirectStandardError = New-TemporaryFile
+			if( [string]::IsNullOrEmpty( $RedirectStandardInput ) ) {
+				Start-Process -NoNewWindow -Wait `
+					-RedirectStandardOutput:$RedirectStandardOutput `
+					-RedirectStandardError:$redirectStandardError `
+					'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
+			} else {
+				Start-Process -NoNewWindow -Wait `
+					-RedirectStandardInput:$RedirectStandardInput `
+					-RedirectStandardOutput:$RedirectStandardOutput `
+					-RedirectStandardError:$redirectStandardError `
+					'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
+			}
+			if( 0 -lt $redirectStandardError.Length ) {
+				Get-Content $redirectStandardError.FullName
+			}
+			Remove-Item $redirectStandardError.FullName -force
 		}
 	}
 	$sshTargetCommandBlock = $sshOriginalCommandBlock
