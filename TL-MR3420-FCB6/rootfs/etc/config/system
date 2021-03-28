@@ -1,10 +1,11 @@
 
 config system
-	option hostname 'OpenWrt'
-	option timezone 'UTC'
 	option ttylogin '0'
 	option log_size '64'
 	option urandom_seed '0'
+	option hostname 'TL-MR3420-FCB6'
+	option zonename 'Europe/Kiev'
+	option timezone 'EET-2EEST,M3.5.0/3,M10.5.0/4'
 
 config timeserver 'ntp'
 	option enabled '1'
