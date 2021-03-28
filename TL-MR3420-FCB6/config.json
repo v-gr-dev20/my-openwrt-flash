@@ -1,7 +1,22 @@
 {	"//": "Параметры проекта будут использованы для загрузки и сохранения конфигураций"
-
-,	server:
-			"192.168.1.1"
-,	user:
-			"root"
+,	URNs:
+			[
+				{	server:
+							"grigorovich-fam4.ddns.net"
+				,	user:
+							"admin"
+				}
+			,	{	server:
+							"127.0.0.1"
+				,	user:
+							"root"
+				,	port:
+							"8022"
+				}
+			,	{	server:
+							"192.168.1.1"
+				,	user:
+							"root"
+				}
+			]
 }
