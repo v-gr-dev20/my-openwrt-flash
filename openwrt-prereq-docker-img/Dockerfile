@@ -2,11 +2,13 @@ FROM debian:latest
 
 RUN apt -y update \
  && apt -y install \
+		curl \
 		nano \
 		binwalk \
 		squashfs-tools \
 		mc \
-		openssh-server
+		openssh-server \
+		wget
 
 # ! открываем доступ root по ssh
 RUN  ( grep -e '^[ \t]*PermitRootLogin' /etc/ssh/sshd_config > /dev/null || sed -i -e '/^#[ \t]*PermitRootLogin[ \t].*$/a PermitRootLogin yes' /etc/ssh/sshd_config ) \
