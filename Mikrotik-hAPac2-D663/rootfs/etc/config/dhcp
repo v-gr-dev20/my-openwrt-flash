@@ -35,6 +35,7 @@ config dhcp 'lan'
 config dhcp 'wan'
 	option interface 'wan'
 	option ignore '1'
+	list ra_flags 'none'
 
 config odhcpd 'odhcpd'
 	option maindhcp '0'
