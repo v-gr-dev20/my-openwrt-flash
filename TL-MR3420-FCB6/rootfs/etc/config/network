@@ -18,7 +18,10 @@ config interface 'lan'
 
 config interface 'wan'
 	option ifname 'eth1'
-	option proto 'dhcp'
+	option proto 'pppoe'
+	option username '1978'
+	option password 'password'\''s changed'
+	option ipv6 'auto'
 
 config interface 'wan6'
 	option ifname 'eth1'
