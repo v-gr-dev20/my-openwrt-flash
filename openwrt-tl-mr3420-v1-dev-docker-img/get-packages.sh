@@ -1,10 +1,14 @@
 # !/usr/bin/bash
-# Скрипт извлекает из контейнера сборки openwrt opkg-пакеты и ключи, которыми подписаны пакеты
+# Скрипт извлекает из контейнера сборки openwrt расширенный набор opkg-пакетов и ключи, которыми подписаны пакеты
 
 openwrtRootInContainer=/root
-dir1InContainer=./openwrt/bin/targets/ar71xx/tiny/packages
-dir2InContainer=./openwrt/bin/packages/mips_24kc/base
-dir3InContainer=./openwrt/build_dir/target-mips_24kc_musl/root.orig-ar71xx/etc/opkg/keys
+typeset -a itemsInContainer=(
+	./openwrt/bin/targets/ar71xx/tiny/packages
+	./openwrt/bin/packages/mips_24kc/base
+	./openwrt/bin/packages/mips_24kc/luci
+	./openwrt/bin/packages/mips_24kc/packages
+	./openwrt/build_dir/target-mips_24kc_musl/root.orig-ar71xx/etc/opkg/keys
+)
 tarFile=openwrt-mips_24kc-export-packages.tgz
 
 main() {
@@ -33,7 +37,7 @@ main() {
 	# копирование
 	echo mount $realTargetDir '->' $mappedTargetDir
 	docker run --rm -it -v ${realTargetDir}:${mappedTargetDir} "$projectName" bash -c \
-		"tar -czf ${tarFile} -C ${openwrtRootInContainer} ${dir1InContainer} ${dir2InContainer} ${dir3InContainer} && cp -v ${tarFile} ${mappedTargetDir}/${tarFile}"
+		"tar -czf ${tarFile} -C ${openwrtRootInContainer} $( echo ${itemsInContainer[@]} ) && cp -v ${tarFile} ${mappedTargetDir}/${tarFile}"
 }
 
 # Выводит подсказку
