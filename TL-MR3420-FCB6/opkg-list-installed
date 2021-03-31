@@ -7,6 +7,7 @@ ddns-scripts_no-ip_com - 2.7.8-13
 dnsmasq - 2.80-16.3
 dropbear - 2019.78-2
 e2fsprogs - 1.44.5-2
+fdisk - 2.34-1
 firewall - 2019-11-22-8174814a-3
 fstools - 2020-05-12-84269037-1
 fwtool - 2
@@ -59,14 +60,17 @@ libblobmsg-json - 2020-05-25-66195aee-1
 libc - 1.1.24-2
 libcomerr0 - 1.44.5-2
 libext2fs2 - 1.44.5-2
+libfdisk1 - 2.34-1
 libgcc1 - 7.5.0-2
 libip4tc2 - 1.8.3-1
 libip6tc2 - 1.8.3-1
 libjson-c2 - 0.12.1-3.1
 libjson-script - 2020-05-25-66195aee-1
+libncurses6 - 6.1-5
 libnl-tiny - 0.1-5
 libpthread - 1.1.24-2
 librt - 1.1.24-2
+libsmartcols1 - 2.34-1
 libss2 - 1.44.5-2
 libubox20191228 - 2020-05-25-66195aee-1
 libubus20191227 - 2019-12-27-041c9d1c-1
@@ -86,6 +90,7 @@ ppp - 2.4.7.git-2019-05-25-3
 ppp-mod-pppoe - 2.4.7.git-2019-05-25-3
 procd - 2020-03-07-09b9bd82-1
 swconfig - 12
+terminfo - 6.1-5
 uboot-envtools - 2018.03-3.1
 ubox - 2019-06-16-4df34a4d-3
 ubus - 2019-12-27-041c9d1c-1

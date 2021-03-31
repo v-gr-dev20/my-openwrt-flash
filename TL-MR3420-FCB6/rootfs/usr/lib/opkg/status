@@ -170,6 +170,14 @@ Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
 
+Package: kmod-lib-crc16
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9)
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619168590
+Auto-Installed: yes
+
 Package: base-files
 Version: 204.2-r11306-c4a6851c72
 Depends: libc, netifd, procd, jsonfilter, usign, openwrt-keyring, fstools, fwtool
@@ -192,14 +200,6 @@ Conffiles:
  /etc/sysctl.conf c02fe88dc055a1eaee9e7cb631760a3a5a9cea55610b42aa45196838c6f1a55e
  /etc/sysupgrade.conf 9e87b05fe2f12c84d1c465b396322748479f64bc40e5bab061887f0bd95020a6
 Installed-Time: 1619168590
-
-Package: kmod-lib-crc16
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9)
-Status: install ok installed
-Architecture: mips_24kc
-Installed-Time: 1619168590
-Auto-Installed: yes
 
 Package: kmod-nf-nat
 Version: 4.14.221-1
@@ -256,6 +256,14 @@ Status: install user installed
 Architecture: mips_24kc
 Installed-Time: 1619168590
 
+Package: kmod-mii
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9)
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619168591
+Auto-Installed: yes
+
 Package: dnsmasq
 Version: 2.80-16.3
 Depends: libc, libubus20191227
@@ -265,14 +273,6 @@ Conffiles:
  /etc/config/dhcp e90f7b32e9c4e8f526a435607f792aa0439dd69fabfe1038eed5b27efc616be0
  /etc/dnsmasq.conf 1e6ab19c1ae5e70d609ac7b6246541d52042e4dee1892f825266507ef52d7dfd
 Installed-Time: 1619168591
-
-Package: kmod-mii
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9)
-Status: install ok installed
-Architecture: mips_24kc
-Installed-Time: 1619168591
-Auto-Installed: yes
 
 Package: procd
 Version: 2020-03-07-09b9bd82-1
@@ -590,6 +590,14 @@ Architecture: mips_24kc
 Installed-Time: 1619168590
 Auto-Installed: yes
 
+Package: kmod-ipt-core
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9), kmod-nf-reject, kmod-nf-ipt
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619168591
+Auto-Installed: yes
+
 Package: e2fsprogs
 Version: 1.44.5-2
 Depends: libc, libuuid1, libext2fs2
@@ -598,14 +606,6 @@ Architecture: mips_24kc
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1619168591
-
-Package: kmod-ipt-core
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9), kmod-nf-reject, kmod-nf-ipt
-Status: install ok installed
-Architecture: mips_24kc
-Installed-Time: 1619168591
-Auto-Installed: yes
 
 Package: kmod-ledtrig-default-on
 Version: 4.14.221-1
