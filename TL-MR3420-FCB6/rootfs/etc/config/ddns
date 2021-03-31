@@ -14,7 +14,7 @@ config service 'myddns_ipv4'
 	option ip_source 'web'
 	option service_name 'no-ip.com'
 	option enabled '1'
-	option use_https '0'
+	option use_https '1'
 
 config service 'myddns_ipv6'
 	option update_url 'http://[USERNAME]:[PASSWORD]@your.provider.net/nic/update?hostname=[DOMAIN]&myip=[IP]'

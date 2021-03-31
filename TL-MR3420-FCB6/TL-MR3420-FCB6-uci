@@ -18,7 +18,7 @@ ddns.myddns_ipv4.password='password'\''s changed'
 ddns.myddns_ipv4.ip_source='web'
 ddns.myddns_ipv4.service_name='no-ip.com'
 ddns.myddns_ipv4.enabled='1'
-ddns.myddns_ipv4.use_https='0'
+ddns.myddns_ipv4.use_https='1'
 ddns.myddns_ipv6=service
 ddns.myddns_ipv6.update_url='http://[USERNAME]:[PASSWORD]@your.provider.net/nic/update?hostname=[DOMAIN]&myip=[IP]'
 ddns.myddns_ipv6.lookup_host='yourhost.example.com'
