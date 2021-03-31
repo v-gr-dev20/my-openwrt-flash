@@ -5,6 +5,14 @@ Status: install user installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
 
+Package: terminfo
+Version: 6.1-5
+Depends: libc
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268724
+Auto-Installed: yes
+
 Package: libc
 Version: 1.1.24-2
 Depends: libgcc1
@@ -23,6 +31,15 @@ Conffiles:
  /etc/opkg.conf f38c19f696ea87c0b30eb5bfeb8657237f4625e1a749c58b99f01595edfb6446
  /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
 Installed-Time: 1619168591
+
+Package: wget
+Version: 1.20.3-4
+Depends: libc, libpcre, zlib, libopenssl1.1, librt
+Provides: gnu-wget, wget-ssl
+Status: install user installed
+Architecture: mips_24kc
+Installed-Time: 1619268750
+Alternatives: 300:/usr/bin/wget:/usr/bin/wget-ssl
 
 Package: kmod-usb-core
 Version: 4.14.221-1
@@ -89,6 +106,21 @@ Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
 
+Package: nano
+Version: 5.6.1-1
+Depends: libc, libncurses6
+Status: install user installed
+Architecture: mips_24kc
+Installed-Time: 1619268769
+
+Package: glib2
+Version: 2.58.3-5
+Depends: libc, zlib, libpthread, libffi, libattr
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268784
+Auto-Installed: yes
+
 Package: swconfig
 Version: 12
 Depends: libc, libuci20130104, libnl-tiny
@@ -119,6 +151,16 @@ Status: install ok installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
+
+Package: mc
+Version: 4.8.25-1
+Depends: libc, glib2, libncurses6, libmount1, libssh2-1
+Status: install user installed
+Architecture: mips_24kc
+Conffiles:
+ /etc/mc/mc.menu c607d7c023ff82e16fb0efd615b88650712336f2b23b9a31b7a8cbf33a92f57f
+ /etc/mc/skins/default.ini 5e4a9c862db65e4b6e8663a51617dd84cc332d953442787f5b9fe03e80a01a89
+Installed-Time: 1619268790
 
 Package: libusb-1.0-0
 Version: 1.0.22-2
@@ -209,6 +251,14 @@ Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
 
+Package: libpcre
+Version: 8.43-1
+Depends: libc
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268740
+Auto-Installed: yes
+
 Package: kmod-crypto-crc32c
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9), kmod-crypto-hash
@@ -233,6 +283,15 @@ Conffiles:
  /etc/config/ddns ccdb2a41b8c7d0d42eed42995a86b2bdc8dc689df3fe6c80de8ab9fdb0b15b86
 Installed-Time: 1619168591
 
+Package: libsmartcols1
+Version: 2.34-1
+Depends: libc, librt
+Provides: libsmartcols
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268716
+Auto-Installed: yes
+
 Package: autossh
 Version: 1.4g-1
 Depends: libc
@@ -248,6 +307,14 @@ Depends: libc
 Status: install user installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
+
+Package: speedtest-netperf
+Version: 1.0.0-1
+Depends: libc, netperf
+Conflicts: speedtest
+Status: install user installed
+Architecture: all
+Installed-Time: 1619268804
 
 Package: kmod-usb-ohci
 Version: 4.14.221-1
@@ -291,6 +358,15 @@ Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
 
+Package: libmount1
+Version: 2.34-1
+Depends: libc, libblkid1
+Provides: libmount
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268785
+Auto-Installed: yes
+
 Package: usbutils
 Version: 007-10
 Depends: libc, libusb-1.0-0, librt, libpthread
@@ -323,12 +399,28 @@ Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
 
+Package: libmbedtls12
+Version: 2.16.10-1
+Depends: libc
+Provides: libmbedtls
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268753
+Auto-Installed: yes
+
 Package: block-mount
 Version: 2020-05-12-84269037-1
 Depends: libc, ubox, libubox20191228, libuci20130104, libblobmsg-json, libjson-c2
 Status: install user installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
+
+Package: netperf
+Version: 2.7.0-1
+Depends: libc
+Status: install user installed
+Architecture: mips_24kc
+Installed-Time: 1619268803
 
 Package: kmod-usb2
 Version: 4.14.221-1
@@ -362,6 +454,15 @@ Provides: libblkid
 Status: install ok installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
+Auto-Installed: yes
+
+Package: libssh2-1
+Version: 1.9.0-2
+Depends: libc, libmbedtls12, zlib
+Provides: libssh2
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268787
 Auto-Installed: yes
 
 Package: kmod-ip6tables
@@ -446,6 +547,13 @@ Status: install user installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
 
+Package: curl
+Version: 7.66.0-3
+Depends: libc, libcurl4
+Status: install user installed
+Architecture: mips_24kc
+Installed-Time: 1619268757
+
 Package: mtd
 Version: 24
 Depends: libc, libubox20191228
@@ -473,6 +581,14 @@ Depends: libc, getrandom
 Status: install user installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
+
+Package: libffi
+Version: 3.3-2
+Depends: libc
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268774
+Auto-Installed: yes
 
 Package: libcomerr0
 Version: 1.44.5-2
@@ -529,6 +645,22 @@ Status: install hold installed
 Essential: yes
 Architecture: mips_24kc
 Installed-Time: 1619168591
+Auto-Installed: yes
+
+Package: tune2fs
+Version: 1.44.5-2
+Depends: libc, e2fsprogs
+Status: install user installed
+Architecture: mips_24kc
+Installed-Time: 1619268713
+
+Package: libopenssl1.1
+Version: 1.1.1k-1
+Depends: libc
+Provides: libopenssl
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268749
 Auto-Installed: yes
 
 Package: libjson-script
@@ -590,6 +722,15 @@ Architecture: mips_24kc
 Installed-Time: 1619168590
 Auto-Installed: yes
 
+Package: libfdisk1
+Version: 2.34-1
+Depends: libc, libuuid1, libblkid1
+Provides: libfdisk
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268718
+Auto-Installed: yes
+
 Package: kmod-ipt-core
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9), kmod-nf-reject, kmod-nf-ipt
@@ -622,6 +763,15 @@ Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
 
+Package: libncurses6
+Version: 6.1-5
+Depends: libc, terminfo
+Provides: libncursesw, libncurses, libncursesw6
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268726
+Auto-Installed: yes
+
 Package: libss2
 Version: 1.44.5-2
 Depends: libc, libcomerr0
@@ -648,6 +798,15 @@ Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
 
+Package: libcurl4
+Version: 7.66.0-3
+Depends: libc, libmbedtls12, ca-bundle
+Provides: libcurl
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268756
+Auto-Installed: yes
+
 Package: usign
 Version: 2020-05-23-f1f65026-1
 Depends: libc, libubox20191228
@@ -663,6 +822,14 @@ Status: install user installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
 
+Package: zlib
+Version: 1.2.11-3
+Depends: libc
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268741
+Auto-Installed: yes
+
 Package: kmod-nf-ipt6
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9), kmod-nf-ipt
@@ -670,6 +837,22 @@ Status: install ok installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
 Auto-Installed: yes
+
+Package: ca-bundle
+Version: 20200601-1
+Depends: libc
+Provides: ca-certs
+Status: install user installed
+Architecture: all
+Installed-Time: 1619268755
+Auto-Installed: yes
+
+Package: fdisk
+Version: 2.34-1
+Depends: libc, libblkid1, libsmartcols1, libfdisk1, libncursesw6
+Status: install user installed
+Architecture: mips_24kc
+Installed-Time: 1619268726
 
 Package: kmod-nf-conntrack6
 Version: 4.14.221-1
@@ -764,6 +947,14 @@ Depends: kernel (= 4.14.221-1-be5303a9f735f01707f038b9ecaf24d9), kmod-usb-net
 Status: install user installed
 Architecture: mips_24kc
 Installed-Time: 1619168591
+
+Package: libattr
+Version: 2.4.48-1
+Depends: libc
+Status: install ok installed
+Architecture: mips_24kc
+Installed-Time: 1619268776
+Auto-Installed: yes
 
 Package: kmod-scsi-core
 Version: 4.14.221-1
