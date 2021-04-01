@@ -39,6 +39,12 @@ CONFIG_PACKAGE_autossh=y						\n\
 CONFIG_PACKAGE_e2fsprogs=y						\n\
 CONFIG_PACKAGE_fdisk=y							\n\
 CONFIG_PACKAGE_luci=y							\n\
+CONFIG_PACKAGE_kmod-ath=m						\n\
+CONFIG_PACKAGE_kmod-ath9k-common=m				\n\
+CONFIG_PACKAGE_kmod-ath9k=m						\n\
+CONFIG_PACKAGE_wpad-mini=y						\n\
+CONFIG_DEFAULT_kmod-ath9k=n						\n\
+CONFIG_DEFAULT_wpad-mini=n						\n\
 " >> configdiff \
  && cp configdiff .config \
  && make defconfig
