@@ -2,19 +2,7 @@
 ,	URNs:
 			[
 				{	server:
-							"grigorovich-fam4.ddns.net"
-				,	user:
-							"admin"
-				}
-			,	{	server:
-							"127.0.0.1"
-				,	user:
-							"root"
-				,	port:
-							"8022"
-				}
-			,	{	server:
-							"192.168.20.1"
+							"grigorovich-fam5.ddns.net"
 				,	user:
 							"root"
 				}
