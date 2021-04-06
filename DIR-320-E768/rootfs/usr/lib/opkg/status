@@ -54,6 +54,15 @@ Conffiles:
  /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
 Installed-Time: 1621489130
 
+Package: wget
+Version: 1.20.3-4
+Depends: libc, libpcre, zlib, libopenssl1.1, librt
+Provides: gnu-wget, wget-ssl
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512262
+Alternatives: 300:/usr/bin/wget:/usr/bin/wget-ssl
+
 Package: kmod-usb-core
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
@@ -141,6 +150,21 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466700
 Auto-Installed: yes
 
+Package: nano
+Version: 5.7-1
+Depends: libc, libncurses6
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512295
+
+Package: glib2
+Version: 2.58.3-5
+Depends: libc, zlib, libpthread, libffi, libattr
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512321
+Auto-Installed: yes
+
 Package: swconfig
 Version: 12
 Depends: libc, libuci20130104, libnl-tiny
@@ -179,6 +203,16 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621494876
 Auto-Installed: yes
+
+Package: mc
+Version: 4.8.25-1
+Depends: libc, glib2, libncurses6, libmount1, libssh2-1
+Status: install user installed
+Architecture: mipsel_mips32
+Conffiles:
+ /etc/mc/mc.menu c607d7c023ff82e16fb0efd615b88650712336f2b23b9a31b7a8cbf33a92f57f
+ /etc/mc/skins/default.ini 5e4a9c862db65e4b6e8663a51617dd84cc332d953442787f5b9fe03e80a01a89
+Installed-Time: 1621512332
 
 Package: libusb-1.0-0
 Version: 1.0.22-2
@@ -269,6 +303,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466700
 Auto-Installed: yes
 
+Package: libpcre
+Version: 8.43-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512246
+Auto-Installed: yes
+
 Package: kmod-crypto-crc32c
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-crypto-hash
@@ -327,6 +369,14 @@ Conffiles:
  /etc/config/autossh 263375ae66cd9e2c2115315f741539da87764e18cdcbb794b06d3a80c4dd7270
 Installed-Time: 1621466700
 
+Package: speedtest-netperf
+Version: 1.0.0-1
+Depends: libc, netperf
+Conflicts: speedtest
+Status: install user installed
+Architecture: all
+Installed-Time: 1621512356
+
 Package: kmod-usb-ohci
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-core
@@ -367,6 +417,22 @@ Provides: libuclient
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621489128
+
+Package: libmount1
+Version: 2.34-1
+Depends: libc, libblkid1
+Provides: libmount
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512324
+Auto-Installed: yes
+
+Package: usbutils
+Version: 007-10
+Depends: libc, libusb-1.0-0, librt, libpthread
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512223
 
 Package: ubusd
 Version: 2019-12-27-041c9d1c-1
@@ -416,6 +482,15 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621492230
 
+Package: libmbedtls12
+Version: 2.16.10-1
+Depends: libc
+Provides: libmbedtls
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512268
+Auto-Installed: yes
+
 Package: block-mount
 Version: 2020-05-12-84269037-1
 Depends: libc, ubox, libubox20191228, libuci20130104, libblobmsg-json, libjson-c2
@@ -436,6 +511,13 @@ Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base, 
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621509652
+
+Package: netperf
+Version: 2.7.0-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512353
 
 Package: kmod-usb2
 Version: 4.14.221-1
@@ -490,6 +572,15 @@ Provides: libblkid
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
+Auto-Installed: yes
+
+Package: libssh2-1
+Version: 1.9.0-2
+Depends: libc, libmbedtls12, zlib
+Provides: libssh2
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512328
 Auto-Installed: yes
 
 Package: kmod-ip6tables
@@ -583,6 +674,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: curl
+Version: 7.66.0-3
+Depends: libc, libcurl4
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512274
+
 Package: kmod-nls-utf8
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
@@ -640,6 +738,14 @@ Depends: libc, getrandom
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
+
+Package: libffi
+Version: 3.3-2
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512303
+Auto-Installed: yes
 
 Package: otrx
 Version: 1
@@ -719,6 +825,15 @@ Depends: libc, e2fsprogs
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621511659
+
+Package: libopenssl1.1
+Version: 1.1.1k-1
+Depends: libc
+Provides: libopenssl
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512260
+Auto-Installed: yes
 
 Package: kmod-usb-serial
 Version: 4.14.221-1
@@ -810,6 +925,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621510181
 Auto-Installed: yes
 
+Package: kmod-ipt-core
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nf-reject, kmod-nf-ipt
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621466700
+Auto-Installed: yes
+
 Package: e2fsprogs
 Version: 1.44.5-2
 Depends: libc, libuuid1, libext2fs2
@@ -818,14 +941,6 @@ Architecture: mipsel_mips32
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1621466700
-
-Package: kmod-ipt-core
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nf-reject, kmod-nf-ipt
-Status: install ok installed
-Architecture: mipsel_mips32
-Installed-Time: 1621466700
-Auto-Installed: yes
 
 Package: kmod-ledtrig-default-on
 Version: 4.14.221-1
@@ -891,6 +1006,15 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466700
 Auto-Installed: yes
 
+Package: libcurl4
+Version: 7.66.0-3
+Depends: libc, libmbedtls12, ca-bundle
+Provides: libcurl
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512274
+Auto-Installed: yes
+
 Package: usign
 Version: 2020-05-23-f1f65026-1
 Depends: libc, libubox20191228
@@ -906,6 +1030,14 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
 
+Package: zlib
+Version: 1.2.11-3
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512248
+Auto-Installed: yes
+
 Package: kmod-nf-ipt6
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nf-ipt
@@ -920,6 +1052,15 @@ Depends: libc, libf2fs6
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621494349
+Auto-Installed: yes
+
+Package: ca-bundle
+Version: 20200601-1
+Depends: libc
+Provides: ca-certs
+Status: install user installed
+Architecture: all
+Installed-Time: 1621512271
 Auto-Installed: yes
 
 Package: kmod-nls-iso8859-1
@@ -1052,19 +1193,27 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
 
-Package: gdisk
-Version: 1.0.4-2
-Depends: libc, uclibcxx, libuuid1
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1621510192
-
 Package: kmod-usb-net-cdc-ether
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-net
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621492219
+
+Package: libattr
+Version: 2.4.48-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621512306
+Auto-Installed: yes
+
+Package: gdisk
+Version: 1.0.4-2
+Depends: libc, uclibcxx, libuuid1
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621510192
 
 Package: wireless-regdb
 Version: 2020.11.20-1
