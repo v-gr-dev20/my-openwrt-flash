@@ -1,10 +1,3 @@
-Package: kmod-usb-storage
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-scsi-core, kmod-usb-core
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1619183080
-
 Package: terminfo
 Version: 6.1-5
 Depends: libc
@@ -12,6 +5,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1619213038
 Auto-Installed: yes
+
+Package: kmod-usb-storage
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-scsi-core, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1619183080
 
 Package: liblucihttp0
 Version: 2019-07-05-a34a17d5-1
@@ -211,6 +211,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1619183081
 Auto-Installed: yes
 
+Package: kmod-lib-crc-ccitt
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133)
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1619215027
+Auto-Installed: yes
+
 Package: getrandom
 Version: 2019-06-16-4df34a4d-3
 Depends: libc
@@ -246,6 +254,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1619183080
 Auto-Installed: yes
 
+Package: kmod-pppoe
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-ppp, kmod-pppox
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1619215034
+Auto-Installed: yes
+
 Package: libuuid1
 Version: 2.34-1
 Depends: libc, librt
@@ -253,6 +269,14 @@ Provides: libuuid
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1619183080
+Auto-Installed: yes
+
+Package: kmod-pppox
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-ppp
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1619215033
 Auto-Installed: yes
 
 Package: kmod-ipt-conntrack
@@ -499,19 +523,19 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1619214118
 
-Package: kmod-usb2
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1619183080
-
 Package: netperf
 Version: 2.7.0-1
 Depends: libc
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1619213210
+
+Package: kmod-usb2
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1619183080
 
 Package: firewall
 Version: 2019-11-22-8174814a-3
@@ -753,6 +777,17 @@ Architecture: mipsel_mips32
 Installed-Time: 1619183080
 Auto-Installed: yes
 
+Package: ppp
+Version: 2.4.7.git-2019-05-25-3
+Depends: libc, kmod-ppp
+Status: install user installed
+Architecture: mipsel_mips32
+Conffiles:
+ /etc/ppp/chap-secrets 6981fa176a79f8c12be5826c421b16253a616747018ba7e76752a9d36d1d51d4
+ /etc/ppp/filter 579583b318e0cff706ffc134620b42d3fbce8fc31aeb0ad7eea1cc859868e902
+ /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
+Installed-Time: 1619215031
+
 Package: luci-mod-admin-full
 Version: git-21.107.58152-c19c716-1
 Depends: libc, luci-base, luci-mod-status, luci-mod-system, luci-mod-network
@@ -925,6 +960,14 @@ Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133)
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1619183080
+
+Package: kmod-ppp
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-lib-crc-ccitt, kmod-slhc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1619215029
+Auto-Installed: yes
 
 Package: libncurses6
 Version: 6.1-5
@@ -1163,13 +1206,6 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1619183081
 
-Package: kmod-usb-net-cdc-ether
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-usb-net
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1619183080
-
 Package: libattr
 Version: 2.4.48-1
 Depends: libc
@@ -1177,6 +1213,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1619213158
 Auto-Installed: yes
+
+Package: kmod-usb-net-cdc-ether
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1619183080
 
 Package: kmod-scsi-core
 Version: 4.14.221-1
@@ -1192,6 +1235,14 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1619183081
 
+Package: kmod-slhc
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-lib-crc-ccitt
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1619215028
+Auto-Installed: yes
+
 Package: rpcd-mod-rrdns
 Version: 20170710
 Depends: libc, rpcd, libubox20191228, libubus20191227
@@ -1199,6 +1250,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1619214109
 Auto-Installed: yes
+
+Package: ppp-mod-pppoe
+Version: 2.4.7.git-2019-05-25-3
+Depends: libc, kmod-pppoe
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1619215034
 
 Package: kmod-ipt-nat
 Version: 4.14.221-1
