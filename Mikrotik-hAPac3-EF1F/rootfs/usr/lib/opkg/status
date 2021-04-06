@@ -199,6 +199,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456962
 
+Package: lsof
+Version: 4.94.0-1
+Depends: libc, libtirpc
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457244
+
 Package: luci-lib-ip
 Version: git-20.250.76529-62505bd
 Depends: libc, liblua5.1.5, libnl-tiny1
@@ -252,6 +259,21 @@ Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: nano
+Version: 7.2-2
+Depends: libc, libncurses6
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457261
+
+Package: glib2
+Version: 2.70.5-4
+Depends: libc, zlib, libpthread, libffi, libattr, libpcre
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457273
+Auto-Installed: yes
 
 Package: kmod-crypto-aead
 Version: 5.10.176-1
@@ -346,6 +368,16 @@ Status: install ok installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456979
 Auto-Installed: yes
+
+Package: mc
+Version: 4.8.27-3
+Depends: libc, glib2, libncurses6, libmount1, libssh2-1
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/mc/mc.menu c607d7c023ff82e16fb0efd615b88650712336f2b23b9a31b7a8cbf33a92f57f
+ /etc/mc/skins/default.ini 11d9356b719fe5ebcbdc1e9ae9152d870eee4fb9bcda2c62b73ae1c68354a0dd
+Installed-Time: 1682457279
 
 Package: luci-theme-bootstrap
 Version: git-23.093.42704-b47268a
@@ -451,6 +483,14 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: libpcre
+Version: 8.45-3
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457269
+Auto-Installed: yes
+
 Package: kmod-crypto-crc32c
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-crypto-hash
@@ -540,6 +580,14 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: speedtest-netperf
+Version: 1.0.0-1
+Depends: libc, netperf
+Conflicts: speedtest
+Status: install user installed
+Architecture: all
+Installed-Time: 1682457288
+
 Package: kmod-usb-xhci-hcd
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-usb-core
@@ -574,6 +622,16 @@ Conflicts: libudev, eudev, udev
 Status: install ok installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682455710
+Auto-Installed: yes
+
+Package: libmount1
+ABIVersion: 1
+Version: 2.37.4-1
+Depends: libc, libblkid1
+Provides: libmount
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457274
 Auto-Installed: yes
 
 Package: usbutils
@@ -629,6 +687,15 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: screen
+Version: 4.8.0-2
+Depends: libc, libncurses6
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/screenrc 5bb81ba550767a72527bd6d51e2b0d4c53bcf306e4788a9d1d84dcd6d0d6c5eb
+Installed-Time: 1682457281
+
 Package: luci-mod-status
 Version: git-23.093.42411-713f701
 Depends: libc, luci-base, libiwinfo20210430, libiwinfo-lua
@@ -653,6 +720,16 @@ Provides: libjson-script
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: libmbedtls12
+ABIVersion: 12
+Version: 2.28.2-1
+Depends: libc
+Provides: libmbedtls
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457254
+Auto-Installed: yes
 
 Package: block-mount
 Version: 2022-06-02-93369be0-2
@@ -689,6 +766,13 @@ Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-nft-core, 
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: netperf
+Version: 2.7.0-3
+Depends: libc
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457287
 
 Package: kmod-usb3
 Version: 5.10.176-1
@@ -740,6 +824,16 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: libssh2-1
+ABIVersion: -1
+Version: 1.9.0-2
+Depends: libc, libopenssl1.1, zlib
+Provides: libssh2
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457278
+Auto-Installed: yes
+
 Package: ubi-utils
 Version: 2.1.4-1
 Depends: libc
@@ -766,12 +860,12 @@ Installed-Time: 1681043266
 Auto-Installed: yes
 
 Package: uclient-fetch
-Version: 2021-05-14-6a6011df-1
+Version: 2023-04-13-007d9454-1
 Depends: libc, libuclient20201210
 Provides: wget
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
-Installed-Time: 1681043266
+Installed-Time: 1682457251
 Alternatives: 200:/usr/bin/wget:/bin/uclient-fetch
 
 Package: kmod-crypto-ghash
@@ -838,6 +932,20 @@ Conffiles:
  /etc/dropbear/dropbear_rsa_host_key e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 Installed-Time: 1681043266
 Alternatives: 100:/usr/bin/scp:/usr/sbin/dropbear, 100:/usr/bin/ssh:/usr/sbin/dropbear
+
+Package: tree
+Version: 2.0.2-1
+Depends: libc, libgcc1
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457280
+
+Package: curl
+Version: 8.0.1-1
+Depends: libc, libcurl4
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457257
 
 Package: kmod-hwmon-core
 Version: 5.10.176-1
@@ -952,6 +1060,14 @@ Architecture: all
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: libffi
+Version: 3.4.2-2
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457266
+Auto-Installed: yes
+
 Package: libcomerr0
 ABIVersion: 0
 Version: 1.46.5-2
@@ -1045,6 +1161,16 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456952
 
+Package: libopenssl1.1
+ABIVersion: 1.1
+Version: 1.1.1t-3
+Depends: libc
+Provides: libopenssl
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457277
+Auto-Installed: yes
+
 Package: libblobmsg-json20220515
 ABIVersion: 20220515
 Version: 2022-05-15-d2223ef9-1
@@ -1054,6 +1180,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
+
+Package: swap-utils
+Version: 2.37.4-1
+Depends: libc, librt, libblkid1
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457239
 
 Package: luci-proto-ipv6
 Version: git-21.148.48881-79947af
@@ -1229,6 +1362,16 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: libcurl4
+ABIVersion: 4
+Version: 8.0.1-1
+Depends: libc, libmbedtls12, libnghttp2-14, ca-bundle
+Provides: libcurl
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457257
+Auto-Installed: yes
+
 Package: usign
 Version: 2020-05-23-f1f65026-1
 Depends: libc, libubox20220515
@@ -1245,6 +1388,14 @@ Provides: liblua
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+Auto-Installed: yes
+
+Package: zlib
+Version: 1.2.11-6
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457265
 Auto-Installed: yes
 
 Package: kmod-crypto-gcm
@@ -1479,6 +1630,14 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: libtirpc
+Version: 1.3.2-1
+Depends: libc, libpthread
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457244
+Auto-Installed: yes
+
 Package: fwtool
 Version: 2019-11-12-8f7fe925-1
 Depends: libc
@@ -1501,6 +1660,14 @@ Depends: libc
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+Auto-Installed: yes
+
+Package: libattr
+Version: 2.5.1-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457268
 Auto-Installed: yes
 
 Package: gdisk
@@ -1561,4 +1728,14 @@ Depends: libc, kmod-pppoe
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: libnghttp2-14
+ABIVersion: -14
+Version: 1.44.0-1
+Depends: libc
+Provides: libnghttp2
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682457255
+Auto-Installed: yes
 
