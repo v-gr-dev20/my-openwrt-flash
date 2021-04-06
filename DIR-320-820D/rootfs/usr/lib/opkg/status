@@ -150,6 +150,14 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948598
 
+Package: libdbus
+Version: 1.12.12-1
+Depends: libc, libpthread
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622098538
+Auto-Installed: yes
+
 Package: kmod-nf-flow
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-nf-conntrack
@@ -314,6 +322,13 @@ Conffiles:
  /etc/config/autossh 263375ae66cd9e2c2115315f741539da87764e18cdcbb794b06d3a80c4dd7270
 Installed-Time: 1621948599
 
+Package: kmod-usb-ohci
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621948598
+
 Package: speedtest-netperf
 Version: 1.0.0-1
 Depends: libc, netperf
@@ -321,13 +336,6 @@ Conflicts: speedtest
 Status: install user installed
 Architecture: all
 Installed-Time: 1622097520
-
-Package: kmod-usb-ohci
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-core
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1621948598
 
 Package: kmod-mii
 Version: 4.14.221-1
@@ -435,19 +443,19 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948598
 
-Package: netperf
-Version: 2.7.0-1
-Depends: libc
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1622097517
-
 Package: kmod-usb2
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948598
+
+Package: netperf
+Version: 2.7.0-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622097517
 
 Package: kmod-usb-serial-option
 Version: 4.14.221-1
@@ -556,6 +564,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621948597
 Auto-Installed: yes
 
+Package: dbus
+Version: 1.12.12-1
+Depends: libc, libexpat, libdbus
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622098542
+Auto-Installed: yes
+
 Package: dropbear
 Version: 2019.78-2
 Depends: libc
@@ -594,6 +610,14 @@ Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-serial
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948599
+Auto-Installed: yes
+
+Package: libqmi
+Version: 1.24.12-1
+Depends: libc, libmbim
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622098555
 Auto-Installed: yes
 
 Package: mtd
@@ -686,6 +710,14 @@ Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-mii, kmod-
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948599
+
+Package: libmbim
+Version: 1.22.0-2
+Depends: libc, glib2
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622098546
+Auto-Installed: yes
 
 Package: librt
 Version: 1.1.24-2
@@ -878,6 +910,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948600
 
+Package: modemmanager
+Version: 1.12.10-2
+Depends: libc, glib2, dbus, ppp, libmbim, libqmi
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622098570
+
 Package: zlib
 Version: 1.2.11-3
 Depends: libc
@@ -926,6 +965,14 @@ Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-core
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948598
+
+Package: libexpat
+Version: 2.2.9-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622098533
+Auto-Installed: yes
 
 Package: ubox
 Version: 2019-06-16-4df34a4d-3
