@@ -1,3 +1,10 @@
+Package: kmod-usb-storage
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-scsi-core, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1617619356
+
 Package: terminfo
 Version: 6.1-5
 Depends: libc
@@ -5,13 +12,6 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1617803582
 Auto-Installed: yes
-
-Package: kmod-usb-storage
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-scsi-core, kmod-usb-core
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1617619356
 
 Package: liblucihttp0
 Version: 2019-07-05-a34a17d5-1
@@ -97,6 +97,14 @@ Depends: libc, libubus20191227, libblobmsg-json, ubusd
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1617619353
+Auto-Installed: yes
+
+Package: iw
+Version: 5.0.1-1
+Depends: libc, libnl-tiny
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1617804715
 Auto-Installed: yes
 
 Package: libuci20130104
@@ -517,19 +525,19 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1617804147
 
-Package: netperf
-Version: 2.7.0-1
-Depends: libc
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1617803735
-
 Package: kmod-usb2
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1617619355
+
+Package: netperf
+Version: 2.7.0-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1617803735
 
 Package: firewall
 Version: 2019-11-22-8174814a-3
@@ -636,6 +644,15 @@ Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-lib-crc16,
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1617619355
+
+Package: wpad-mini
+Version: 2019-08-08-ca8c2bd2-7
+Depends: libc, libnl-tiny, hostapd-common, libubus20191227
+Provides: hostapd, wpa-supplicant
+Conflicts: hostapd, hostapd-basic, hostapd-mini, hostapd-openssl, hostapd-wolfssl, wpad, wpad-mesh-openssl, wpad-mesh-wolfssl, wpad-basic, wpad-basic-wolfssl, wpad, wpad-mesh-openssl, wpad-mesh-wolfssl, wpad-basic, wpad-basic-wolfssl
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1617804765
 
 Package: libip4tc2
 Version: 1.8.3-1
@@ -771,6 +788,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1617619357
 Auto-Installed: yes
 
+Package: luci-mod-admin-full
+Version: git-21.086.32701-7456e2a-1
+Depends: libc, luci-base, luci-mod-status, luci-mod-system, luci-mod-network
+Status: install ok installed
+Architecture: all
+Installed-Time: 1617804120
+Auto-Installed: yes
+
 Package: ppp
 Version: 2.4.7.git-2019-05-25-3
 Depends: libc, kmod-ppp
@@ -781,14 +806,6 @@ Conffiles:
  /etc/ppp/filter 579583b318e0cff706ffc134620b42d3fbce8fc31aeb0ad7eea1cc859868e902
  /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
 Installed-Time: 1617804438
-
-Package: luci-mod-admin-full
-Version: git-21.086.32701-7456e2a-1
-Depends: libc, luci-base, luci-mod-status, luci-mod-system, luci-mod-network
-Status: install ok installed
-Architecture: all
-Installed-Time: 1617804120
-Auto-Installed: yes
 
 Package: luci-base
 Version: git-21.086.32701-7456e2a-1
@@ -837,6 +854,14 @@ Status: install hold installed
 Essential: yes
 Architecture: mipsel_mips32
 Installed-Time: 1617619357
+Auto-Installed: yes
+
+Package: kmod-mac80211
+Version: 4.14.221+4.19.161-1-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-cfg80211, hostapd-common
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1617804724
 Auto-Installed: yes
 
 Package: tune2fs
@@ -1090,6 +1115,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1617804089
 Auto-Installed: yes
 
+Package: kmod-b43
+Version: 4.14.221+4.19.161-1-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-mac80211
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1617804725
+
 Package: luci
 Version: git-21.086.32701-7456e2a-1
 Depends: libc, uhttpd, luci-mod-admin-full, luci-theme-bootstrap, luci-app-firewall, luci-app-opkg, luci-proto-ppp, libiwinfo-lua, luci-proto-ipv6, rpcd-mod-rrdns
@@ -1193,12 +1225,27 @@ Architecture: mipsel_mips32
 Installed-Time: 1617619354
 Auto-Installed: yes
 
+Package: hostapd-common
+Version: 2019-08-08-ca8c2bd2-5
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1617804720
+Auto-Installed: yes
+
 Package: kmod-ipt-offload
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-ipt-core, kmod-nf-flow
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1617619359
+
+Package: kmod-usb-net-cdc-ether
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1617619357
 
 Package: libattr
 Version: 2.4.48-1
@@ -1208,12 +1255,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1617803690
 Auto-Installed: yes
 
-Package: kmod-usb-net-cdc-ether
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-usb-net
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1617619357
+Package: wireless-regdb
+Version: 2020.11.20-1
+Depends: libc
+Status: install ok installed
+Architecture: all
+Installed-Time: 1617804716
+Auto-Installed: yes
 
 Package: kmod-scsi-core
 Version: 4.14.221-1
@@ -1235,6 +1283,14 @@ Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), kmod-lib-crc-cc
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1617804435
+Auto-Installed: yes
+
+Package: kmod-cfg80211
+Version: 4.14.221+4.19.161-1-1
+Depends: kernel (= 4.14.221-1-8a4a9b1a898b14f9708815a545dec133), iw, wireless-regdb
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1617804719
 Auto-Installed: yes
 
 Package: rpcd-mod-rrdns
