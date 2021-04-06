@@ -33,6 +33,7 @@ kmod-leds-gpio - 4.14.221-1
 kmod-ledtrig-default-on - 4.14.221-1
 kmod-ledtrig-netdev - 4.14.221-1
 kmod-ledtrig-timer - 4.14.221-1
+kmod-lib-crc-ccitt - 4.14.221-1
 kmod-lib-crc16 - 4.14.221-1
 kmod-mii - 4.14.221-1
 kmod-nf-conntrack - 4.14.221-1
@@ -44,7 +45,11 @@ kmod-nf-nat - 4.14.221-1
 kmod-nf-reject - 4.14.221-1
 kmod-nf-reject6 - 4.14.221-1
 kmod-nls-base - 4.14.221-1
+kmod-ppp - 4.14.221-1
+kmod-pppoe - 4.14.221-1
+kmod-pppox - 4.14.221-1
 kmod-scsi-core - 4.14.221-1
+kmod-slhc - 4.14.221-1
 kmod-usb-bcma - 4.14.221-1
 kmod-usb-core - 4.14.221-1
 kmod-usb-ehci - 4.14.221-1
@@ -122,6 +127,8 @@ odhcpd-ipv6only - 2020-05-03-49e4949c-3
 openwrt-keyring - 2019-07-25-8080ef34-1
 opkg - 2021-01-31-c5dccea9-1
 otrx - 1
+ppp - 2.4.7.git-2019-05-25-3
+ppp-mod-pppoe - 2.4.7.git-2019-05-25-3
 procd - 2020-03-07-09b9bd82-1
 rpcd - 2020-05-26-67c8a3fd-1
 rpcd-mod-file - 2020-05-26-67c8a3fd-1
