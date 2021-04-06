@@ -12,7 +12,7 @@ config device
 	option name 'br-lan'
 	option type 'bridge'
 	option macaddr '08:55:31:fd:92:cf'
-	list ports 'eth0'
+	list ports 'eth0.5'
 
 config interface 'lan'
 	option device 'br-lan'
@@ -40,6 +40,46 @@ config switch
 
 config switch_vlan
 	option device 'switch0'
+	option vlan '0'
+
+config switch_vlan
+	option device 'switch0'
 	option vlan '1'
-	option ports '1 2 3 4 0'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '2'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '3'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '4'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '5'
+	option ports '1 2 3 4 0t'
+
+config device
+	option name 'eth0.1'
+	option macaddr '9a:69:ac:20:84:33'
+
+config device
+	option name 'eth0.2'
+	option macaddr '9a:69:ac:20:84:34'
+
+config device
+	option name 'eth0.3'
+	option macaddr '9a:69:ac:20:84:35'
+
+config device
+	option name 'eth0.4'
+	option macaddr '9a:69:ac:20:84:36'
+
+config device
+	option name 'eth0.5'
+	option macaddr '9a:69:ac:20:84:37'
 
