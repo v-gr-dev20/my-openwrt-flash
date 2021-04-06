@@ -8,11 +8,6 @@ config interface 'loopback'
 config globals 'globals'
 	option ula_prefix 'fd28:7651:a887::/48'
 
-config device
-	option name 'br-lan'
-	option type 'bridge'
-	list ports 'eth0.1'
-
 config interface 'lan'
 	option device 'br-lan'
 	option proto 'static'
@@ -21,11 +16,9 @@ config interface 'lan'
 	option ip6assign '60'
 
 config interface 'wan'
-	option device 'eth0.2'
 	option proto 'dhcp'
 
 config interface 'wan6'
-	option device 'eth0.2'
 	option proto 'dhcpv6'
 
 config switch
@@ -35,11 +28,59 @@ config switch
 
 config switch_vlan
 	option device 'switch0'
+	option vlan '0'
+
+config switch_vlan
+	option device 'switch0'
 	option vlan '1'
-	option ports '1 2 3 4 8t'
 
 config switch_vlan
 	option device 'switch0'
 	option vlan '2'
-	option ports '0 8t'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '3'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '4'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '5'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '6'
+	option ports '8t 1 2 3 4'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'eth0.6'
+
+config device
+	option name 'eth0.1'
+	option macaddr 'c8:60:00:e7:83:01'
+
+config device
+	option name 'eth0.2'
+	option macaddr 'c8:60:00:e7:83:02'
+
+config device
+	option name 'eth0.3'
+	option macaddr 'c8:60:00:e7:83:03'
+
+config device
+	option name 'eth0.4'
+	option macaddr 'c8:60:00:e7:83:04'
+
+config device
+	option name 'eth0.5'
+	option macaddr 'c8:60:00:e7:83:05'
+
+config device
+	option name 'eth0.6'
+	option macaddr 'c8:60:00:e7:83:06'
 
