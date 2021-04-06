@@ -64,6 +64,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: iw
+Version: 5.0.1-1
+Depends: libc, libnl-tiny
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493113
+Auto-Installed: yes
+
 Package: libuci20130104
 Version: 2019-09-01-415f9e48-4
 Depends: libc, libubox20191228
@@ -439,6 +447,15 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: wpad-mini
+Version: 2019-08-08-ca8c2bd2-7
+Depends: libc, libnl-tiny, hostapd-common, libubus20191227
+Provides: hostapd, wpa-supplicant
+Conflicts: hostapd, hostapd-basic, hostapd-mini, hostapd-openssl, hostapd-wolfssl, wpad, wpad-mesh-openssl, wpad-mesh-wolfssl, wpad-basic, wpad-basic-wolfssl, wpad, wpad-mesh-openssl, wpad-mesh-wolfssl, wpad-basic, wpad-basic-wolfssl
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493161
+
 Package: libip4tc2
 Version: 1.8.3-1
 Depends: libc, libxtables12
@@ -580,6 +597,14 @@ Status: install hold installed
 Essential: yes
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
+Auto-Installed: yes
+
+Package: kmod-mac80211
+Version: 4.14.221+4.19.161-1-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-cfg80211, hostapd-common
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493121
 Auto-Installed: yes
 
 Package: kmod-usb-serial
@@ -736,6 +761,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466700
 Auto-Installed: yes
 
+Package: kmod-b43
+Version: 4.14.221+4.19.161-1-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-mac80211
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493123
+
 Package: kmod-nf-conntrack6
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nf-conntrack
@@ -816,6 +848,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: hostapd-common
+Version: 2019-08-08-ca8c2bd2-5
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493118
+Auto-Installed: yes
+
 Package: kmod-ipt-offload
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-ipt-core, kmod-nf-flow
@@ -829,6 +869,14 @@ Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-net
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621492219
+
+Package: wireless-regdb
+Version: 2020.11.20-1
+Depends: libc
+Status: install ok installed
+Architecture: all
+Installed-Time: 1621493114
+Auto-Installed: yes
 
 Package: kmod-scsi-core
 Version: 4.14.221-1
@@ -850,6 +898,14 @@ Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-lib-crc-cc
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
+Auto-Installed: yes
+
+Package: kmod-cfg80211
+Version: 4.14.221+4.19.161-1-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), iw, wireless-regdb
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493116
 Auto-Installed: yes
 
 Package: ppp-mod-pppoe
