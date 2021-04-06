@@ -1,3 +1,10 @@
+Package: hub-ctrl
+Version: 1.0-2
+Depends: libc, libusb-compat4
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424630
+
 Package: kmod-usb-storage
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-scsi-core, kmod-usb-core
@@ -148,6 +155,16 @@ Architecture: mipsel_74kc
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: libssh21
+ABIVersion: 1
+Version: 1.9.0-2
+Depends: libc, libopenssl1.1, zlib
+Provides: libssh2
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424703
+Auto-Installed: yes
+
 Package: rpcd
 Version: 2021-03-11-ccb75178-1
 Depends: libc, libubus20210215, libubox20210516, libuci20130104, libblobmsg-json20210516, libjson-c5
@@ -203,6 +220,21 @@ Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456)
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+
+Package: nano
+Version: 5.7-1
+Depends: libc, libncurses6
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424654
+
+Package: glib2
+Version: 2.66.4-1
+Depends: libc, zlib, libpthread, libffi, libattr
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424679
+Auto-Installed: yes
 
 Package: libiwinfo-lua
 Version: 2021-01-31-4a32b33e-1
@@ -273,6 +305,16 @@ Status: install ok installed
 Architecture: mipsel_74kc
 Installed-Time: 1623424223
 Auto-Installed: yes
+
+Package: mc
+Version: 4.8.25-1
+Depends: libc, glib2, libncurses6, libmount1, libssh21
+Status: install user installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/mc/mc.menu c607d7c023ff82e16fb0efd615b88650712336f2b23b9a31b7a8cbf33a92f57f
+ /etc/mc/skins/default.ini 5e4a9c862db65e4b6e8663a51617dd84cc332d953442787f5b9fe03e80a01a89
+Installed-Time: 1623424708
 
 Package: luci-theme-bootstrap
 Version: git-20.363.32570-6ffd159
@@ -431,6 +473,14 @@ Architecture: mipsel_74kc
 Installed-Time: 1623423848
 Auto-Installed: yes
 
+Package: speedtest-netperf
+Version: 1.0.0-1
+Depends: libc, netperf
+Conflicts: speedtest
+Status: install user installed
+Architecture: all
+Installed-Time: 1623424724
+
 Package: kmod-usb-ohci
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-core
@@ -464,6 +514,16 @@ Conflicts: libudev, eudev, udev
 Status: install ok installed
 Architecture: mipsel_74kc
 Installed-Time: 1623423663
+Auto-Installed: yes
+
+Package: libmount1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, libblkid1
+Provides: libmount
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424682
 Auto-Installed: yes
 
 Package: usbutils
@@ -559,19 +619,19 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1623424261
 
+Package: netperf
+Version: 2.7.0-2
+Depends: libc
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424723
+
 Package: kmod-usb2
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
-
-Package: kmod-fs-exfat
-Version: 5.4.119+5.10.1-1
-Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
-Status: install user installed
-Architecture: mipsel_74kc
-Installed-Time: 1623424271
 
 Package: firewall
 Version: 2021-03-23-61db17ed-1
@@ -582,6 +642,13 @@ Conffiles:
  /etc/config/firewall de732cfb093ff5b51c2877db734651b513f2fb920d28881bf0e2ba9bbc0d5f80
  /etc/firewall.user bd68324966481011f5e36570258ad97dd422655c16f3119d48325ed8459de510
 Installed-Time: 1622210644
+
+Package: kmod-fs-exfat
+Version: 5.4.119+5.10.1-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424271
 
 Package: luci-app-firewall
 Version: git-21.060.51546-4935525
@@ -697,6 +764,20 @@ Conffiles:
 Installed-Time: 1622210644
 Alternatives: 100:/usr/bin/scp:/usr/sbin/dropbear, 100:/usr/bin/ssh:/usr/sbin/dropbear
 
+Package: tree
+Version: 1.8.0-1
+Depends: libc, libgcc1
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424710
+
+Package: curl
+Version: 7.77.0-1
+Depends: libc, libcurl
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424644
+
 Package: kmod-nls-utf8
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
@@ -780,6 +861,14 @@ Depends: libc
 Status: install user installed
 Architecture: all
 Installed-Time: 1622210644
+Auto-Installed: yes
+
+Package: libffi
+Version: 3.3-2
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424660
 Auto-Installed: yes
 
 Package: otrx
@@ -874,6 +963,16 @@ Depends: libc, e2fsprogs
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1623424164
+
+Package: libopenssl1.1
+ABIVersion: 1.1
+Version: 1.1.1k-1
+Depends: libc
+Provides: libopenssl
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424699
+Auto-Installed: yes
 
 Package: luci-proto-ipv6
 Version: git-21.148.49484-14511e5
@@ -988,6 +1087,16 @@ Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1623423845
 
+Package: libusb-compat4
+ABIVersion: 4
+Version: 0.1.7-2
+Depends: libc, libusb-1.00
+Provides: libusb-compat
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424630
+Auto-Installed: yes
+
 Package: kmod-ppp
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-lib-crc-ccitt, kmod-slhc
@@ -1048,6 +1157,16 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
 
+Package: libcurl4
+ABIVersion: 4
+Version: 7.77.0-1
+Depends: libc, libwolfssl4.7.0.66253b90, ca-bundle
+Provides: libcurl
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424643
+Auto-Installed: yes
+
 Package: usign
 Version: 2020-05-23-f1f65026-1
 Depends: libc, libubox20210516
@@ -1071,6 +1190,14 @@ Provides: liblua
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+Auto-Installed: yes
+
+Package: zlib
+Version: 1.2.11-3
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424658
 Auto-Installed: yes
 
 Package: kmod-nf-ipt6
@@ -1286,6 +1413,14 @@ Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-ipt-core, k
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+
+Package: libattr
+Version: 2.4.48-2
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424662
+Auto-Installed: yes
 
 Package: gdisk
 Version: 1.0.6-1
