@@ -10,12 +10,12 @@ config globals 'globals'
 
 config interface 'lan'
 	option type 'bridge'
-	option ifname 'eth0'
 	option proto 'static'
 	option netmask '255.255.255.0'
 	option ip6assign '60'
 	option ipaddr '192.168.19.1'
 	option dns '192.168.2.1'
+	option ifname 'eth0.6'
 
 config route
 	option interface 'lan'
@@ -23,4 +23,43 @@ config route
 	option netmask '0.0.0.0'
 	option gateway '192.168.19.2'
 	option metric '100'
+
+config switch
+	option name 'switch0'
+	option reset '1'
+	option enable_vlan '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '0'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '2'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '3'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '4'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '5'
+	option ports '0 5t'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '6'
+	option ports '1 2 3 4 5t'
+
+config interface 'wan'
+	option ifname 'eth0.5'
+	option proto 'dhcp'
 
