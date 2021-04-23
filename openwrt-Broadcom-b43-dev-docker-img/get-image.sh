@@ -1,8 +1,11 @@
 # !/usr/bin/bash
-# Скрипт извлекает из контейнера сборки openwrt готовый образ прошивки для WL-500gP-v2 / DIR-320
+# Скрипт извлекает из контейнера сборки openwrt готовый образ прошивки для WL-500gP-v2 / DIR-320 и манифест
 
 openwrtDirInContainer=/root/openwrt
-sourceFileInContainer=${openwrtDirInContainer}/build_dir/target-mipsel_mips32_musl/openwrt-imagebuilder-brcm47xx-legacy.Linux-x86_64/bin/targets/brcm47xx/legacy/openwrt-brcm47xx-legacy-asus-wl-500gp-v2-squashfs.trx
+typeset -a sourceFilesInContainer=(
+	"${openwrtDirInContainer}/build_dir/target-mipsel_mips32_musl/openwrt-imagebuilder-brcm47xx-legacy.Linux-x86_64/bin/targets/brcm47xx/legacy/openwrt-brcm47xx-legacy-asus-wl-500gp-v2-squashfs.trx"
+	"${openwrtDirInContainer}/build_dir/target-mipsel_mips32_musl/openwrt-imagebuilder-brcm47xx-legacy.Linux-x86_64/bin/targets/brcm47xx/legacy/openwrt-brcm47xx-legacy-broadcom-b43.manifest"
+)
 
 main() {
 	# определяем параметры проекта (находим Dockerfile, получаем имя Docker-образа)
@@ -13,14 +16,12 @@ main() {
 	# определяем источник и цель
 	local realTargetPath=${1:-.}
 	local realTargetDir=
-	local targetFile=
 	[ -d "$realTargetPath" -o "/" == "${realTargetPath: -1}" ] && {
 		realTargetDir=$( readlink -m "$realTargetPath" )
 		realTargetPath=${realTargetDir}
 	} || {
 		realTargetPath=$( readlink -m "$realTargetPath" )
 		realTargetDir=$( dirname "$realTargetPath" )
-		targetFile=$( basename "$realTargetPath" )
 	}
 	[ ! -d "$realTargetDir" ] && {
 		mkdir -p "${realTargetDir}"
@@ -30,7 +31,7 @@ main() {
 	# копирование
 	echo mount $realTargetDir '->' $mappedTargetDir
 	docker run --rm -it -v ${realTargetDir}:${mappedTargetDir} "$projectName" \
-		cp -v "$sourceFileInContainer" "${mappedTargetDir}/${targetFile}"
+		cp -v "${sourceFilesInContainer[@]}" "${mappedTargetDir}/"
 }
 
 # Выводит подсказку
