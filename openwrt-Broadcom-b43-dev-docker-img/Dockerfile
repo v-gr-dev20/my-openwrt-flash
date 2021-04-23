@@ -37,6 +37,8 @@ CONFIG_PACKAGE_autossh=y						\n\
 CONFIG_PACKAGE_e2fsprogs=y						\n\
 CONFIG_PACKAGE_fdisk=y							\n\
 CONFIG_PACKAGE_luci=y							\n\
+CONFIG_PACKAGE_ddns-scripts=y					\n\
+CONFIG_PACKAGE_ddns-scripts_no-ip_com=y			\n\
 " >> configdiff \
  && cp configdiff .config \
  && make defconfig
@@ -92,6 +94,9 @@ RUN FORCE_UNSAFE_CONFIGURE=1 IGNORE_ERRORS=1 \
 #
 # Web-GUI (исключен)
 		-luci \
+#
+# DDNS-скрипты
+		ddns-scripts ddns-scripts_no-ip_com \
 "
 
 WORKDIR /root/openwrt
