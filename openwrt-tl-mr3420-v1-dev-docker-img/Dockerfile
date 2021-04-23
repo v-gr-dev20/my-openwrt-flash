@@ -45,6 +45,8 @@ CONFIG_PACKAGE_kmod-ath9k=m						\n\
 CONFIG_PACKAGE_wpad-mini=y						\n\
 CONFIG_DEFAULT_kmod-ath9k=n						\n\
 CONFIG_DEFAULT_wpad-mini=n						\n\
+CONFIG_PACKAGE_ddns-scripts=y					\n\
+CONFIG_PACKAGE_ddns-scripts_no-ip_com=y			\n\
 " >> configdiff \
  && cp configdiff .config \
  && make defconfig
@@ -99,6 +101,9 @@ RUN FORCE_UNSAFE_CONFIGURE=1 IGNORE_ERRORS=1 \
 #
 # Web-GUI (исключен)
 		-luci \
+#
+# DDNS-скрипты
+		ddns-scripts ddns-scripts_no-ip_com \
 "
 
 WORKDIR /root/openwrt
