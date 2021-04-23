@@ -1,8 +1,12 @@
 # !/usr/bin/bash
-# Скрипт извлекает из контейнера сборки openwrt готовый образ прошивки для TL-MR3420-v1
+# Скрипт извлекает из контейнера сборки openwrt готовый образ прошивки для TL-MR3420-v1 и манифест
 
 openwrtDirInContainer=/root/openwrt
-sourceFileInContainer=${openwrtDirInContainer}/build_dir/target-mips_24kc_musl/openwrt-imagebuilder-ar71xx-tiny.Linux-x86_64/bin/targets/ar71xx/tiny/openwrt-ar71xx-tiny-tl-mr3420-v1-squashfs-sysupgrade.bin
+typeset -a sourceFilesInContainer=(
+	"${openwrtDirInContainer}/build_dir/target-mips_24kc_musl/openwrt-imagebuilder-ar71xx-tiny.Linux-x86_64/bin/targets/ar71xx/tiny/openwrt-ar71xx-tiny-tl-mr3420-v1-squashfs-sysupgrade.bin"
+	"${openwrtDirInContainer}/build_dir/target-mips_24kc_musl/openwrt-imagebuilder-ar71xx-tiny.Linux-x86_64/bin/targets/ar71xx/tiny/openwrt-ar71xx-tiny-device-tl-mr3420-v1.manifest"
+)
+
 main() {
 	# определяем параметры проекта (находим Dockerfile, получаем имя Docker-образа)
 	local -a projectData
@@ -12,14 +16,12 @@ main() {
 	# определяем источник и цель
 	local realTargetPath=${1:-.}
 	local realTargetDir=
-	local targetFile=
 	[ -d "$realTargetPath" -o "/" == "${realTargetPath: -1}" ] && {
 		realTargetDir=$( readlink -m "$realTargetPath" )
 		realTargetPath=${realTargetDir}
 	} || {
 		realTargetPath=$( readlink -m "$realTargetPath" )
 		realTargetDir=$( dirname "$realTargetPath" )
-		targetFile=$( basename "$realTargetPath" )
 	}
 	[ ! -d "$realTargetDir" ] && {
 		mkdir -p "${realTargetDir}"
@@ -29,7 +31,7 @@ main() {
 	# копирование
 	echo mount $realTargetDir '->' $mappedTargetDir
 	docker run --rm -it -v ${realTargetDir}:${mappedTargetDir} "$projectName" \
-		cp -v "$sourceFileInContainer" "${mappedTargetDir}/${targetFile}"
+		cp -v "${sourceFilesInContainer[@]}" "${mappedTargetDir}/"
 }
 
 # Выводит подсказку
