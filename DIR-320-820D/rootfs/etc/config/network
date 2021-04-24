@@ -32,6 +32,7 @@ config switch_vlan
 config switch_vlan
 	option device 'switch0'
 	option vlan '1'
+	option ports '1 5t'
 
 config switch_vlan
 	option device 'switch0'
@@ -53,9 +54,15 @@ config switch_vlan
 config switch_vlan
 	option device 'switch0'
 	option vlan '6'
-	option ports '1 2 3 4 5t'
+	option ports '2 3 4 5t'
 
 config interface 'wan'
 	option ifname 'eth0.5'
 	option proto 'dhcp'
+
+config interface 'uplink1'
+	option proto 'static'
+	option ifname 'eth0.1'
+	option netmask '255.255.255.0'
+	option ipaddr '192.168.1.21'
 
