@@ -25,6 +25,12 @@ config mount
 	option enabled '1'
 	option enabled_fsck '1'
 
+config mount
+	option uuid '20b08764-8341-42d0-a176-aa0eec350c9d'
+	option target '/home/backup'
+	option enabled '1'
+	option enabled_fsck '1'
+
 config mount 'rwm'
 	option device '/dev/mtdblock5'
 	option target '/rwm'
