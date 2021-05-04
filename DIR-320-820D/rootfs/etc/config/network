@@ -44,6 +44,7 @@ config switch_vlan
 config switch_vlan
 	option device 'eth0'
 	option vlan '5'
+	option ports '0 5t'
 
 config switch_vlan
 	option device 'eth0'
@@ -76,4 +77,8 @@ config device
 config device
 	option name 'eth0.6'
 	option macaddr '00:90:4c:c0:00:06'
+
+config interface 'wan'
+	option ifname 'eth0.5'
+	option proto 'dhcp'
 
