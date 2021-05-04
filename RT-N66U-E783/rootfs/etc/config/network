@@ -16,12 +16,6 @@ config interface 'lan'
 	option ip6assign '60'
 	option ifname 'eth0.6'
 
-config interface 'wan'
-	option proto 'dhcp'
-
-config interface 'wan6'
-	option proto 'dhcpv6'
-
 config switch
 	option name 'switch0'
 	option reset '1'
@@ -50,6 +44,7 @@ config switch_vlan
 config switch_vlan
 	option device 'switch0'
 	option vlan '5'
+	option ports '8t 0'
 
 config switch_vlan
 	option device 'switch0'
@@ -82,4 +77,12 @@ config device
 config device
 	option name 'eth0.6'
 	option macaddr 'c8:60:00:e7:83:06'
+
+config interface 'wan'
+	option ifname 'eth0.5'
+	option proto 'dhcp'
+
+config interface 'wan6'
+	option ifname 'eth0.5'
+	option proto 'dhcpv6'
 
