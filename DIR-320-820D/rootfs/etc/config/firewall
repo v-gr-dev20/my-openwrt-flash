@@ -125,3 +125,9 @@ config rule
 config include
 	option path '/etc/firewall.user'
 
+config rule
+	option dest_port '22'
+	option src 'wan'
+	option target 'ACCEPT'
+	option name 'Allow-SSH'
+
