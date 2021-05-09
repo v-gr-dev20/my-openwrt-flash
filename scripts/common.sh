@@ -69,7 +69,7 @@ function GetProject()
 	if [ "$( basename "$projectName" )" == "Dockerfile" ] ;then
 		projectName=$( dirname "$projectName" )
 	fi
-	projectName=$( basename "$projectName" |sed 's/\('${suffix}'\)\{1,\}$//g' |sed 's/^[\.\/]$//g' |tr -s '[:upper:]' '[:lower:]' )
+	projectName=$( basename "$projectName" |sed 's/\('${suffix}'\)\{1,\}$//g' |sed 's/^[\.\/]$//g' |tr '[:upper:]' '[:lower:]' )
 
 	# выдаем строки результата
 	result=( "$projectName" "$( dirname "${result[-1]}" )" "$( basename "${result[-1]}" )" "${result[@]}" )

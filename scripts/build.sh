@@ -36,7 +36,7 @@ function outputHelp()
 
 # Точка входа
 typeset ThisScriptPath="$( readlink -m "$0" )"
-if( echo "$1" |grep -E '\-h|\-help' > /dev/null );then
+if( echo "$1" |grep -E '^(-h|-help|--help)$' > /dev/null );then
 	outputHelp
 	exit
 fi
