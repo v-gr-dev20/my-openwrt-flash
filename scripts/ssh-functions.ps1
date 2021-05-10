@@ -287,3 +287,21 @@ function Get-Files( [Parameter( Mandatory, Position = 0 )] $config,
 	tar -C "$localDestinationDirectory" -xf "$( $tempFile.FullName )"
 	Remove-Item $tempFile.FullName -force
 }
+
+# Копирует и перезаписывает локальные файлы и папки на удаленный хост в указанную папку
+function Put-Files( [Parameter( Mandatory, Position = 0 )] $config,
+	[Parameter( Mandatory, Position = 1 )][string[]] $files,
+	[Parameter( Mandatory, Position = 2 )][string] $remoteDestinationDirectory )
+{
+	if( 0 -eq $files.Count ) {
+		return
+	}
+	$tempFile = New-TemporaryFile
+	tar -cf $tempFile.FullName -C "$( $files[0] |Split-Path -parent )" "$( $files[0] |Split-Path -leaf )"
+	foreach( $file in ( $files |Select-Object -Skip 1 ) ) {
+		tar -rf $tempFile.FullName -C "$( $file |Split-Path -parent )" "$( $file |Split-Path -leaf )"
+	}
+	Invoke-Command-by-SSH -MustSaveLog:$false -WithTimestamp:$false -RedirectStandardInput:$tempFile.FullName `
+			$config 'tar' ( '-xf', '-', '-C', $remoteDestinationDirectory )
+	Remove-Item $tempFile.FullName -force
+}
