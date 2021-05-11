@@ -1,6 +1,6 @@
 FROM openwrt-broadcom-b43-dev:latest
 
-ARG project=helloworld
+ARG project=balong_flash
 WORKDIR /root/openwrt
 
 ENV PATH=/root/openwrt/staging_dir/host/bin:$PATH

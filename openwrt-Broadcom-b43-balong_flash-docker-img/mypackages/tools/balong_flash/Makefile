@@ -2,9 +2,9 @@ include $(TOPDIR)/rules.mk
 
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
-PKG_NAME:=helloworld
-PKG_VERSION:=1.0
-PKG_RELEASE:=1
+PKG_NAME:=balong_flash
+PKG_VERSION:=0.0
+PKG_RELEASE:=0
 
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
@@ -14,21 +14,21 @@ include $(INCLUDE_DIR)/package.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define Package/$(PKG_NAME)
-	SECTION:=examples
-	CATEGORY:=Examples
-	TITLE:=Hello, World!
+	SECTION:=tools
+	CATEGORY:=Tools
+	TITLE:=Balong flash tool
 endef
 
 # Package description; a more verbose description on what our package does
 define Package/$(PKG_NAME)/description
-	A simple "Hello, world!" -application.
+	Balong flash tool
 endef
 
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
 define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
-	cp $(SOURCE_DIR)/* $(PKG_BUILD_DIR)
+	cp -r $(SOURCE_DIR)/* $(PKG_BUILD_DIR)
 	$(Build/Patch)
 endef
 

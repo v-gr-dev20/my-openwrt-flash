@@ -1,5 +1,5 @@
 # Global target; when 'make' is run without arguments, this is what it should do
-PKG_NAME = helloworld
+PKG_NAME = balong_flash
 all: $(PKG_NAME)
 
 # These variables hold the name of the compilation tool, the compilation flags and the link flags
