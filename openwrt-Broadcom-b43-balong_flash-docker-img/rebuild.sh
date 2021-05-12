@@ -15,8 +15,8 @@ function main()
 	# Запускаем сборку проекта в docker-контейнере
 	project=$1
 	[ -z "$project" ] && { echo "Project not found." >&2; exit 1; }
-	# исходники
-	projectSrcPath=${projectPath}/${project}
+	# исходники кладем выше-выше
+	projectSrcPath=${projectPath}/../../${project}
 	# сюда попадет готовый пакет *.ipk
 	outDirPath=${projectPath}/../target_dir
 	projectDir=$( basename "${projectPath}" )

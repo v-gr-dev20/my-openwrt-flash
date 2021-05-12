@@ -3,12 +3,16 @@ include $(TOPDIR)/rules.mk
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
 PKG_NAME:=balong_flash
-PKG_VERSION:=0.0
-PKG_RELEASE:=0
+PKG_VERSION:=1.0
+PKG_RELEASE:=1
 
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
 SOURCE_DIR:=/root/$(PKG_NAME)
+
+LIBS:= -lz
+BUILDNO:=$(shell cat $(SOURCE_DIR)/build)
+CFLAGS:= -O2 -Wunused -Wno-unused-result -D BUILDNO=$(BUILDNO)  -D_7ZIP_ST $(LIBS) 
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -17,11 +21,12 @@ define Package/$(PKG_NAME)
 	SECTION:=tools
 	CATEGORY:=Tools
 	TITLE:=Balong flash tool
+	DEPENDS:=+zlib
 endef
 
 # Package description; a more verbose description on what our package does
 define Package/$(PKG_NAME)/description
-	Balong flash tool
+	Balong flash tool (cloned from https://github.com/forth32/balongflash.git)
 endef
 
 # Package preparation instructions; create the build directory and copy the source code. 
@@ -36,7 +41,7 @@ endef
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		CC="$(TARGET_CC)" \
-		CFLAGS="$(TARGET_CFLAGS)" \
+		CFLAGS="$(TARGET_CFLAGS) $(CFLAGS)" \
 		LDFLAGS="$(TARGET_LDFLAGS)"
 endef
 
