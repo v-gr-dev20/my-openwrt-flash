@@ -21,6 +21,17 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: opkg
+Version: 2021-01-31-c5dccea9-1
+Depends: libc, uclient-fetch, libpthread, libubox20191228
+Status: install user installed
+Essential: yes
+Architecture: mipsel_mips32
+Conffiles:
+ /etc/opkg.conf f38c19f696ea87c0b30eb5bfeb8657237f4625e1a749c58b99f01595edfb6446
+ /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
+Installed-Time: 1621489130
+
 Package: kmod-usb-core
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
@@ -271,6 +282,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: libuclient20160123
+Version: 2020-06-17-51e16ebf-1
+Depends: libc, libubox20191228
+Provides: libuclient
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621489128
+
 Package: ubusd
 Version: 2019-12-27-041c9d1c-1
 Depends: libc, libubox20191228, libblobmsg-json
@@ -374,6 +393,15 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
+
+Package: uclient-fetch
+Version: 2020-06-17-51e16ebf-1
+Depends: libc, libuclient20160123
+Provides: wget
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621489128
+Alternatives: 200:/usr/bin/wget:/bin/uclient-fetch
 
 Package: uci
 Version: 2019-09-01-415f9e48-4
@@ -584,6 +612,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: kmod-ipt-core
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nf-reject, kmod-nf-ipt
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621466700
+Auto-Installed: yes
+
 Package: e2fsprogs
 Version: 1.44.5-2
 Depends: libc, libuuid1, libext2fs2
@@ -592,14 +628,6 @@ Architecture: mipsel_mips32
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1621466700
-
-Package: kmod-ipt-core
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nf-reject, kmod-nf-ipt
-Status: install ok installed
-Architecture: mipsel_mips32
-Installed-Time: 1621466700
-Auto-Installed: yes
 
 Package: kmod-ledtrig-default-on
 Version: 4.14.221-1
