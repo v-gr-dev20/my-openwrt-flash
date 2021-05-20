@@ -5,13 +5,6 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1622122917
 
-Package: kmod-usb-storage
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-scsi-core, kmod-usb-core
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1621948598
-
 Package: terminfo
 Version: 6.1-5
 Depends: libc
@@ -19,6 +12,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1622097453
 Auto-Installed: yes
+
+Package: kmod-usb-storage
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-scsi-core, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621948598
 
 Package: liblucihttp0
 Version: 2019-07-05-a34a17d5-1
@@ -584,6 +584,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1622099502
 
+Package: kmod-nls-cp1251
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622465606
+
 Package: luci-app-ddns
 Version: 2.4.9-7
 Depends: libc, luci-compat, luci-lib-ipkg, luci-mod-admin-full, ddns-scripts
@@ -783,6 +790,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1622097431
 
+Package: kmod-nls-utf8
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622465611
+
 Package: kmod-usb-serial-wwan
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-serial
@@ -806,6 +820,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1622098555
 Auto-Installed: yes
+
+Package: kmod-nls-cp437
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622465608
 
 Package: rpcd-mod-file
 Version: 2020-05-26-67c8a3fd-1
@@ -1259,6 +1280,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1622101347
 Auto-Installed: yes
 
+Package: kmod-nls-iso8859-1
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622465610
+
 Package: umbim
 Version: 2019-03-11-24f9dc71-1
 Depends: libc, libubox20191228, kmod-usb-net, kmod-usb-net-cdc-mbim, wwan
@@ -1280,6 +1308,13 @@ Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-ohci, 
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1622099431
+
+Package: kmod-nls-cp866
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622465607
 
 Package: luci
 Version: git-21.132.36199-d0cf6e4-1
