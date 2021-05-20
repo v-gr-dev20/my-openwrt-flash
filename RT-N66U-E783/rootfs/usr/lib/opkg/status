@@ -425,6 +425,13 @@ Architecture: mipsel_74kc
 Installed-Time: 1622703575
 Auto-Installed: yes
 
+Package: kmod-usb-ohci
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1613402557
+
 Package: speedtest-netperf
 Version: 1.0.0-1
 Depends: libc, netperf
@@ -433,12 +440,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1622707668
 
-Package: kmod-usb-ohci
+Package: kmod-mii
 Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-core
-Status: install user installed
+Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4)
+Status: install ok installed
 Architecture: mipsel_74kc
-Installed-Time: 1613402557
+Installed-Time: 1622708106
+Auto-Installed: yes
 
 Package: dnsmasq
 Version: 2.80-16.3
@@ -539,6 +547,13 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 
+Package: kmod-usb-net-rndis
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-usb-net, kmod-usb-net-cdc-ether
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622708199
+
 Package: libmbedtls12
 Version: 2.16.10-1
 Depends: libc
@@ -569,19 +584,19 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622705505
 
-Package: netperf
-Version: 2.7.0-1
-Depends: libc
-Status: install user installed
-Architecture: mipsel_74kc
-Installed-Time: 1622707659
-
 Package: kmod-usb2
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+
+Package: netperf
+Version: 2.7.0-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622707659
 
 Package: firewall
 Version: 2019-11-22-8174814a-3
@@ -770,6 +785,13 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 
+Package: usb-modeswitch
+Version: 2017-12-19-f40f84c2-2
+Depends: libc, libubox20191228, libblobmsg-json, libusb-1.0-0
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622710897
+
 Package: rpcd-mod-luci
 Version: 20201107
 Depends: libc, rpcd, libubox20191228, libubus20191227, libnl-tiny
@@ -875,6 +897,13 @@ Depends: libc, libubox20191228, libubus20191227, libblobmsg-json
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+
+Package: kmod-usb-net
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-mii, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622708109
 
 Package: librt
 Version: 1.1.24-2
@@ -1336,6 +1365,13 @@ Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-ipt-core, 
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+
+Package: kmod-usb-net-cdc-ether
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622708115
 
 Package: libattr
 Version: 2.4.48-1
