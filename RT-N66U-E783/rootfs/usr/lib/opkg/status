@@ -487,6 +487,13 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1623423818
 
+Package: kmod-nls-cp1251
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424061
+
 Package: kmod-usb2
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
@@ -617,6 +624,20 @@ Conffiles:
  /etc/config/dropbear 0198dbc97b5a9aac76a5c6233684571ccdcc91fcb735e91c36d2b06a98158589
 Installed-Time: 1622210644
 Alternatives: 100:/usr/bin/scp:/usr/sbin/dropbear, 100:/usr/bin/ssh:/usr/sbin/dropbear
+
+Package: kmod-nls-utf8
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424065
+
+Package: kmod-nls-cp437
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424063
 
 Package: rpcd-mod-file
 Version: 2021-03-11-ccb75178-1
@@ -856,6 +877,13 @@ Architecture: mipsel_74kc
 Installed-Time: 1623423851
 Auto-Installed: yes
 
+Package: kmod-ipt-core
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nf-reject, kmod-nf-ipt
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622210644
+
 Package: e2fsprogs
 Version: 1.45.6-2
 Depends: libc, libuuid1, libext2fs2
@@ -864,13 +892,6 @@ Architecture: mipsel_74kc
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1623423845
-
-Package: kmod-ipt-core
-Version: 5.4.119-1
-Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nf-reject, kmod-nf-ipt
-Status: install user installed
-Architecture: mipsel_74kc
-Installed-Time: 1622210644
 
 Package: kmod-ppp
 Version: 5.4.119-1
@@ -990,6 +1011,13 @@ Architecture: mipsel_74kc
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: kmod-nls-iso8859-1
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424064
+
 Package: luci-lib-jsonc
 Version: git-19.317.29469-8da8f38
 Depends: libc, liblua5.1.5, libjson-c5
@@ -1004,6 +1032,13 @@ Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-mac80211, k
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+
+Package: kmod-nls-cp866
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623424062
 
 Package: luci
 Version: git-20.074.84698-ead5e81

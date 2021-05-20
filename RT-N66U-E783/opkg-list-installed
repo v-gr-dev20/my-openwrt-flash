@@ -44,6 +44,11 @@ kmod-nf-nat - 5.4.119-1
 kmod-nf-reject - 5.4.119-1
 kmod-nf-reject6 - 5.4.119-1
 kmod-nls-base - 5.4.119-1
+kmod-nls-cp1251 - 5.4.119-1
+kmod-nls-cp437 - 5.4.119-1
+kmod-nls-cp866 - 5.4.119-1
+kmod-nls-iso8859-1 - 5.4.119-1
+kmod-nls-utf8 - 5.4.119-1
 kmod-ppp - 5.4.119-1
 kmod-pppoe - 5.4.119-1
 kmod-pppox - 5.4.119-1
