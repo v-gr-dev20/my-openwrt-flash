@@ -7,20 +7,21 @@ config defaults
 
 config zone
 	option name 'lan'
-	list network 'lan'
 	option input 'ACCEPT'
 	option output 'ACCEPT'
 	option forward 'ACCEPT'
+	list network 'lan'
 
 config zone
 	option name 'wan'
-	list network 'wan'
-	list network 'wan6'
 	option input 'REJECT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
 	option masq '1'
 	option mtu_fix '1'
+	list network 'wan'
+	list network 'wan6'
+	list network 'hphone'
 
 config forwarding
 	option src 'lan'
