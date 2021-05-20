@@ -58,6 +58,7 @@ kmod-lib-crc-ccitt - 5.10.176-1
 kmod-lib-crc16 - 5.10.176-1
 kmod-lib-crc32c - 5.10.176-1
 kmod-mac80211 - 5.10.176+5.15.92-1-1
+kmod-mii - 5.10.176-1
 kmod-nf-conntrack - 5.10.176-1
 kmod-nf-conntrack6 - 5.10.176-1
 kmod-nf-flow - 5.10.176-1
@@ -85,6 +86,9 @@ kmod-slhc - 5.10.176-1
 kmod-usb-core - 5.10.176-1
 kmod-usb-dwc3 - 5.10.176-1
 kmod-usb-dwc3-qcom - 5.10.176-1
+kmod-usb-net - 5.10.176-1
+kmod-usb-net-cdc-ether - 5.10.176-1
+kmod-usb-net-rndis - 5.10.176-1
 kmod-usb-storage - 5.10.176-1
 kmod-usb-xhci-hcd - 5.10.176-1
 kmod-usb3 - 5.10.176-1
@@ -204,6 +208,7 @@ uhttpd-mod-ubus - 2022-10-31-23977554-1
 uhubctl - 2.4.0-1
 urandom-seed - 3
 urngd - 2020-01-21-c7f7b6b6-1
+usb-modeswitch - 2022-02-24-3c8595a4-1
 usbutils - 014-1
 usign - 2020-05-23-f1f65026-1
 wireless-regdb - 2023.02.13-1
