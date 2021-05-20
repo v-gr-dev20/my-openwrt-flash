@@ -51,6 +51,7 @@ kmod-leds-gpio - 5.4.179-1
 kmod-lib-crc-ccitt - 5.4.179-1
 kmod-lib-crc16 - 5.4.179-1
 kmod-mac80211 - 5.4.179+5.10.85-1-1
+kmod-mii - 5.4.179-1
 kmod-nf-conntrack - 5.4.179-1
 kmod-nf-conntrack6 - 5.4.179-1
 kmod-nf-flow - 5.4.179-1
@@ -73,6 +74,9 @@ kmod-slhc - 5.4.179-1
 kmod-usb-core - 5.4.179-1
 kmod-usb-dwc3 - 5.4.179-1
 kmod-usb-dwc3-qcom - 5.4.179-1
+kmod-usb-net - 5.4.179-1
+kmod-usb-net-cdc-ether - 5.4.179-1
+kmod-usb-net-rndis - 5.4.179-1
 kmod-usb-storage - 5.4.179-1
 kmod-usb3 - 5.4.179-1
 libattr - 2.4.48-2
@@ -183,6 +187,7 @@ uhttpd-mod-ubus - 2021-03-21-15346de8-2
 uhubctl - 2.4.0-1
 urandom-seed - 3
 urngd - 2020-01-21-c7f7b6b6-1
+usb-modeswitch - 2017-12-19-f40f84c2-2
 usbids - 0.354-1
 usbutils - 013-2
 usign - 2020-05-23-f1f65026-1
