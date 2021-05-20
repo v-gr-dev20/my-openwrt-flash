@@ -353,6 +353,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: kmod-nls-cp1251
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493920
+
 Package: kmod-usb2
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
@@ -492,12 +499,27 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: kmod-nls-utf8
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493924
+
 Package: kmod-usb-serial-wwan
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-serial
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
+Auto-Installed: yes
+
+Package: kmod-nls-cp437
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621509651
 Auto-Installed: yes
 
 Package: mtd
@@ -761,12 +783,26 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466700
 Auto-Installed: yes
 
+Package: kmod-nls-iso8859-1
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493923
+
 Package: kmod-b43
 Version: 4.14.221+4.19.161-1-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-mac80211
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621493123
+
+Package: kmod-nls-cp866
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621493922
 
 Package: kmod-nf-conntrack6
 Version: 4.14.221-1
