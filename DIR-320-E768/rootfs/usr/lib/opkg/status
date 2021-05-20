@@ -5,6 +5,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: terminfo
+Version: 6.1-5
+Depends: libc
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621502308
+
 Package: libc
 Version: 1.1.24-2
 Depends: libgcc1
@@ -13,12 +20,27 @@ Essential: yes
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: ntfs-3g-utils
+Version: 2017.3.23-2-fuseint
+Depends: libc, ntfs-3g, libgcrypt, libuuid1
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494879
+
 Package: kmod-usb-bcma
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-core
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
+Auto-Installed: yes
+
+Package: mkf2fs
+Version: 1.12.0-3
+Depends: libc, libf2fs6
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494346
 Auto-Installed: yes
 
 Package: opkg
@@ -89,6 +111,13 @@ Essential: yes
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: f2fs-tools
+Version: 1.12.0-3
+Depends: libc, libf2fs6, mkf2fs, f2fsck
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494349
+
 Package: chat
 Version: 2.4.7.git-2019-05-25-3
 Depends: libc
@@ -141,6 +170,14 @@ Depends: libc
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
+Auto-Installed: yes
+
+Package: libgcrypt
+Version: 1.8.5-1
+Depends: libc, libgpg-error
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494876
 Auto-Installed: yes
 
 Package: libusb-1.0-0
@@ -240,12 +277,28 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: dosfstools
+Version: 4.1-4
+Depends: libc
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494370
+
 Package: netifd
 Version: 2021-01-09-753c351b-1
 Depends: libc, libuci20130104, libnl-tiny, libubus20191227, ubus, ubusd, jshn, libubox20191228
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
+Auto-Installed: yes
+
+Package: libf2fs6
+Version: 1.12.0-3
+Depends: libc, libuuid1
+Provides: libf2fs
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494345
 Auto-Installed: yes
 
 Package: ddns-scripts
@@ -255,6 +308,15 @@ Architecture: all
 Conffiles:
  /etc/config/ddns ccdb2a41b8c7d0d42eed42995a86b2bdc8dc689df3fe6c80de8ab9fdb0b15b86
 Installed-Time: 1621466700
+
+Package: libsmartcols1
+Version: 2.34-1
+Depends: libc, librt
+Provides: libsmartcols
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621510177
+Auto-Installed: yes
 
 Package: autossh
 Version: 1.4g-1
@@ -322,6 +384,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: libgpg-error
+Version: 1.36-3
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494869
+Auto-Installed: yes
+
 Package: libxtables12
 Version: 1.8.3-1
 Depends: libc
@@ -360,6 +430,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621493920
 
+Package: kmod-fs-vfat
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base, kmod-nls-cp437, kmod-nls-iso8859-1, kmod-nls-utf8
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621509652
+
 Package: kmod-usb2
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
@@ -383,6 +460,13 @@ Conffiles:
  /etc/config/firewall 303d858071dfcf1d1e8593168eb9c582a2c774211f23cef4bf7c85e4060a5e8c
  /etc/firewall.user bd68324966481011f5e36570258ad97dd422655c16f3119d48325ed8459de510
 Installed-Time: 1621466700
+
+Package: kmod-fs-exfat
+Version: 4.14.221+2018-04-17-01c30ad5-2
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621495692
 
 Package: comgt
 Version: 0.32-33
@@ -629,6 +713,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621493121
 Auto-Installed: yes
 
+Package: tune2fs
+Version: 1.44.5-2
+Depends: libc, e2fsprogs
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621511659
+
 Package: kmod-usb-serial
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-core
@@ -642,6 +733,14 @@ Depends: libc, libubox20191228
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
+Auto-Installed: yes
+
+Package: uclibcxx
+Version: 0.2.5-3
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621510190
 Auto-Installed: yes
 
 Package: libblobmsg-json
@@ -678,6 +777,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: ntfs-3g
+Version: 2017.3.23-2-fuseint
+Depends: libc, kmod-fuse, libpthread
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494764
+
 Package: libext2fs2
 Version: 1.44.5-2
 Depends: libc, libuuid1, libblkid1, libss2, libcomerr0
@@ -695,12 +801,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
-Package: kmod-ipt-core
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nf-reject, kmod-nf-ipt
+Package: libfdisk1
+Version: 2.34-1
+Depends: libc, libuuid1, libblkid1
+Provides: libfdisk
 Status: install ok installed
 Architecture: mipsel_mips32
-Installed-Time: 1621466700
+Installed-Time: 1621510181
 Auto-Installed: yes
 
 Package: e2fsprogs
@@ -711,6 +818,14 @@ Architecture: mipsel_mips32
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1621466700
+
+Package: kmod-ipt-core
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nf-reject, kmod-nf-ipt
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621466700
+Auto-Installed: yes
 
 Package: kmod-ledtrig-default-on
 Version: 4.14.221-1
@@ -732,6 +847,22 @@ Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-lib-crc-cc
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
+Auto-Installed: yes
+
+Package: kmod-fs-f2fs
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-crypto-hash, kmod-crypto-crc32
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621508803
+
+Package: libncurses6
+Version: 6.1-5
+Depends: libc, terminfo
+Provides: libncursesw, libncurses, libncursesw6
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621510184
 Auto-Installed: yes
 
 Package: libss2
@@ -783,6 +914,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466700
 Auto-Installed: yes
 
+Package: f2fsck
+Version: 1.12.0-3
+Depends: libc, libf2fs6
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621494349
+Auto-Installed: yes
+
 Package: kmod-nls-iso8859-1
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
@@ -803,6 +942,13 @@ Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-nls-base
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621493922
+
+Package: fdisk
+Version: 2.34-1
+Depends: libc, libblkid1, libsmartcols1, libfdisk1, libncursesw6
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621510185
 
 Package: kmod-nf-conntrack6
 Version: 4.14.221-1
@@ -851,6 +997,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
 
+Package: kmod-crypto-crc32
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-crypto-hash
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621499090
+
 Package: libubus20191227
 Version: 2019-12-27-041c9d1c-1
 Depends: libc, libubox20191228
@@ -898,6 +1051,13 @@ Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-ipt-core, 
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
+
+Package: gdisk
+Version: 1.0.4-2
+Depends: libc, uclibcxx, libuuid1
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621510192
 
 Package: kmod-usb-net-cdc-ether
 Version: 4.14.221-1
