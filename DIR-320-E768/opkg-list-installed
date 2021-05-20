@@ -33,6 +33,7 @@ kmod-ledtrig-netdev - 4.14.221-1
 kmod-ledtrig-timer - 4.14.221-1
 kmod-lib-crc-ccitt - 4.14.221-1
 kmod-lib-crc16 - 4.14.221-1
+kmod-mii - 4.14.221-1
 kmod-nf-conntrack - 4.14.221-1
 kmod-nf-conntrack6 - 4.14.221-1
 kmod-nf-flow - 4.14.221-1
@@ -51,6 +52,9 @@ kmod-usb-acm - 4.14.221-1
 kmod-usb-bcma - 4.14.221-1
 kmod-usb-core - 4.14.221-1
 kmod-usb-ehci - 4.14.221-1
+kmod-usb-net - 4.14.221-1
+kmod-usb-net-cdc-ether - 4.14.221-1
+kmod-usb-net-rndis - 4.14.221-1
 kmod-usb-ohci - 4.14.221-1
 kmod-usb-serial - 4.14.221-1
 kmod-usb-serial-option - 4.14.221-1

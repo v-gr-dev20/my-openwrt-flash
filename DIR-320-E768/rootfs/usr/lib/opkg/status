@@ -264,6 +264,14 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: kmod-mii
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b)
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621492217
+Auto-Installed: yes
+
 Package: dnsmasq
 Version: 2.80-16.3
 Depends: libc, libubus20191227
@@ -322,6 +330,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 Auto-Installed: yes
+
+Package: kmod-usb-net-rndis
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-net, kmod-usb-net-cdc-ether
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621492230
 
 Package: block-mount
 Version: 2020-05-12-84269037-1
@@ -550,6 +565,13 @@ Depends: libc, libubox20191228, libubus20191227, libblobmsg-json
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
+
+Package: kmod-usb-net
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-mii, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621492217
 
 Package: librt
 Version: 1.1.24-2
@@ -800,6 +822,13 @@ Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-ipt-core, 
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466700
+
+Package: kmod-usb-net-cdc-ether
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621492219
 
 Package: kmod-scsi-core
 Version: 4.14.221-1
