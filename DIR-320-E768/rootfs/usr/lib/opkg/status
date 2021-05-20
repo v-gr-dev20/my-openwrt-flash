@@ -185,6 +185,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466700
 Auto-Installed: yes
 
+Package: kmod-lib-crc16
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b)
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1621466699
+Auto-Installed: yes
+
 Package: base-files
 Version: 204.2-r11306-c4a6851c72
 Depends: libc, netifd, procd, jsonfilter, usign, openwrt-keyring, fstools, fwtool
@@ -207,14 +215,6 @@ Conffiles:
  /etc/sysctl.conf c02fe88dc055a1eaee9e7cb631760a3a5a9cea55610b42aa45196838c6f1a55e
  /etc/sysupgrade.conf 9e87b05fe2f12c84d1c465b396322748479f64bc40e5bab061887f0bd95020a6
 Installed-Time: 1621466699
-
-Package: kmod-lib-crc16
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-a45392f5622eeb112c2038613a31813b)
-Status: install ok installed
-Architecture: mipsel_mips32
-Installed-Time: 1621466699
-Auto-Installed: yes
 
 Package: kmod-nf-nat
 Version: 4.14.221-1
@@ -386,6 +386,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621466700
 Auto-Installed: yes
 
+Package: odhcp6c
+Version: 2021-01-09-64e1b4e7-16
+Depends: libc, libubox20191228
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621489785
+
 Package: fstools
 Version: 2020-05-12-84269037-1
 Depends: libc, ubox
@@ -467,6 +474,13 @@ Depends: libc, libubox20191228
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
+
+Package: odhcpd-ipv6only
+Version: 2020-05-03-49e4949c-3
+Depends: libc, libubox20191228, libuci20130104, libubus20191227, libnl-tiny
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621489787
 
 Package: usb-modeswitch
 Version: 2017-12-19-f40f84c2-2
