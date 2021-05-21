@@ -59,3 +59,30 @@ config interface 'hphone'
 	option ifname 'usb0'
 	option proto 'dhcp'
 
+config device
+	option name 'eth0'
+
+config device
+	option name 'eth0.1'
+	option macaddr '00:90:4c:c0:00:01'
+
+config device
+	option name 'eth0.2'
+	option macaddr '00:90:4c:c0:00:02'
+
+config device
+	option name 'eth0.3'
+	option macaddr '00:90:4c:c0:00:03'
+
+config device
+	option name 'eth0.4'
+	option macaddr '00:90:4c:c0:00:04'
+
+config device
+	option name 'eth0.5'
+	option macaddr '00:90:4c:c0:00:05'
+
+config device
+	option name 'eth0.6'
+	option macaddr '00:90:4c:c0:00:06'
+
