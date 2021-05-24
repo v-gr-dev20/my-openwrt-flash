@@ -13,59 +13,9 @@ CONFIG_TARGET_brcm47xx_legacy_Broadcom-b43=y	\n\
 RUN FORCE_UNSAFE_CONFIGURE=1 \
 	make -j5 toolchain/install
 
-RUN echo "\
-CONFIG_IB=y										\n\
-CONFIG_IB_STANDALONE=y							\n\
-CONFIG_JSON_OVERVIEW_IMAGE_INFO=y				\n\
-CONFIG_KERNEL_SWAP=y							\n\
-CONFIG_PACKAGE_kmod-usb2=y						\n\
-CONFIG_PACKAGE_kmod-usb-ohci=y					\n\
-CONFIG_PACKAGE_kmod-usb-ehci=y					\n\
-CONFIG_PACKAGE_kmod-usb-uhci=y					\n\
-CONFIG_PACKAGE_kmod-usb-storage=y				\n\
-CONFIG_PACKAGE_kmod-fs-ext4=y					\n\
-CONFIG_PACKAGE_block-mount=y					\n\
-CONFIG_PACKAGE_kmod-scsi-core=y					\n\
-CONFIG_PACKAGE_dnsmasq=y						\n\
-CONFIG_PACKAGE_odhcpd=m							\n\
-CONFIG_PACKAGE_odhcp6c=m						\n\
-CONFIG_PACKAGE_odhcpd-ipv6only=m				\n\
-CONFIG_PACKAGE_kmod-ledtrig-default-on=y		\n\
-CONFIG_PACKAGE_kmod-ledtrig-timer=y				\n\
-CONFIG_PACKAGE_kmod-ledtrig-netdev=y			\n\
-CONFIG_PACKAGE_usb-modeswitch=y					\n\
-CONFIG_PACKAGE_kmod-usb-net=y					\n\
-CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y			\n\
-CONFIG_PACKAGE_kmod-usb-net-rndis=y				\n\
-CONFIG_PACKAGE_kmod-usb-acm=y					\n\
-CONFIG_PACKAGE_kmod-usb-serial=y				\n\
-CONFIG_PACKAGE_kmod-usb-serial-option=y			\n\
-CONFIG_PACKAGE_kmod-usb-serial-wwan=y			\n\
-CONFIG_PACKAGE_chat=y							\n\
-CONFIG_PACKAGE_ppp=y							\n\
-CONFIG_PACKAGE_comgt=y							\n\
-CONFIG_PACKAGE_usbutils=y						\n\
-CONFIG_PACKAGE_autossh=y						\n\
-CONFIG_PACKAGE_e2fsprogs=y						\n\
-CONFIG_PACKAGE_fdisk=y							\n\
-CONFIG_PACKAGE_gdisk=y							\n\
-CONFIG_PACKAGE_luci=y							\n\
-CONFIG_PACKAGE_ddns-scripts=y					\n\
-CONFIG_PACKAGE_ddns-scripts_no-ip_com=y			\n\
-CONFIG_PACKAGE_f2fs-tools=m						\n\
-CONFIG_PACKAGE_kmod-fs-f2fs=m					\n\
-CONFIG_PACKAGE_dosfstools=m						\n\
-CONFIG_PACKAGE_kmod-fs-vfat=m					\n\
-CONFIG_PACKAGE_ntfs-3g-utils=m					\n\
-CONFIG_PACKAGE_ntfs-3g=m						\n\
-CONFIG_PACKAGE_kmod-fs-exfat=m					\n\
-CONFIG_PACKAGE_kmod-nls-cp1251=m				\n\
-CONFIG_PACKAGE_kmod-nls-cp437=m					\n\
-CONFIG_PACKAGE_kmod-nls-cp866=m					\n\
-CONFIG_PACKAGE_kmod-nls-iso8859-1=m				\n\
-CONFIG_PACKAGE_kmod-nls-utf8=m					\n\
-" >> configdiff \
- && cp configdiff .config \
+COPY configdiff ./configdiff
+
+RUN cp configdiff .config \
  && make defconfig
 
 RUN FORCE_UNSAFE_CONFIGURE=1 \
