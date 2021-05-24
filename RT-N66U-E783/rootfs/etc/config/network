@@ -11,10 +11,10 @@ config globals 'globals'
 config interface 'lan'
 	option type 'bridge'
 	option proto 'static'
-	option ipaddr '192.168.1.1'
 	option netmask '255.255.255.0'
 	option ip6assign '60'
 	option ifname 'eth0.6'
+	option ipaddr '192.168.12.1'
 
 config switch
 	option name 'switch0'
