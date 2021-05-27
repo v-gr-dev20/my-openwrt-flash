@@ -105,6 +105,13 @@ Essential: yes
 Architecture: mipsel_mips32
 Installed-Time: 1621948598
 
+Package: kmod-usb-net-qmi-wwan
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-net, kmod-usb-wdm
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099457
+
 Package: chat
 Version: 2.4.7.git-2019-05-25-3
 Depends: libc
@@ -143,6 +150,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1622097482
 Auto-Installed: yes
 
+Package: kmod-usb-wdm
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099444
+
 Package: swconfig
 Version: 12
 Depends: libc, libuci20130104, libnl-tiny
@@ -173,6 +187,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948598
 Auto-Installed: yes
+
+Package: kmod-usb2-pci
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb2, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099479
 
 Package: getrandom
 Version: 2019-06-16-4df34a4d-3
@@ -217,6 +238,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948599
 Auto-Installed: yes
+
+Package: kmod-usb-net-huawei-cdc-ncm
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-net, kmod-usb-net-cdc-ncm, kmod-usb-wdm
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622105804
 
 Package: kmod-pppox
 Version: 4.14.221-1
@@ -395,6 +423,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621948597
 Auto-Installed: yes
 
+Package: kmod-usb-serial-qualcomm
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-serial, kmod-usb-serial-wwan
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099468
+
 Package: kmod-usb-ehci
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-core
@@ -420,6 +455,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621948598
 Auto-Installed: yes
 
+Package: kmod-usb-net-cdc-mbim
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-net, kmod-usb-wdm, kmod-usb-net-cdc-ncm
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099445
+
 Package: kmod-usb-net-rndis
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-net, kmod-usb-net-cdc-ether
@@ -442,6 +484,13 @@ Depends: libc, ubox, libubox20191228, libuci20130104, libblobmsg-json, libjson-c
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948598
+
+Package: kmod-usbmon
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099502
 
 Package: kmod-usb2
 Version: 4.14.221-1
@@ -752,6 +801,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621948598
 Auto-Installed: yes
 
+Package: kmod-usb-net-cdc-ncm
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099443
+
 Package: libblobmsg-json
 Version: 2020-05-25-66195aee-1
 Depends: libc, libjson-c2, libubox20191228
@@ -802,6 +858,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948597
 Auto-Installed: yes
+
+Package: kmod-usb-serial-cypress-m8
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099491
 
 Package: kmod-ipt-core
 Version: 4.14.221-1
@@ -878,6 +941,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1621948597
 Auto-Installed: yes
 
+Package: uqmi
+Version: 2019-06-27-1965c713-7
+Depends: libc, libubox20191228, libblobmsg-json, kmod-usb-net, kmod-usb-net-qmi-wwan, wwan
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622100812
+
 Package: kmod-nf-conntrack
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311)
@@ -910,6 +980,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948600
 
+Package: kmod-usb-serial-ipw
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-serial, kmod-usb-serial-wwan
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099418
+
 Package: modemmanager
 Version: 1.12.10-2
 Depends: libc, glib2, dbus, ppp, libmbim, libqmi
@@ -941,6 +1018,20 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1622097427
 Auto-Installed: yes
+
+Package: umbim
+Version: 2019-03-11-24f9dc71-1
+Depends: libc, libubox20191228, kmod-usb-net, kmod-usb-net-cdc-mbim, wwan
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622100810
+
+Package: kmod-usb-ohci-pci
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-ohci, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622099431
 
 Package: kmod-nf-conntrack6
 Version: 4.14.221-1
@@ -1027,6 +1118,14 @@ Depends: libc
 Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948598
+Auto-Installed: yes
+
+Package: wwan
+Version: 2014-07-17-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622100810
 Auto-Installed: yes
 
 Package: jsonfilter
