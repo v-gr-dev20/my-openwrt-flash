@@ -231,6 +231,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621466699
 
+Package: strace
+Version: 5.0-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621592784
+
 Package: luci-mod-system
 Version: git-21.132.36199-d0cf6e4-1
 Depends: libc, luci-base

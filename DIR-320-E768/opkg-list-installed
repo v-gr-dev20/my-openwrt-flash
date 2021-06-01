@@ -170,6 +170,7 @@ rpcd-mod-iwinfo - 2020-05-26-67c8a3fd-1
 rpcd-mod-luci - 20201107
 rpcd-mod-rrdns - 20170710
 speedtest-netperf - 1.0.0-1
+strace - 5.0-1
 swconfig - 12
 terminfo - 6.1-5
 tune2fs - 1.44.5-2
