@@ -5,6 +5,13 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1622122917
 
+Package: kmod-usb-storage
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-scsi-core, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1621948598
+
 Package: terminfo
 Version: 6.1-5
 Depends: libc
@@ -12,13 +19,6 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1622097453
 Auto-Installed: yes
-
-Package: kmod-usb-storage
-Version: 4.14.221-1
-Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-scsi-core, kmod-usb-core
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1621948598
 
 Package: liblucihttp0
 Version: 2019-07-05-a34a17d5-1
@@ -44,6 +44,14 @@ Status: install hold,user installed
 Essential: yes
 Architecture: mipsel_mips32
 Installed-Time: 1621948597
+
+Package: kmod-usbip
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-core
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531535
+Auto-Installed: yes
 
 Package: ntfs-3g-utils
 Version: 2017.3.23-2-fuseint
@@ -77,6 +85,14 @@ Conffiles:
  /etc/opkg.conf f38c19f696ea87c0b30eb5bfeb8657237f4625e1a749c58b99f01595edfb6446
  /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
 Installed-Time: 1622096339
+
+Package: libevdev
+Version: 1.6.0-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531585
+Auto-Installed: yes
 
 Package: wget
 Version: 1.20.3-4
@@ -135,6 +151,13 @@ Status: install ok installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948597
 Auto-Installed: yes
+
+Package: usbip-server
+Version: 2.0-11
+Depends: libc, usbip, kmod-usbip-server
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531594
 
 Package: rpcd
 Version: 2020-05-26-67c8a3fd-1
@@ -366,6 +389,16 @@ Architecture: mipsel_mips32
 Installed-Time: 1621948599
 Auto-Installed: yes
 
+Package: libudev-fbsd
+Version: 20171216-1
+Depends: libc, libevdev
+Provides: libudev
+Conflicts: libudev, eudev, udev
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531588
+Auto-Installed: yes
+
 Package: kmod-lib-crc16
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311)
@@ -544,6 +577,14 @@ Architecture: mipsel_mips32
 Installed-Time: 1621948597
 Auto-Installed: yes
 
+Package: libwrap
+Version: 7.6-2
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531582
+Auto-Installed: yes
+
 Package: kmod-usb-serial-qualcomm
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usb-serial, kmod-usb-serial-wwan
@@ -672,13 +713,6 @@ Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1621948599
 
-Package: kmod-fs-exfat
-Version: 4.14.221+2018-04-17-01c30ad5-2
-Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-nls-base
-Status: install user installed
-Architecture: mipsel_mips32
-Installed-Time: 1622465979
-
 Package: firewall
 Version: 2019-11-22-8174814a-3
 Depends: libc, libubox20191228, libubus20191227, libuci20130104, libip4tc2, libip6tc2, libxtables12, kmod-ipt-core, kmod-ipt-conntrack, kmod-nf-conntrack6, kmod-ipt-nat
@@ -688,6 +722,13 @@ Conffiles:
  /etc/config/firewall 303d858071dfcf1d1e8593168eb9c582a2c774211f23cef4bf7c85e4060a5e8c
  /etc/firewall.user bd68324966481011f5e36570258ad97dd422655c16f3119d48325ed8459de510
 Installed-Time: 1621948599
+
+Package: kmod-fs-exfat
+Version: 4.14.221+2018-04-17-01c30ad5-2
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622465979
 
 Package: comgt
 Version: 0.32-33
@@ -702,6 +743,14 @@ Depends: libc, firewall
 Status: install ok installed
 Architecture: all
 Installed-Time: 1622101379
+Auto-Installed: yes
+
+Package: usbip
+Version: 2.0-11
+Depends: libc, libwrap, kmod-usbip, libudev-fbsd
+Status: install ok installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531594
 Auto-Installed: yes
 
 Package: kmod-nf-ipt
@@ -1215,6 +1264,13 @@ Architecture: mipsel_mips32
 Installed-Time: 1622122917
 Auto-Installed: yes
 
+Package: kmod-usbip-client
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usbip, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531537
+
 Package: kmod-ppp
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-lib-crc-ccitt, kmod-slhc
@@ -1377,6 +1433,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1622097427
 Auto-Installed: yes
+
+Package: usbip-client
+Version: 2.0-11
+Depends: libc, usbip, kmod-usbip-client
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531598
 
 Package: liblucihttp-lua
 Version: 2019-07-05-a34a17d5-1
@@ -1590,6 +1653,13 @@ Depends: libc, uclibcxx, libuuid1
 Status: install user installed
 Architecture: mipsel_mips32
 Installed-Time: 1622465851
+
+Package: kmod-usbip-server
+Version: 4.14.221-1
+Depends: kernel (= 4.14.221-1-e95666b7c2ade5b8fad27ac065be9311), kmod-usbip, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_mips32
+Installed-Time: 1622531536
 
 Package: kmod-scsi-core
 Version: 4.14.221-1
