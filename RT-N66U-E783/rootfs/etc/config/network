@@ -15,7 +15,7 @@ config interface 'lan'
 	list ipaddr '192.168.12.1/24'
 	list dns '192.168.2.1'
 	list dns '8.8.8.8'
-	option ifname 'eth0.4'
+	option ifname 'eth0.6'
 
 config interface 'wan'
 	option proto 'dhcp'
@@ -34,6 +34,10 @@ config switch
 
 config switch_vlan
 	option device 'switch0'
+	option vlan '0'
+
+config switch_vlan
+	option device 'switch0'
 	option vlan '1'
 	option ports '8t 1'
 
@@ -45,33 +49,53 @@ config switch_vlan
 config switch_vlan
 	option device 'switch0'
 	option vlan '3'
-	option ports '8t 3'
 
 config switch_vlan
 	option device 'switch0'
 	option vlan '4'
-	option ports '8t 4'
 
 config switch_vlan
 	option device 'switch0'
 	option vlan '5'
 	option ports '8t 0'
 
+config switch_vlan
+	option device 'switch0'
+	option vlan '6'
+	option ports '8t 3 4'
+
 config interface 'UPLINK1'
 	option ifname 'eth0.1'
 	option proto 'static'
 	option netmask '255.255.255.0'
-	option ipaddr '192.168.1.2'
+	option ipaddr '192.168.1.12'
 
 config interface 'UPLINK2'
 	option ifname 'eth0.2'
 	option proto 'static'
 	option netmask '255.255.255.0'
-	option ipaddr '192.168.0.2'
+	option ipaddr '192.168.0.12'
 
-config interface 'UPLINK3'
-	option ifname 'eth0.3'
-	option proto 'static'
-	option netmask '255.255.255.0'
-	option ipaddr '192.168.19.2'
+config device
+	option name 'eth0.1'
+	option macaddr 'C8:60:00:E7:83:A1'
 
+config device
+	option name 'eth0.2'
+	option macaddr 'C8:60:00:E7:83:A2'
+
+config device
+	option name 'eth0.3'
+	option macaddr 'C8:60:00:E7:83:A3'
+
+config device
+	option name 'eth0.4'
+	option macaddr 'C8:60:00:E7:83:A4'
+
+config device
+	option name 'eth0.5'
+	option macaddr 'C8:60:00:E7:83:A5'
+
+config device
+	option name 'eth0.6'
+	option macaddr 'C8:60:00:E7:83:A6'

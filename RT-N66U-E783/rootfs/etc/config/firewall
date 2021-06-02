@@ -10,7 +10,7 @@ config zone
 	option input 'ACCEPT'
 	option output 'ACCEPT'
 	option forward 'ACCEPT'
-	option network 'lan'
+	option network 'lan UPLINK1 UPLINK2'
 
 config zone
 	option name 'wan'
@@ -123,23 +123,8 @@ config rule
 config include
 	option path '/etc/firewall.user'
 
-config zone
-	option name 'uplink'
-	option input 'ACCEPT'
-	option output 'ACCEPT'
-	option forward 'ACCEPT'
-	option masq '1'
-	option network 'UPLINK1 UPLINK2 UPLINK3'
-
-config forwarding
-	option dest 'wan'
-	option src 'uplink'
-
-config forwarding
-	option dest 'lan'
-	option src 'uplink'
-
-config forwarding
-	option dest 'uplink'
-	option src 'lan'
-
+config rule
+	option dest_port '22'
+	option src 'wan'
+	option target 'ACCEPT'
+	option name 'Allow-SSH'
