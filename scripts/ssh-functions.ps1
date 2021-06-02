@@ -26,6 +26,9 @@ function Get-URNs-Chain( [Parameter( Mandatory, Position = 0 )] $config )
 		if( -not [string]::IsNullOrEmpty( $config.user ) ) {
 			$urn = $config.user + "@" + $urn
 		}
+		if( -not [string]::IsNullOrEmpty( $config.port ) ) {
+			$urn = $urn + ":" + $config.port
+		}
 		$result.Add( $urn ) 
 	} elseif( $null -ne $config.URN ) {
 		$result.Add( [string]$config.URN )
@@ -40,7 +43,7 @@ function Get-URNs-Chain( [Parameter( Mandatory, Position = 0 )] $config )
 # Извлекает из конфига адресную часть удаленного хоста
 function getURNpartFromConfig()
 {
-	Select-Hashtable-by-Keys $config "user","server","URN","URNs","ssh"
+	Select-Hashtable-by-Keys $config "user","server","URN","URNs","ssh","port"
 }
 
 # Извлекает из конфига последний или единственный URN хоста вида "user@hostname.or.ip"
@@ -74,8 +77,13 @@ function get-ssh-parameters( [Parameter( Mandatory, Position = 0 )] $config )
 			}
 		}
 	}
-	$result.Add( $anURNsChain[-1] )
-
+	$lastSplitURN = &{ $anURNsChain[-1] -split ':' }
+	if( 2 -le $lastSplitURN.Count -and -not [string]::IsNullOrEmpty( $lastSplitURN[-1] ) ) {
+		$result.Add( '-p' + $lastSplitURN[-1] )
+		$result.Add( $lastSplitURN[0] )
+	} else {
+		$result.Add( $lastSplitURN )
+	}
 	$result
 }
 
@@ -108,6 +116,7 @@ function Invoke-Command-by-SSH
 		[String] $SaveLogTo,
 		[String] $RunLogHeader,
 		[switch] $WithTimestamp = $true,
+		[string] $RedirectStandardInput,
 		[string] $RedirectStandardOutput,
 		[string] $Description,
 		[Parameter( Mandatory, Position = 0 )] $config, [Parameter( Position = 1 )][string] $command,
@@ -145,17 +154,43 @@ function Invoke-Command-by-SSH
 			}
 		}
 		if( [string]::IsNullOrEmpty( $RedirectStandardOutput ) ) {
-			$input |ssh $sshParameters "$command" $commandArgsLine
-		} else {
-			$RedirectStandardError = New-TemporaryFile
-			Start-Process -NoNewWindow -Wait `
-				-RedirectStandardOutput:$RedirectStandardOutput `
-				-RedirectStandardError:$RedirectStandardError `
-				'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
-			if( 0 -lt $RedirectStandardError.Length ) {
-				Get-Content $RedirectStandardError.FullName
+			if( [string]::IsNullOrEmpty( $RedirectStandardInput ) ) {
+				$input |ssh $sshParameters "$command" $commandArgsLine
+			} else {
+				$redirectStandardError = New-TemporaryFile
+				$redirectStandardOutput = New-TemporaryFile
+				Start-Process -NoNewWindow -Wait `
+					-RedirectStandardInput:$RedirectStandardInput `
+					-RedirectStandardOutput:$redirectStandardOutput `
+					-RedirectStandardError:$redirectStandardError `
+					'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
+				if( 0 -lt $redirectStandardOutput.Length ) {
+					Get-Content $redirectStandardOutput.FullName
+				}
+				Remove-Item $redirectStandardOutput.FullName -force
+				if( 0 -lt $redirectStandardError.Length ) {
+					Get-Content $redirectStandardError.FullName
+				}
+				Remove-Item $redirectStandardError.FullName -force
 			}
-			Remove-Item $RedirectStandardError.FullName -force
+		} else {
+			$redirectStandardError = New-TemporaryFile
+			if( [string]::IsNullOrEmpty( $RedirectStandardInput ) ) {
+				Start-Process -NoNewWindow -Wait `
+					-RedirectStandardOutput:$RedirectStandardOutput `
+					-RedirectStandardError:$redirectStandardError `
+					'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
+			} else {
+				Start-Process -NoNewWindow -Wait `
+					-RedirectStandardInput:$RedirectStandardInput `
+					-RedirectStandardOutput:$RedirectStandardOutput `
+					-RedirectStandardError:$redirectStandardError `
+					'ssh' ( $sshParameters + @( "$command" ) + $commandArgs )
+			}
+			if( 0 -lt $redirectStandardError.Length ) {
+				Get-Content $redirectStandardError.FullName
+			}
+			Remove-Item $redirectStandardError.FullName -force
 		}
 	}
 	$sshTargetCommandBlock = $sshOriginalCommandBlock
@@ -192,7 +227,7 @@ function Invoke-SCP( [Parameter( Mandatory, Position = 0 )] $config,
 {
 	[string[]]$sshParameters = get-ssh-parameters $config
 	# формируем параметры доступа к удаленному серверу
-	if( 1 -le $sshParameters.Count -and -not [string]::IsNullOrEmpty( $sshParameters[-1] ) ) {
+	if( 1 -le $sshParameters.Count -and -not [string]::IsNullOrEmpty( $sshParameters[-1] ) -and -not $sshParameters[-1].StartsWith( '-p' ) ) {
 		$endURN = $sshParameters[-1]
 		# проверяем вхождение URN хоста в путях к файлам
 		if( ( ( $endURN.Length -lt $source.Length ) -and ( ( $endURN + ":" ) -ieq  $source.Substring( 0, $endURN.Length+1 ) )
@@ -206,6 +241,11 @@ function Invoke-SCP( [Parameter( Mandatory, Position = 0 )] $config,
 				$sshParameters = $sshParameters[0..( $sshParameters.Count-2 )]
 			}
 		} else {
+			# объединяем последний URN с номером порта
+			if( 2 -le $sshParameters.Count -and $sshParameters[-2].StartsWith( '-p' ) ) {
+				$sshParameters[-2] = $sshParameters[-1] + ':' + $sshParameters[-2].substring( 2 )
+				$sshParameters = $sshParameters[0..( $sshParameters.Count-2 )]
+			}
 			# добавляем хост в конец цепочки доступа, т.к. его нет в пути к файлам на удаленном хосте
 			if( 1 -eq $sshParameters.Count ) {
 				$sshParameters = @( '-J' + $sshParameters[0] )
@@ -245,5 +285,23 @@ function Get-Files( [Parameter( Mandatory, Position = 0 )] $config,
 	Invoke-Command-by-SSH -MustSaveLog:$false -WithTimestamp:$false -RedirectStandardOutput:"$( $tempFile.FullName )" `
 			$config 'tar' ( '-cf','-' + $remoteFiles )
 	tar -C "$localDestinationDirectory" -xf "$( $tempFile.FullName )"
+	Remove-Item $tempFile.FullName -force
+}
+
+# Копирует и перезаписывает локальные файлы и папки на удаленный хост в указанную папку
+function Put-Files( [Parameter( Mandatory, Position = 0 )] $config,
+	[Parameter( Mandatory, Position = 1 )][string[]] $files,
+	[Parameter( Mandatory, Position = 2 )][string] $remoteDestinationDirectory )
+{
+	if( 0 -eq $files.Count ) {
+		return
+	}
+	$tempFile = New-TemporaryFile
+	tar -cf $tempFile.FullName -C "$( $files[0] |Split-Path -parent )" "$( $files[0] |Split-Path -leaf )"
+	foreach( $file in ( $files |Select-Object -Skip 1 ) ) {
+		tar -rf $tempFile.FullName -C "$( $file |Split-Path -parent )" "$( $file |Split-Path -leaf )"
+	}
+	Invoke-Command-by-SSH -MustSaveLog:$false -WithTimestamp:$false -RedirectStandardInput:$tempFile.FullName `
+			$config 'tar' ( '-xf', '-', '-C', $remoteDestinationDirectory )
 	Remove-Item $tempFile.FullName -force
 }

@@ -30,11 +30,15 @@ function getAndSyncOpenwrtConfig( [Parameter( Position = 0 )] $config, [Paramete
 
 	# перечисление файлов конфигурации openwrt
 	[string[]]$openwrtConfigItems = @(
-		'/etc/config',
-		'/etc/opkg.conf',
-		'/etc/opkg/customfeeds.conf',
-		'/etc/opkg/distfeeds.conf',
+		'/etc/config'
+		'/etc/crontabs'
+		'/etc/opkg.conf'
+		'/etc/opkg/customfeeds.conf'
+		'/etc/opkg/distfeeds.conf'
 		'/usr/lib/opkg/status'
+		'/rwm/upper/etc/config'
+		'/rwm/upper/etc/crontabs'
+		'/rwm/upper/usr/lib/opkg/status'
 	)
 	Get-Files $config $openwrtConfigItems $localTargetRoot
 }
