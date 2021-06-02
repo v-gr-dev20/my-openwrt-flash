@@ -16,12 +16,12 @@ function main( [Parameter( Position = 0 )][string[]] $commandLineArgs )
 # Запускает процесс прошивки на удаленном хосте
 function sysupgrade( [Parameter( Position = 0 )] $config, [Parameter( Position = 1 )][string] $firmwareBin )
 {
-	$firmwarePathOnServiceHost = "/tmp/firmware.bin"
+	$firmwarePathOnRemoteHost = "/tmp/firmware.bin"
 	[String[]]$anURNsChain = Get-URNs-Chain $config
 	<#assert#> if( 0 -eq $anURNsChain.Count ) { throw }
 	$targetURN = $anURNsChain[-1]
-	Invoke-SCP $config $firmwareBin "${targetURN}:${firmwarePathOnServiceHost}" `
-	&& Invoke-Command-by-SSH $config "sysupgrade" `-n `-v `-F $firmwarePathOnServiceHost |%{ "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`t$_" }
+	Invoke-SCP $config $firmwareBin "${targetURN}:${firmwarePathOnRemoteHost}" `
+	&& Invoke-Command-by-SSH $config "sysupgrade" `-n `-v `-F $firmwarePathOnRemoteHost |%{ "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`t$_" }
 }
 
 # Выводит подсказку
