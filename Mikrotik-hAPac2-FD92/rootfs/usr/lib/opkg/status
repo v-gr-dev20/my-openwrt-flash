@@ -1,3 +1,10 @@
+Package: hub-ctrl
+Version: 1.0-2
+Depends: libc, libusb-compat4
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662509
+
 Package: iwinfo
 Version: 2021-01-31-4a32b33e-1
 Depends: libc, libiwinfo20210106
@@ -50,6 +57,14 @@ Conffiles:
  /etc/opkg.conf f38c19f696ea87c0b30eb5bfeb8657237f4625e1a749c58b99f01595edfb6446
  /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
 Installed-Time: 1622210644
+
+Package: libevdev
+Version: 1.10.1-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662494
+Auto-Installed: yes
 
 Package: kmod-usb-core
 Version: 5.4.119-1
@@ -337,6 +352,23 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: libudev-zero
+Version: 0.4.5-2
+Depends: libc, libevdev
+Provides: libudev
+Conflicts: libudev, eudev, udev
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662495
+Auto-Installed: yes
+
+Package: usbutils
+Version: 013-2
+Depends: libc, libusb-1.00, libudev, usbids, librt, libpthread
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662501
+
 Package: ubusd
 Version: 2021-02-15-2537be01-1
 Depends: libc, libubox20210516, libblobmsg-json20210516
@@ -369,6 +401,14 @@ Provides: libxtables
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: usbids
+Version: 0.347-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662501
+Auto-Installed: yes
 
 Package: kmod-usb3
 Version: 5.4.119-1
@@ -641,6 +681,15 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: librt
+Version: 1.1.24-3
+Depends: libpthread
+Status: install hold installed
+Essential: yes
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662491
+Auto-Installed: yes
+
 Package: kmod-mac80211
 Version: 5.4.119+5.10.34-1-1
 Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-cfg80211, hostapd-common
@@ -692,6 +741,16 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: libusb-1.00
+ABIVersion: 0
+Version: 1.0.24-1
+Depends: libc, libpthread, librt
+Provides: libusb-1.0
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662493
+Auto-Installed: yes
+
 Package: jshn
 Version: 2021-05-16-b14c4688-1
 Depends: libc, libjson-c5, libubox20210516, libblobmsg-json20210516
@@ -706,6 +765,16 @@ Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-nf-reject, 
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: libusb-compat4
+ABIVersion: 4
+Version: 0.1.7-2
+Depends: libc, libusb-1.00
+Provides: libusb-compat
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662508
+Auto-Installed: yes
 
 Package: kmod-ppp
 Version: 5.4.119-1
@@ -876,6 +945,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1622210644
 Auto-Installed: yes
+
+Package: uhubctl
+Version: 2.4.0-1
+Depends: libc, libusb-1.00
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623662506
 
 Package: libubus20210215
 ABIVersion: 20210215
