@@ -83,3 +83,7 @@ config device
 	option name 'eth0.5'
 	option macaddr '9a:69:ac:20:84:37'
 
+config interface 'smartphone'
+	option device 'usb0'
+	option proto 'dhcp'
+
