@@ -5,6 +5,21 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623662509
 
+Package: kmod-usb-storage
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-scsi-core, kmod-usb-core
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663334
+
+Package: terminfo
+Version: 6.2-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663356
+Auto-Installed: yes
+
 Package: iwinfo
 Version: 2021-01-31-4a32b33e-1
 Depends: libc, libiwinfo20210106
@@ -148,6 +163,14 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: kmod-crypto-hash
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663325
+Auto-Installed: yes
+
 Package: kmod-nf-reject6
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
@@ -247,6 +270,16 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: libuuid1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, librt
+Provides: libuuid
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663340
+Auto-Installed: yes
+
 Package: kmod-pppox
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-ppp
@@ -276,6 +309,14 @@ Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: kmod-lib-crc16
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663324
+Auto-Installed: yes
 
 Package: base-files
 Version: 1418-r16122-c2139eef27
@@ -317,6 +358,14 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: kmod-crypto-crc32c
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-crypto-hash
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663326
+Auto-Installed: yes
+
 Package: netifd
 Version: 2021-05-26-899c2a45-1
 Depends: libc, libuci20130104, libnl-tiny1, libubus20210215, ubus, ubusd, jshn, libubox20210516
@@ -333,6 +382,16 @@ Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-usb-dwc3, k
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: libsmartcols1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, librt
+Provides: libsmartcols
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663352
+Auto-Installed: yes
 
 Package: dnsmasq
 Version: 2.85-1
@@ -410,6 +469,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623662501
 Auto-Installed: yes
 
+Package: block-mount
+Version: 2021-01-04-c53b1882-1
+Depends: libc, ubox, libubox20210516, libuci20130104, libblobmsg-json20210516, libjson-c5
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663331
+
 Package: kmod-usb3
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-usb-core
@@ -449,6 +515,16 @@ Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: libblkid1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, libuuid1
+Provides: libblkid
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663342
+Auto-Installed: yes
 
 Package: ubi-utils
 Version: 2.1.2-1
@@ -502,6 +578,13 @@ Depends: libc, liblua5.1.5
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: kmod-fs-ext4
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-lib-crc16, kmod-crypto-hash, kmod-crypto-crc32c
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663329
 
 Package: ath10k-firmware-qca4019-ct
 Version: 2020-11-08-1
@@ -629,6 +712,16 @@ Architecture: all
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: libcomerr0
+ABIVersion: 0
+Version: 1.45.6-2
+Depends: libc, libuuid1
+Provides: libcomerr
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663343
+Auto-Installed: yes
+
 Package: luci-mod-admin-full
 Version: git-19.253.48496-3f93650
 Depends: libc, luci-base, luci-mod-status, luci-mod-system, luci-mod-network
@@ -731,6 +824,16 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: libext2fs2
+ABIVersion: 2
+Version: 1.45.6-2
+Depends: libc, libuuid1, libblkid1, libss2, libcomerr0
+Provides: libext2fs
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663347
+Auto-Installed: yes
+
 Package: libubox20210516
 ABIVersion: 20210516
 Version: 2021-05-16-b14c4688-1
@@ -759,6 +862,25 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: libfdisk1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, libuuid1, libblkid1
+Provides: libfdisk
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663355
+Auto-Installed: yes
+
+Package: e2fsprogs
+Version: 1.45.6-2
+Depends: libc, libuuid1, libext2fs2
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
+Installed-Time: 1623663349
+
 Package: kmod-ipt-core
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-nf-reject, kmod-nf-ipt
@@ -782,6 +904,26 @@ Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-lib-crc-cci
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: libncurses6
+ABIVersion: 6
+Version: 6.2-1
+Depends: libc, terminfo
+Provides: libncursesw, libncurses, libncursesw6
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663359
+Auto-Installed: yes
+
+Package: libss2
+ABIVersion: 2
+Version: 1.45.6-2
+Depends: libc, libcomerr0
+Provides: libss
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663344
+Auto-Installed: yes
 
 Package: libjson-c5
 ABIVersion: 5
@@ -888,6 +1030,13 @@ Depends: libc, uhttpd, uhttpd-mod-ubus, luci-mod-admin-full, luci-theme-bootstra
 Status: install user installed
 Architecture: all
 Installed-Time: 1622210644
+
+Package: fdisk
+Version: 2.36.1-2
+Depends: libc, libblkid1, libsmartcols1, libfdisk1, libncursesw6
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663359
 
 Package: kmod-nf-conntrack6
 Version: 5.4.119-1
@@ -1015,6 +1164,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1622210644
 Auto-Installed: yes
+
+Package: kmod-scsi-core
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1623663333
 
 Package: urngd
 Version: 2020-01-21-c7f7b6b6-1
