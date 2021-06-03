@@ -62,11 +62,13 @@ liblucihttp-lua - 2019-07-05-a34a17d5-1
 liblucihttp0 - 2019-07-05-a34a17d5-1
 libnl-tiny - 0.1-5
 libpthread - 1.1.24-2
+librt - 1.1.24-2
 libubox20191228 - 2020-05-25-66195aee-1
 libubus-lua - 2019-12-27-041c9d1c-1
 libubus20191227 - 2019-12-27-041c9d1c-1
 libuci20130104 - 2019-09-01-415f9e48-4
 libuclient20160123 - 2020-06-17-51e16ebf-1
+libusb-1.0-0 - 1.0.22-2
 libxtables12 - 1.8.3-1
 logd - 2019-06-16-4df34a4d-3
 lua - 5.1.5-3
@@ -109,6 +111,8 @@ uclient-fetch - 2020-06-17-51e16ebf-1
 uhttpd - 2020-10-01-3abcc891-1
 urandom-seed - 1.0-1
 urngd - 2020-01-21-c7f7b6b6-1
+usbreset - 5
+usbutils - 007-10
 usign - 2020-05-23-f1f65026-1
 wireless-regdb - 2020.11.20-1
 wpad-basic - 2019-08-08-ca8c2bd2-5

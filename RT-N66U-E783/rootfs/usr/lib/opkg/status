@@ -198,6 +198,15 @@ Architecture: all
 Installed-Time: 1613402557
 Auto-Installed: yes
 
+Package: libusb-1.0-0
+Version: 1.0.22-2
+Depends: libc, libpthread, librt
+Provides: libusb-1.0
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622702582
+Auto-Installed: yes
+
 Package: kmod-pppoe
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-ppp, kmod-pppox
@@ -296,6 +305,13 @@ Provides: libuclient
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+
+Package: usbutils
+Version: 007-10
+Depends: libc, libusb-1.0-0, librt, libpthread
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622702638
 
 Package: ubusd
 Version: 2019-12-27-041c9d1c-1
@@ -569,6 +585,15 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 
+Package: librt
+Version: 1.1.24-2
+Depends: libpthread
+Status: install hold installed
+Essential: yes
+Architecture: mipsel_74kc
+Installed-Time: 1622702572
+Auto-Installed: yes
+
 Package: kmod-mac80211
 Version: 4.14.221+4.19.161-1-1
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-cfg80211, hostapd-common
@@ -788,6 +813,13 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 Auto-Installed: yes
+
+Package: usbreset
+Version: 5
+Depends: libc
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622702644
 
 Package: libubus20191227
 Version: 2019-12-27-041c9d1c-1
