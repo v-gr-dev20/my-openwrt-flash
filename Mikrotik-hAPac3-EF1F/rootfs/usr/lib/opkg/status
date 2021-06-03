@@ -38,6 +38,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: asterisk-pbx-spool
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965710
+
 Package: cgi-io
 Version: 2022-08-10-901b0f04-21
 Depends: libc, libubox20220515, libubus20220601
@@ -121,6 +128,22 @@ Architecture: all
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: asterisk-res-agi
+Version: 18.15.1-1
+Depends: libc, asterisk, asterisk-res-speech
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965700
+Auto-Installed: yes
+
+Package: libopus
+Version: 1.3.1-3
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965733
+Auto-Installed: yes
+
 Package: libpthread
 Version: 1.2.3-4
 Depends: libgcc1
@@ -163,6 +186,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: asterisk-res-rtp-multicast
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965807
+Auto-Installed: yes
+
 Package: rpcd
 Version: 2022-12-15-7de4820c-1
 Depends: libc, libubus20220601, libubox20220515, libuci20130104, libblobmsg-json20220515, libjson-c5
@@ -182,6 +213,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Conffiles:
  /etc/syslog.conf e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 Installed-Time: 1681043266
+
+Package: asterisk-sounds
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965828
 
 Package: kmod-crypto-ctr
 Version: 5.10.176-1
@@ -207,6 +245,14 @@ Conflicts: f2fs-tools-selinux
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456962
+
+Package: libpjmedia
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjnath, librt, libsrtp2-1
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965691
+Auto-Installed: yes
 
 Package: lsof
 Version: 4.94.0-1
@@ -362,6 +408,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: asterisk-codec-opus
+Version: 2021-11-01-20522fbc-2
+Depends: libc, asterisk, libopus
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965733
+
 Package: ucode-mod-ubus
 Version: 2022-12-02-46d93c9c-1
 Depends: libc, ucode, libubus20220601, libblobmsg-json20220515
@@ -423,6 +476,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456137
 Auto-Installed: yes
 
+Package: libcap
+Version: 2.63-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965677
+Auto-Installed: yes
+
 Package: kmod-pppox
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-ppp
@@ -445,6 +506,13 @@ Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: asterisk-bridge-native-rtp
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965787
 
 Package: procd-ujail
 Version: 2022-06-01-7a009685-2
@@ -514,6 +582,27 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
+
+Package: asterisk-format-h263
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965756
+
+Package: asterisk-format-h264
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965760
+
+Package: asterisk-bridge-builtin-features
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965775
 
 Package: dosfstools
 Version: 4.2-2
@@ -692,6 +781,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: libpjsip-ua
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjmedia, libpjsip-simple, libpjsip, librt
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965694
+Auto-Installed: yes
+
 Package: ubusd
 Version: 2022-06-01-2bebf93c-1
 Depends: libc, libubox20220515, libblobmsg-json20220515
@@ -699,6 +796,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
+
+Package: asterisk-format-g719
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965737
 
 Package: px5g-wolfssl
 Version: 6.2
@@ -747,6 +851,34 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456976
 Auto-Installed: yes
 
+Package: asterisk-format-g723
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965740
+
+Package: asterisk-format-g726
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965744
+
+Package: asterisk-format-gsm
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965752
+
+Package: asterisk-format-g729
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965748
+
 Package: ddns-scripts-noip
 Version: 2.8.2-25
 Depends: libc, ddns-scripts
@@ -754,6 +886,14 @@ Provides: ddns-scripts_no-ip_com
 Status: install user installed
 Architecture: all
 Installed-Time: 1682770538
+
+Package: asterisk-res-speech
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965699
+Auto-Installed: yes
 
 Package: kmod-usb-net-rndis
 Version: 5.10.176-1
@@ -845,6 +985,22 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456995
 
+Package: libxml2
+Version: 2.10.3-1
+Depends: libc, libpthread, zlib
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965682
+Auto-Installed: yes
+
+Package: libpjsip
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, librt, libsrtp2-1
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965692
+Auto-Installed: yes
+
 Package: luci-app-firewall
 Version: git-23.093.42704-1c01c64
 Depends: libc, uci-firewall
@@ -852,6 +1008,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1681043266
 Auto-Installed: yes
+
+Package: asterisk-format-pcm
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965764
 
 Package: libblkid1
 ABIVersion: 1
@@ -891,6 +1054,16 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682457278
 Auto-Installed: yes
 
+Package: libsqlite3-0
+ABIVersion: -0
+Version: 3410100-1
+Depends: libc, libpthread, zlib
+Provides: libsqlite3
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965680
+Auto-Installed: yes
+
 Package: ubi-utils
 Version: 2.1.4-1
 Depends: libc
@@ -898,6 +1071,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
+
+Package: asterisk-bridge-builtin-interval-features
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965779
 
 Package: odhcp6c
 Version: 2022-08-05-7d21e8d8-18
@@ -938,6 +1118,16 @@ Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-crypto-gf1
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+Auto-Installed: yes
+
+Package: asterisk-res-sorcery
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/asterisk/sorcery.conf 272a05281aec85b4e94753cb10381ee22c8399e0e2e3ee7f03981d5e2ab531a1
+Installed-Time: 1682965686
 Auto-Installed: yes
 
 Package: uci
@@ -1035,6 +1225,16 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: asterisk-res-pjproject
+Version: 18.15.1-1
+Depends: libc, asterisk, asterisk-res-sorcery, libpj, libpjlib-util, libpjmedia, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsip, libpjsua, libpjsua2, libsrtp2-1
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/asterisk/pjproject.conf 19aac25cb91ce2505e9f0d37ad1f221bd7f348289f181b2d83c9cc6e576b15e3
+Installed-Time: 1682965697
+Auto-Installed: yes
+
 Package: kmod-nls-cp437
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-nls-base
@@ -1048,6 +1248,13 @@ Depends: libc, libubus20220601, libubox20220515, rpcd
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: asterisk-cdr-csv
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965706
 
 Package: mtd
 Version: 26
@@ -1069,6 +1276,15 @@ Depends: libc, libubox20220515, libblobmsg-json20220515
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: asterisk-res-rtp-asterisk
+Version: 18.15.1-1
+Depends: libc, asterisk, libpjsip, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsua, libpjsua2
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/asterisk/rtp.conf fd88f8520c00cac89bb5ed726b0d3b76f56d5fd7b47dc9526758fa40bd3524e5
+Installed-Time: 1682965812
 
 Package: libiwinfo-data
 Version: 2022-12-15-8d158096-1
@@ -1101,6 +1317,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: libpj
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, librt
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965687
+Auto-Installed: yes
+
 Package: kmod-crypto-ccm
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-crypto-ctr, kmod-crypto-aead
@@ -1115,6 +1339,14 @@ Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: asterisk-res-http-websocket
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965685
+Auto-Installed: yes
 
 Package: urandom-seed
 Version: 3
@@ -1168,6 +1400,14 @@ Conffiles:
  /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
 Installed-Time: 1681043266
 
+Package: libpjlib-util
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, libpj, librt
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965688
+Auto-Installed: yes
+
 Package: luci-base
 Version: git-23.093.57104-ce20b4a
 Depends: libc, lua, luci-lib-nixio, luci-lib-ip, rpcd, libubus-lua, luci-lib-jsonc, liblucihttp-lua, luci-lib-base, rpcd-mod-file, rpcd-mod-luci, cgi-io
@@ -1187,12 +1427,26 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: asterisk-codec-g722
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965720
+
 Package: kmod-gpio-button-hotplug
 Version: 5.10.176-3
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: asterisk-codec-g726
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965720
 
 Package: logd
 Version: 2021-08-03-205defb5-2
@@ -1201,12 +1455,26 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: asterisk-codec-g729
+Version: 1.4.3-1
+Depends: libc, asterisk, bcg729
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965722
+
 Package: kmod-nf-log6
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-nf-log
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: asterisk-func-dialplan
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965714
 
 Package: kmod-usb-net
 Version: 5.10.176-1
@@ -1259,6 +1527,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682457277
 Auto-Installed: yes
 
+Package: libpjsip-simple
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjsip, librt
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965693
+Auto-Installed: yes
+
 Package: libblobmsg-json20220515
 ABIVersion: 20220515
 Version: 2022-05-15-d2223ef9-1
@@ -1268,6 +1544,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
+
+Package: asterisk-bridge-softmix
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965795
 
 Package: swap-utils
 Version: 2.37.4-1
@@ -1319,6 +1602,23 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456973
 Auto-Installed: yes
 
+Package: libsrtp2-1
+ABIVersion: -1
+Version: 2.4.2-1
+Depends: libc
+Provides: libsrtp2
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965690
+Auto-Installed: yes
+
+Package: asterisk-bridge-holding
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965783
+
 Package: jshn
 Version: 2022-05-15-d2223ef9-1
 Depends: libc, libjson-c5, libubox20220515, libblobmsg-json20220515
@@ -1326,6 +1626,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
+
+Package: asterisk-chan-bridge-media
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965799
 
 Package: nftables-json
 Version: 1.0.2-2.1
@@ -1354,6 +1661,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1682456141
+
+Package: libpjnath
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, librt
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965689
+Auto-Installed: yes
 
 Package: fuse3-utils
 Version: 3.10.5-1
@@ -1412,6 +1727,37 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: asterisk
+Version: 18.15.1-1
+Depends: libc, libstdcpp6, jansson4, libcap, libedit, libopenssl1.1, libsqlite3-0, libuuid1, libxml2, zlib
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/asterisk/acl.conf 03f3da61d818752e4b3669ed5a8128c3d5628dd93cefa1704ca30073f134de24
+ /etc/asterisk/asterisk.conf 46824180a5fcd2b6ce9915959845936b9eebcef1db2f20355a530dcdb664c499
+ /etc/asterisk/ccss.conf 6cf9bd234bbc15463c6bd4c8f493622e629b58afe0584715635ca97e78b74b8e
+ /etc/asterisk/cel.conf 222f104793da851591932b0018a791cbf9d39a8c4f9a508f15298703dbfa3bc7
+ /etc/asterisk/cli.conf c8f1db8099a4da5fba9957d52d05520a96fefc95b27ee7bdd0620cd22a1298a0
+ /etc/asterisk/cli_permissions.conf 86a0e1ae68bc5becafe4ebcdbf9bbd5edc84774c0c9c08f8684c2a721a88dcb3
+ /etc/asterisk/codecs.conf b954ce882f0698432447ff2850d2c42a9c58f82bf6406a05c4b5d516e181ef34
+ /etc/asterisk/dnsmgr.conf cb8d827534ef227f5459c9f187305871eca7350e025f7a69c71ddf3634648b34
+ /etc/asterisk/dsp.conf 62ac4fef90602036d89661857d2d4de82b6d86b6402e0adbe99e3d6e0c4a5754
+ /etc/asterisk/extconfig.conf 2c0442b6b5836d8283d2d18dad8fdb4659a4539e96f3df6511a53121714bff27
+ /etc/asterisk/extensions.conf 17f95ee74c86911e7619ff316a556d54a7686257cf4105e36f92e3eb6b19b9f8
+ /etc/asterisk/features.conf bee8ff6149de5226fb3d67ad86b4e1036e626ef36f5a1c26296b6b427624341d
+ /etc/asterisk/http.conf fa25cb838dd8f124ed9e694c329167d7d91c066dd3fa95b7d16b4891884e9c0d
+ /etc/asterisk/indications.conf 97a3babba932a219b69ea9953307f7912bd81d70a82508079afae368b54b0919
+ /etc/asterisk/logger.conf 6b81a5ded0748608c99cf31b71dd07cdb2334d485123753ca73c8b6c0fa42dd4
+ /etc/asterisk/manager.conf 8b915dc5dc9e04a1c270455444835162273f043e6b7f18827168dc865be49d11
+ /etc/asterisk/modules.conf 3784629028da2f92dd4613e400e6b7dfcbd2fac89239773de1a7cfc5086d233c
+ /etc/asterisk/res_config_sqlite3.conf 5e259134f6649e54871698cb77173b0cd6b3e074449d0a089527dc09b2e0bda8
+ /etc/asterisk/stasis.conf c70f441ff95e0bf09a22c20557587c70bc6d6ce6f354595cdb2a4b153daa496d
+ /etc/asterisk/udptl.conf 2de83c8adf6d0ac1a4aa3f95a10b6b70ad1537e1d36972040337bbea998e66bd
+ /etc/asterisk/users.conf 7bf275d9a6fddb42fca9cd424fe6c19370420d0be6c5514e76e7027f564c12e8
+ /etc/config/asterisk 5a72f591f09ddc5f87a2b8588d8a7d3e4b264c657cba33746070c4a2b7ab737f
+ /etc/init.d/asterisk cb975ba265368e5ca513a0ad8ee15235a0a3ec804d40b10029931bd52d16395b
+Installed-Time: 1682965683
+
 Package: libiwinfo20210430
 ABIVersion: 20210430
 Version: 2022-12-15-8d158096-1
@@ -1451,6 +1797,14 @@ Conffiles:
  /etc/config/uhttpd bcf5f1c5e714cdc46e7855da53ba4c427c37735267ea17eebf958f24efd7d247
 Installed-Time: 1681043266
 
+Package: libpjsua
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsip, librt
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965695
+Auto-Installed: yes
+
 Package: kmod-nf-conntrack
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299)
@@ -1476,6 +1830,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: libpjsua2
+Version: 2.12.1-2
+Depends: libc, libstdcpp6, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsip, librt, libpjsua
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965696
+Auto-Installed: yes
+
 Package: liblua5.1.5
 ABIVersion: 5.1.5
 Version: 5.1.5-10
@@ -1493,6 +1855,13 @@ Status: install ok installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682457265
 Auto-Installed: yes
+
+Package: asterisk-format-wav
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965767
 
 Package: kmod-crypto-gcm
 Version: 5.10.176-1
@@ -1569,6 +1938,17 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456328
 
+Package: asterisk-pjsip
+Version: 18.15.1-1
+Depends: libc, asterisk, asterisk-res-http-websocket, asterisk-res-pjproject, asterisk-res-sorcery, libpjsip, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsua, libpjsua2
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/asterisk/pjsip.conf f00021f5d75357029522d549752ca42f8135e157a0343d230e2b8eca3ebfd976
+ /etc/asterisk/pjsip_notify.conf 2d4c12e801dd4225c4c1184743774abe075aaf3e5bd56a769a064cc88553449b
+ /etc/asterisk/pjsip_wizard.conf d30b295456a928d1e1535992aaa2a295f371e2e0a79c3f4f0854eb842455dfd7
+Installed-Time: 1682965697
+
 Package: kmod-crypto-cmac
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-crypto-hash
@@ -1607,6 +1987,16 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1681043266
 
+Package: asterisk-chan-iax2
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/asterisk/iax.conf 877d50bac9e08170a7db0b22a20cbbb807c6a3b58371f140ebcab5f65185a1d2
+ /etc/asterisk/iaxprov.conf 3c551c46a8dd392b77c1fe6b359818893692361c95ea53048ecde8b963f0bd1a
+Installed-Time: 1682965803
+
 Package: fdisk
 Version: 2.37.4-1
 Depends: libc, libblkid1, libsmartcols1, libfdisk1, libncursesw6
@@ -1631,6 +2021,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: asterisk-codec-ulaw
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965719
+
 Package: libucode20220812
 ABIVersion: 20220812
 Version: 2022-12-02-46d93c9c-1
@@ -1650,6 +2047,13 @@ Essential: yes
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456955
 Auto-Installed: yes
+
+Package: asterisk-codec-adpcm
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965727
 
 Package: kmod-ath
 Version: 5.10.176+5.15.92-1-1
@@ -1683,6 +2087,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456983
 
+Package: asterisk-format-wav-gsm
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965771
+
 Package: rpcd-mod-iwinfo
 Version: 2022-12-15-7de4820c-1
 Depends: libiwinfo (>= 2022-12-15), libc, libubus20220601, libubox20220515, rpcd, libiwinfo20210430
@@ -1712,6 +2123,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682455714
 
+Package: asterisk-codec-gsm
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965723
+
 Package: kmod-nls-base
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299)
@@ -1719,12 +2137,33 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: asterisk-chan-rtp
+Version: 18.15.1-1
+Depends: libc, asterisk, asterisk-res-rtp-multicast
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965808
+
 Package: uhttpd-mod-ubus
 Version: 2022-10-31-23977554-1
 Depends: libc, uhttpd, libubus20220601, libblobmsg-json20220515
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: asterisk-res-srtp
+Version: 18.15.1-1
+Depends: libc, asterisk, libsrtp2-1
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965819
+
+Package: asterisk-app-stack
+Version: 18.15.1-1
+Depends: libc, asterisk, asterisk-res-agi
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965700
 
 Package: libtirpc
 Version: 1.3.2-1
@@ -1749,6 +2188,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
+
+Package: asterisk-codec-alaw
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965718
 
 Package: hostapd-common
 Version: 2022-01-16-cff80b4f-16.2
@@ -1779,6 +2225,14 @@ Depends: libc, libstdcpp6, libuuid1
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456956
+
+Package: libedit
+Version: 20210522-3.1-1
+Depends: libc, libncurses6
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965679
+Auto-Installed: yes
 
 Package: wireless-regdb
 Version: 2023.02.13-1
@@ -1825,12 +2279,32 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: asterisk-cdr
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/asterisk/cdr.conf 12f1022b53a01358082399c929fd3046a69fd8c4328ae911341b3fef9cc7827d
+ /etc/asterisk/cdr_custom.conf 7ca556f0837110ed2f0d213e6bf4b0365776f6554663ae515d808993448d4551
+ /etc/asterisk/cdr_manager.conf 67e2a567e8b158b9e60f4415dde6fd9a35743b234a1169f24f5f4dd4abbe4c02
+ /etc/asterisk/cdr_syslog.conf ed4d971a7b4021b69d2cc4742f798bf5352a4a75f1425342b0821a1675bfa800
+Installed-Time: 1682965706
+
 Package: ppp-mod-pppoe
 Version: 2.4.9.git-2021-01-04-3
 Depends: libc, kmod-pppoe
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: bcg729
+Version: 1.1.1-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965722
+Auto-Installed: yes
 
 Package: libnghttp2-14
 ABIVersion: -14
@@ -1841,4 +2315,11 @@ Status: install ok installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682457255
 Auto-Installed: yes
+
+Package: asterisk-bridge-simple
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965791
 

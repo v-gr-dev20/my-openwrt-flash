@@ -1,3 +1,7 @@
+asterisk.general=asterisk
+asterisk.general.enabled='0'
+asterisk.general.log_stderr='1'
+asterisk.general.log_stdout='0'
 autossh.@autossh[0]=autossh
 autossh.@autossh[0].ssh='-i /etc/dropbear/id_rsa -N -T -R 2222:localhost:22 user@host'
 autossh.@autossh[0].gatetime='0'
