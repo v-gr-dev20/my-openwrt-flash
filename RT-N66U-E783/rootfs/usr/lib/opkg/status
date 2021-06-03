@@ -1,3 +1,18 @@
+Package: kmod-usb-storage
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-scsi-core, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423822
+
+Package: terminfo
+Version: 6.2-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423852
+Auto-Installed: yes
+
 Package: iwinfo
 Version: 2021-01-31-4a32b33e-1
 Depends: libc, libiwinfo20210106
@@ -150,6 +165,14 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
 
+Package: kmod-crypto-hash
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456)
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423812
+Auto-Installed: yes
+
 Package: kmod-nf-reject6
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456)
@@ -234,6 +257,16 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
 
+Package: libuuid1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, librt
+Provides: libuuid
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423834
+Auto-Installed: yes
+
 Package: kmod-pppox
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-ppp
@@ -263,6 +296,14 @@ Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456)
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+
+Package: kmod-lib-crc16
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456)
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423811
+Auto-Installed: yes
 
 Package: base-files
 Version: 1418-r16122-c2139eef27
@@ -304,6 +345,14 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
 
+Package: kmod-crypto-crc32c
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-crypto-hash
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423813
+Auto-Installed: yes
+
 Package: kmod-lib-cordic
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456)
@@ -320,6 +369,16 @@ Architecture: mipsel_74kc
 Conffiles:
  /etc/udhcpc.user 4dabffbc2110a29e01babc63d9b8db94da49efd3ed784d35b49a559ac8ce7035
 Installed-Time: 1622210644
+Auto-Installed: yes
+
+Package: libsmartcols1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, librt
+Provides: libsmartcols
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423848
 Auto-Installed: yes
 
 Package: kmod-usb-ohci
@@ -421,6 +480,13 @@ Architecture: mipsel_74kc
 Installed-Time: 1623423671
 Auto-Installed: yes
 
+Package: block-mount
+Version: 2021-01-04-c53b1882-1
+Depends: libc, ubox, libubox20210516, libuci20130104, libblobmsg-json20210516, libjson-c5
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423818
+
 Package: kmod-usb2
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-usb-bcma, kmod-usb-ssb, kmod-usb-ehci, kmod-usb-core
@@ -452,6 +518,16 @@ Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456)
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+
+Package: libblkid1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, libuuid1
+Provides: libblkid
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423837
+Auto-Installed: yes
 
 Package: kmod-ip6tables
 Version: 5.4.119-1
@@ -497,6 +573,13 @@ Depends: libc, liblua5.1.5
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+
+Package: kmod-fs-ext4
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-lib-crc16, kmod-crypto-hash, kmod-crypto-crc32c
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423817
 
 Package: luci-ssl
 Version: git-20.244.36115-e10f954
@@ -613,6 +696,16 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
 
+Package: libcomerr0
+ABIVersion: 0
+Version: 1.45.6-2
+Depends: libc, libuuid1
+Provides: libcomerr
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423838
+Auto-Installed: yes
+
 Package: luci-mod-admin-full
 Version: git-19.253.48496-3f93650
 Depends: libc, luci-base, luci-mod-status, luci-mod-system, luci-mod-network
@@ -715,6 +808,16 @@ Architecture: mipsel_74kc
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: libext2fs2
+ABIVersion: 2
+Version: 1.45.6-2
+Depends: libc, libuuid1, libblkid1, libss2, libcomerr0
+Provides: libext2fs
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423842
+Auto-Installed: yes
+
 Package: libubox20210516
 ABIVersion: 20210516
 Version: 2021-05-16-b14c4688-1
@@ -743,6 +846,25 @@ Architecture: mipsel_74kc
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: libfdisk1
+ABIVersion: 1
+Version: 2.36.1-2
+Depends: libc, libuuid1, libblkid1
+Provides: libfdisk
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423851
+Auto-Installed: yes
+
+Package: e2fsprogs
+Version: 1.45.6-2
+Depends: libc, libuuid1, libext2fs2
+Status: install user installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
+Installed-Time: 1623423845
+
 Package: kmod-ipt-core
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nf-reject, kmod-nf-ipt
@@ -756,6 +878,26 @@ Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-lib-crc-cci
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+
+Package: libncurses6
+ABIVersion: 6
+Version: 6.2-1
+Depends: libc, terminfo
+Provides: libncursesw, libncurses, libncursesw6
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423856
+Auto-Installed: yes
+
+Package: libss2
+ABIVersion: 2
+Version: 1.45.6-2
+Depends: libc, libcomerr0
+Provides: libss
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423839
+Auto-Installed: yes
 
 Package: libjson-c5
 ABIVersion: 5
@@ -870,6 +1012,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1622210644
 
+Package: fdisk
+Version: 2.36.1-2
+Depends: libc, libblkid1, libsmartcols1, libfdisk1, libncursesw6
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423856
+
 Package: kmod-nf-conntrack6
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nf-conntrack
@@ -982,6 +1131,13 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1622210644
 Auto-Installed: yes
+
+Package: kmod-scsi-core
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456)
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423821
 
 Package: urngd
 Version: 2020-01-21-c7f7b6b6-1
