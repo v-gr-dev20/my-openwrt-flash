@@ -11,7 +11,7 @@ config globals 'globals'
 config interface 'lan'
 	option type 'bridge'
 	option proto 'static'
-	option ipaddr '192.168.1.1'
+	option ipaddr '192.168.19.1'
 	option netmask '255.255.255.0'
 	option ip6assign '60'
 	option ifname 'eth0.6'
@@ -28,6 +28,7 @@ config switch_vlan
 config switch_vlan
 	option device 'eth0'
 	option vlan '1'
+	option ports '1 5t'
 
 config switch_vlan
 	option device 'eth0'
@@ -49,11 +50,17 @@ config switch_vlan
 config switch_vlan
 	option device 'eth0'
 	option vlan '6'
-	option ports '1 2 3 4 5t'
+	option ports '2 3 4 5t'
 
 config interface 'wan'
 	option ifname 'eth0.5'
 	option proto 'dhcp'
+
+config interface 'uplink1'
+	option ifname 'eth0.1'
+	option proto 'static'
+	option ipaddr '192.168.1.19'
+	option netmask '255.255.255.0'
 
 config interface 'hphone'
 	option ifname 'usb0'

@@ -11,6 +11,7 @@ config zone
 	option output 'ACCEPT'
 	option forward 'ACCEPT'
 	list network 'lan'
+	list network 'uplink1'
 
 config zone
 	option name 'wan'
