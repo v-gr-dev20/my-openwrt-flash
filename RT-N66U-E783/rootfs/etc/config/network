@@ -87,3 +87,7 @@ config interface 'wan6'
 	option device 'eth0.5'
 	option proto 'dhcpv6'
 
+config interface 'lte'
+	option device 'eth1'
+	option proto 'dhcp'
+
