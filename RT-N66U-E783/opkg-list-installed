@@ -49,6 +49,7 @@ kmod-usb-ssb - 5.4.119-1
 kmod-usb2 - 5.4.119-1
 libblobmsg-json20210516 - 2021-05-16-b14c4688-1
 libc - 1.1.24-3
+libevdev - 1.10.1-1
 libgcc1 - 8.4.0-3
 libip4tc2 - 1.8.7-1
 libip6tc2 - 1.8.7-1
@@ -61,11 +62,14 @@ liblucihttp-lua - 2019-07-05-a34a17d5-1
 liblucihttp0 - 2019-07-05-a34a17d5-1
 libnl-tiny1 - 2020-08-05-c291088f-1
 libpthread - 1.1.24-3
+librt - 1.1.24-3
 libubox20210516 - 2021-05-16-b14c4688-1
 libubus-lua - 2021-02-15-2537be01-1
 libubus20210215 - 2021-02-15-2537be01-1
 libuci20130104 - 2020-10-06-52bbc99f-4
 libuclient20201210 - 2021-05-14-6a6011df-1
+libudev-zero - 0.4.5-2
+libusb-1.00 - 1.0.24-1
 libustream-wolfssl20201210 - 2020-12-10-68d09243-1
 libwolfssl4.7.0.66253b90 - 4.7.0-stable-1
 libxtables12 - 1.8.7-1
@@ -114,6 +118,8 @@ uhttpd - 2021-03-21-15346de8-1
 uhttpd-mod-ubus - 2021-03-21-15346de8-1
 urandom-seed - 3
 urngd - 2020-01-21-c7f7b6b6-1
+usbids - 0.347-1
+usbutils - 013-2
 usign - 2020-05-23-f1f65026-1
 wireless-regdb - 2020.11.20-1
 wpad-basic-wolfssl - 2020-06-08-5a8b3662-32

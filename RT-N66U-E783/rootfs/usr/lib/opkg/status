@@ -59,6 +59,14 @@ Conffiles:
  /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
 Installed-Time: 1622210644
 
+Package: libevdev
+Version: 1.10.1-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423661
+Auto-Installed: yes
+
 Package: kmod-usb-core
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-nls-base
@@ -339,6 +347,23 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
 
+Package: libudev-zero
+Version: 0.4.5-2
+Depends: libc, libevdev
+Provides: libudev
+Conflicts: libudev, eudev, udev
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423663
+Auto-Installed: yes
+
+Package: usbutils
+Version: 013-2
+Depends: libc, libusb-1.00, libudev, usbids, librt, libpthread
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423672
+
 Package: ubusd
 Version: 2021-02-15-2537be01-1
 Depends: libc, libubox20210516, libblobmsg-json20210516
@@ -386,6 +411,14 @@ Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-usb-core
 Status: install ok installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+Auto-Installed: yes
+
+Package: usbids
+Version: 0.347-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423671
 Auto-Installed: yes
 
 Package: kmod-usb2
@@ -632,6 +665,15 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
 
+Package: librt
+Version: 1.1.24-3
+Depends: libpthread
+Status: install hold installed
+Essential: yes
+Architecture: mipsel_74kc
+Installed-Time: 1623423658
+Auto-Installed: yes
+
 Package: kmod-mac80211
 Version: 5.4.119+5.10.34-1-1
 Depends: kernel (= 5.4.119-1-474d8ff4f4a4060791a91e7806a3b456), kmod-cfg80211, hostapd-common
@@ -681,6 +723,16 @@ Provides: libubox
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622210644
+Auto-Installed: yes
+
+Package: libusb-1.00
+ABIVersion: 0
+Version: 1.0.24-1
+Depends: libc, libpthread, librt
+Provides: libusb-1.0
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1623423659
 Auto-Installed: yes
 
 Package: jshn
