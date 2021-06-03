@@ -91,3 +91,7 @@ config interface 'lte'
 	option device 'eth1'
 	option proto 'dhcp'
 
+config interface 'smartphone'
+	option device 'usb0'
+	option proto 'dhcp'
+
