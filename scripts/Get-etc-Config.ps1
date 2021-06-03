@@ -35,6 +35,7 @@ function getAndSyncOpenwrtConfig( [Parameter( Position = 0 )] $config, [Paramete
 		'/etc/opkg.conf'
 		'/etc/opkg/customfeeds.conf'
 		'/etc/opkg/distfeeds.conf'
+		'/etc/asterisk'
 		'/usr/lib/opkg/status'
 		'/rwm/upper/etc/config'
 		'/rwm/upper/etc/crontabs'

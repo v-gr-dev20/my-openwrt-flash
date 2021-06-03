@@ -20,6 +20,14 @@ Architecture: mipsel_74kc
 Installed-Time: 1622703619
 Auto-Installed: yes
 
+Package: asterisk16-res-http-websocket
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920409
+Auto-Installed: yes
+
 Package: iwinfo
 Version: 2019-10-16-07315b6f-1
 Depends: libc, libiwinfo20181126
@@ -76,6 +84,37 @@ Architecture: mipsel_74kc
 Installed-Time: 1622704815
 Auto-Installed: yes
 
+Package: asterisk16
+Version: 16.3.0-9
+Depends: libc, uclibcxx, jansson, libcap, libedit, libopenssl1.1, libsqlite3-0, libuuid1, libxml2, zlib
+Status: install user installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/asterisk/asterisk.conf 4a3b144ec7fff6a468f835e98fd67efa86961dc0f2f82333c587aad3e1f74f5b
+ /etc/asterisk/acl.conf 03f3da61d818752e4b3669ed5a8128c3d5628dd93cefa1704ca30073f134de24
+ /etc/asterisk/cel.conf 222f104793da851591932b0018a791cbf9d39a8c4f9a508f15298703dbfa3bc7
+ /etc/asterisk/ccss.conf 6cf9bd234bbc15463c6bd4c8f493622e629b58afe0584715635ca97e78b74b8e
+ /etc/asterisk/cli.conf c8f1db8099a4da5fba9957d52d05520a96fefc95b27ee7bdd0620cd22a1298a0
+ /etc/asterisk/cli_permissions.conf f2f5ffbbbda3eb528fe0ae305cee8e8f70840f4b4bd2d8958055f2e0de2d6204
+ /etc/asterisk/codecs.conf b954ce882f0698432447ff2850d2c42a9c58f82bf6406a05c4b5d516e181ef34
+ /etc/asterisk/dnsmgr.conf cb8d827534ef227f5459c9f187305871eca7350e025f7a69c71ddf3634648b34
+ /etc/asterisk/dsp.conf 62ac4fef90602036d89661857d2d4de82b6d86b6402e0adbe99e3d6e0c4a5754
+ /etc/asterisk/extconfig.conf 1beda90fc03e7406e4790706cf526789c356ac10c0d34d49bc69f25b224fc991
+ /etc/asterisk/extensions.conf 24cc2fe5132ef5a4950be4cd9feb759c1248aff86123b6141fc78096db3c9862
+ /etc/asterisk/features.conf 96068d9b90acd71c36247d2198974268c838bf594ec4f35bb072eeef140ea8cd
+ /etc/asterisk/http.conf fb2d52f68466f131d5cfac222a94b1971411a7f51dcb4f36016b2ec742598505
+ /etc/asterisk/indications.conf a9751ddfe6d8563a2d98d91c6a7cb26f4ba3cbeb34271fab9f79a1781f120f26
+ /etc/asterisk/logger.conf 86c198a3edf51ec4364a40e0b297f274c753d8405c8fbe0b9bc961da3237c316
+ /etc/asterisk/manager.conf c3ddcf9e212355081509a37e140c66c25482664cfdaaead3486fa61d65e7a4fc
+ /etc/asterisk/modules.conf df208e7b05d4938e092623090d9b6807e5308ea7a1fd127fee380dabd02ad81a
+ /etc/asterisk/res_config_sqlite3.conf 5e259134f6649e54871698cb77173b0cd6b3e074449d0a089527dc09b2e0bda8
+ /etc/asterisk/stasis.conf 6fe7d1f950bab764c79885bbc5bfada16c1fee2eaf3618895574c0eb18f5db1a
+ /etc/asterisk/udptl.conf 2de83c8adf6d0ac1a4aa3f95a10b6b70ad1537e1d36972040337bbea998e66bd
+ /etc/asterisk/users.conf 7bf275d9a6fddb42fca9cd424fe6c19370420d0be6c5514e76e7027f564c12e8
+ /etc/default/asterisk 51e4fcc473f68f438c53954b30298d8d0b134854e04ed4388a29bc1feecdc48a
+ /etc/init.d/asterisk f0b4be42c5ae26c6c5e9465f0388b7a0210219b550dce660b03042306f3934be
+Installed-Time: 1622920407
+
 Package: opkg
 Version: 2021-01-31-c5dccea9-1
 Depends: libc, uclient-fetch, libpthread, libubox20191228
@@ -95,6 +134,13 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622706929
 Alternatives: 300:/usr/bin/wget:/usr/bin/wget-ssl
+
+Package: asterisk16-format-gsm
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920491
 
 Package: kmod-usb-core
 Version: 4.14.221-1
@@ -120,6 +166,14 @@ Conflicts: hostapd, hostapd-basic, hostapd-mini, hostapd-openssl, hostapd-wolfss
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+
+Package: libopus
+Version: 1.3.1-2
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920455
+Auto-Installed: yes
 
 Package: libpthread
 Version: 1.1.24-2
@@ -178,6 +232,14 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622704835
 
+Package: libpjmedia
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjnath, librt, libsrtp2
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920414
+Auto-Installed: yes
+
 Package: luci-lib-ip
 Version: git-21.044.30835-34e0d65-1
 Depends: libc, liblua5.1.5, libnl-tiny
@@ -222,6 +284,13 @@ Status: install ok installed
 Architecture: mipsel_74kc
 Installed-Time: 1622707386
 Auto-Installed: yes
+
+Package: asterisk16-format-pcm
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920513
 
 Package: libiwinfo-lua
 Version: 2019-10-16-07315b6f-1
@@ -284,6 +353,20 @@ Conffiles:
  /etc/mc/skins/default.ini 5e4a9c862db65e4b6e8663a51617dd84cc332d953442787f5b9fe03e80a01a89
 Installed-Time: 1622707526
 
+Package: asterisk16-format-h263
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920498
+
+Package: asterisk16-format-h264
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920506
+
 Package: luci-theme-bootstrap
 Version: git-21.044.30835-34e0d65-1
 Depends: libc
@@ -317,6 +400,14 @@ Architecture: mipsel_74kc
 Installed-Time: 1622703447
 Auto-Installed: yes
 
+Package: libcap
+Version: 2.27-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920398
+Auto-Installed: yes
+
 Package: kmod-pppox
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-ppp
@@ -338,12 +429,36 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 
+Package: asterisk16-chan-rtp
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920541
+
+Package: asterisk16-res-srtp
+Version: 16.3.0-9
+Depends: libc, asterisk16, libsrtp2
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920563
+
 Package: kmod-lib-crc16
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4)
 Status: install ok installed
 Architecture: mipsel_74kc
 Installed-Time: 1622703222
+Auto-Installed: yes
+
+Package: asterisk16-app-confbridge
+Version: 16.3.0-9
+Depends: libc, asterisk16, asterisk16-bridge-builtin-features, asterisk16-bridge-simple, asterisk16-bridge-softmix
+Status: install ok installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/asterisk/confbridge.conf 6060cd281792e104994ddf7396a76b92f5e39f08de757ed49f3c82df8fb11b45
+Installed-Time: 1622920424
 Auto-Installed: yes
 
 Package: base-files
@@ -376,6 +491,14 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 
+Package: asterisk16-bridge-softmix
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920424
+Auto-Installed: yes
+
 Package: libpcre
 Version: 8.43-1
 Depends: libc
@@ -398,6 +521,13 @@ Depends: libc
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622704929
+
+Package: asterisk16-format-g719
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920463
 
 Package: netifd
 Version: 2021-01-09-753c351b-1
@@ -440,6 +570,20 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1622707668
 
+Package: asterisk16-format-g723
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920470
+
+Package: asterisk16-format-g726
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920477
+
 Package: kmod-mii
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4)
@@ -466,6 +610,13 @@ Architecture: mipsel_74kc
 Installed-Time: 1613402557
 Auto-Installed: yes
 
+Package: asterisk16-format-g729
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920484
+
 Package: libuclient20160123
 Version: 2020-06-17-51e16ebf-1
 Depends: libc, libubox20191228
@@ -490,12 +641,57 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622702638
 
+Package: libpjsip-ua
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjmedia, libpjsip-simple, libpjsip, librt
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920416
+Auto-Installed: yes
+
 Package: ubusd
 Version: 2019-12-27-041c9d1c-1
 Depends: libc, libubox20191228, libblobmsg-json
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+Auto-Installed: yes
+
+Package: asterisk16-codec-g722
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920437
+
+Package: asterisk16-res-stasis
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920573
+Auto-Installed: yes
+
+Package: asterisk16-codec-g726
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920437
+
+Package: asterisk16-codec-g729
+Version: 1.4.3-1
+Depends: libc, bcg729, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920438
+
+Package: jansson
+Version: 2.12-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920397
 Auto-Installed: yes
 
 Package: kmod-usb-ehci
@@ -505,6 +701,13 @@ Status: install ok installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 Auto-Installed: yes
+
+Package: asterisk16-res-rtp-multicast
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920556
 
 Package: luci-mod-status
 Version: git-21.044.30835-34e0d65-1
@@ -608,6 +811,13 @@ Conffiles:
  /etc/firewall.user bd68324966481011f5e36570258ad97dd422655c16f3119d48325ed8459de510
 Installed-Time: 1613402557
 
+Package: asterisk16-res-ari-sounds
+Version: 16.3.0-9
+Depends: libc, asterisk16, asterisk16-res-ari, asterisk16-res-ari-model, asterisk16-res-stasis
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920573
+
 Package: kmod-fs-exfat
 Version: 4.14.221+2018-04-17-01c30ad5-2
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-nls-base
@@ -615,12 +825,46 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622705594
 
+Package: asterisk16-res-sorcery
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install ok installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/asterisk/sorcery.conf 272a05281aec85b4e94753cb10381ee22c8399e0e2e3ee7f03981d5e2ab531a1
+Installed-Time: 1622920419
+Auto-Installed: yes
+
+Package: libxml2
+Version: 2.9.9-3
+Depends: libc, libpthread, zlib
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920405
+Auto-Installed: yes
+
+Package: libpjsip
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, librt, libsrtp2
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920415
+Auto-Installed: yes
+
 Package: luci-app-firewall
 Version: git-21.044.30835-34e0d65-1
 Depends: libc, firewall
 Status: install user installed
 Architecture: all
 Installed-Time: 1613402557
+Auto-Installed: yes
+
+Package: asterisk16-bridge-simple
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920423
 Auto-Installed: yes
 
 Package: kmod-nf-ipt
@@ -646,6 +890,15 @@ Provides: libssh2
 Status: install ok installed
 Architecture: mipsel_74kc
 Installed-Time: 1622707441
+Auto-Installed: yes
+
+Package: libsqlite3-0
+Version: 3310100-1
+Depends: libc, libpthread, zlib
+Provides: libsqlite3
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920402
 Auto-Installed: yes
 
 Package: kmod-ip6tables
@@ -678,6 +931,24 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 Alternatives: 200:/usr/bin/wget:/bin/uclient-fetch
+
+Package: asterisk16-codec-gsm
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920439
+
+Package: asterisk16-pjsip
+Version: 16.3.0-9
+Depends: libc, asterisk16, asterisk16-res-http-websocket, asterisk16-res-pjproject, asterisk16-res-sorcery, libpjsip, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsua, libpjsua2
+Status: install user installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/asterisk/pjsip.conf 00c1e3d161881067c51dcbdee4328d431b1e33e68f1f27ad6ed4114fba433a2a
+ /etc/asterisk/pjsip_notify.conf 2d4c12e801dd4225c4c1184743774abe075aaf3e5bd56a769a064cc88553449b
+ /etc/asterisk/pjsip_wizard.conf d30b295456a928d1e1535992aaa2a295f371e2e0a79c3f4f0854eb842455dfd7
+Installed-Time: 1622920421
 
 Package: uci
 Version: 2019-09-01-415f9e48-4
@@ -757,6 +1028,13 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622704199
 
+Package: asterisk16-bridge-native-rtp
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920534
+
 Package: kmod-nls-cp437
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-nls-base
@@ -785,6 +1063,30 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 
+Package: asterisk16-res-ari
+Version: 16.3.0-9
+Depends: libc, asterisk16, asterisk16-res-http-websocket
+Status: install ok installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/asterisk/ari.conf 2f9992fa4435757723b7450a584c645bf2f004fcf923b6bc8e3e3ec5d4c527c9
+Installed-Time: 1622920571
+Auto-Installed: yes
+
+Package: asterisk16-format-wav-gsm
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920527
+
+Package: asterisk16-format-wav
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920520
+
 Package: usb-modeswitch
 Version: 2017-12-19-f40f84c2-2
 Depends: libc, libubox20191228, libblobmsg-json, libusb-1.0-0
@@ -799,6 +1101,23 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 Auto-Installed: yes
+
+Package: libpj
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, librt
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920410
+Auto-Installed: yes
+
+Package: asterisk16-res-rtp-asterisk
+Version: 16.3.0-9
+Depends: libc, asterisk16, libpjsip, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsua, libpjsua2
+Status: install user installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/asterisk/rtp.conf 6c2a208477460f42014299c4805ded022ba50921937c011a1945087ba8f766dc
+Installed-Time: 1622920549
 
 Package: nvram
 Version: 10
@@ -865,6 +1184,14 @@ Conffiles:
  /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
 Installed-Time: 1613402557
 
+Package: libpjlib-util
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, librt
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920411
+Auto-Installed: yes
+
 Package: luci-base
 Version: git-21.044.30835-34e0d65-1
 Depends: libc, lua, luci-lib-nixio, luci-lib-ip, rpcd, libubus-lua, luci-lib-jsonc, liblucihttp-lua, rpcd-mod-file, rpcd-mod-luci, cgi-io
@@ -883,6 +1210,13 @@ Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4)
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+
+Package: asterisk16-codec-ulaw
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920436
 
 Package: kmod-gpio-button-hotplug
 Version: 4.14.221-3
@@ -944,6 +1278,14 @@ Depends: libc, libubox20191228
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+Auto-Installed: yes
+
+Package: libpjsip-simple
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjsip, librt
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920415
 Auto-Installed: yes
 
 Package: luci-proto-ipv6
@@ -1012,6 +1354,13 @@ Architecture: mipsel_74kc
 Installed-Time: 1622703518
 Auto-Installed: yes
 
+Package: asterisk16-codec-alaw
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920436
+
 Package: kmod-fuse
 Version: 4.14.221-1
 Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4)
@@ -1052,6 +1401,14 @@ Architecture: mipsel_74kc
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1622703548
+
+Package: libpjnath
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, librt
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920412
+Auto-Installed: yes
 
 Package: kmod-ledtrig-default-on
 Version: 4.14.221-1
@@ -1101,6 +1458,14 @@ Architecture: mipsel_74kc
 Installed-Time: 1622703490
 Auto-Installed: yes
 
+Package: libsrtp2
+Version: 2.2.0-1
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920412
+Auto-Installed: yes
+
 Package: libjson-c2
 Version: 0.12.1-3.1
 Depends: libc
@@ -1118,6 +1483,14 @@ Architecture: mipsel_74kc
 Conffiles:
  /etc/config/uhttpd 779a23a1f25b7721094ee54154ffe86745c88ca894fd21b20788ba874c92833d
 Installed-Time: 1613402557
+
+Package: libpjsua
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsip, librt
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920417
+Auto-Installed: yes
 
 Package: kmod-nf-conntrack
 Version: 4.14.221-1
@@ -1149,6 +1522,14 @@ Depends: libc, kmod-ip6tables, iptables
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+
+Package: libpjsua2
+Version: 2.8-3
+Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsip, librt, libpjsua
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920418
+Auto-Installed: yes
 
 Package: liblua5.1.5
 Version: 5.1.5-3
@@ -1190,6 +1571,13 @@ Architecture: mipsel_74kc
 Installed-Time: 1613402557
 Auto-Installed: yes
 
+Package: asterisk16-codec-adpcm
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920447
+
 Package: ca-bundle
 Version: 20200601-1
 Depends: libc
@@ -1205,6 +1593,14 @@ Depends: libc, liblucihttp0, liblua5.1.5
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+Auto-Installed: yes
+
+Package: asterisk16-bridge-builtin-features
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920422
 Auto-Installed: yes
 
 Package: kmod-nls-iso8859-1
@@ -1266,6 +1662,16 @@ Architecture: mipsel_74kc
 Installed-Time: 1613402557
 Auto-Installed: yes
 
+Package: asterisk16-res-pjproject
+Version: 16.3.0-9
+Depends: libc, asterisk16, libpj, libpjlib-util, libpjmedia, libpjmedia, libpjnath, libpjsip-simple, libpjsip-ua, libpjsip, libpjsua, libpjsua2, libsrtp2
+Status: install ok installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/asterisk/pjproject.conf bb822bb33ee92aac6860330af61c6f705ec1d86b88b6bf187084d9541259d587
+Installed-Time: 1622920419
+Auto-Installed: yes
+
 Package: ubox
 Version: 2019-06-16-4df34a4d-4
 Depends: libc, libubox20191228, ubusd, ubus, libubus20191227, libuci20130104
@@ -1295,6 +1701,21 @@ Depends: kernel (= 4.14.221-1-e3e22a8b624e1f4eb442e41374fa72f4), kmod-crypto-has
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622705301
+
+Package: asterisk16-res-ari-model
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920572
+Auto-Installed: yes
+
+Package: asterisk16-codec-opus
+Version: 20171009-1
+Depends: libc, libopus, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920456
 
 Package: usbreset
 Version: 5
@@ -1334,6 +1755,23 @@ Status: install ok installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
 Auto-Installed: yes
+
+Package: asterisk16-chan-sip
+Version: 16.3.0-9
+Depends: libc, asterisk16, asterisk16-app-confbridge
+Status: install user installed
+Architecture: mipsel_74kc
+Conffiles:
+ /etc/asterisk/sip.conf aa9fe76c935338dddb1d2a519c9c7cd047229f38acd0ce2f3ea5de52efaf831c
+ /etc/asterisk/sip_notify.conf 2d4c12e801dd4225c4c1184743774abe075aaf3e5bd56a769a064cc88553449b
+Installed-Time: 1622920425
+
+Package: asterisk16-sounds
+Version: 16.3.0-9
+Depends: libc, asterisk16
+Status: install user installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920587
 
 Package: fwtool
 Version: 2
@@ -1388,6 +1826,14 @@ Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1622704719
 
+Package: libedit
+Version: 20210216-3.1-1
+Depends: libc, libncurses6
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920399
+Auto-Installed: yes
+
 Package: wireless-regdb
 Version: 2020.11.20-1
 Depends: libc
@@ -1439,6 +1885,14 @@ Depends: libc, kmod-pppoe
 Status: install user installed
 Architecture: mipsel_74kc
 Installed-Time: 1613402557
+
+Package: bcg729
+Version: 1.0.4-3
+Depends: libc
+Status: install ok installed
+Architecture: mipsel_74kc
+Installed-Time: 1622920438
+Auto-Installed: yes
 
 Package: kmod-ipt-nat
 Version: 4.14.221-1
