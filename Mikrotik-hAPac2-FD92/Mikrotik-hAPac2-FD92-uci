@@ -1,3 +1,7 @@
+asterisk.general=asterisk
+asterisk.general.enabled='0'
+asterisk.general.log_stderr='1'
+asterisk.general.log_stdout='1'
 autossh.@autossh[0]=autossh
 autossh.@autossh[0].gatetime='0'
 autossh.@autossh[0].poll='600'
