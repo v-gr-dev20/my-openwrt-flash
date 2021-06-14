@@ -6,6 +6,9 @@ busybox - 1.35.0-5
 ca-bundle - 20211016-1
 cgi-io - 2022-08-10-901b0f04-21
 curl - 8.0.1-1
+ddns-scripts - 2.8.2-25
+ddns-scripts-noip - 2.8.2-25
+ddns-scripts-services - 2.8.2-25
 dnsmasq - 2.86-16
 dosfstools - 4.2-2
 dropbear - 2022.82-2
@@ -149,6 +152,7 @@ logd - 2021-08-03-205defb5-2
 lsof - 4.94.0-1
 lua - 5.1.5-10
 luci - git-23.093.42303-d58cd69
+luci-app-ddns - git-23.093.42303-d0d5cd1
 luci-app-firewall - git-23.093.42704-1c01c64
 luci-app-opkg - git-23.093.42303-e16f620
 luci-base - git-23.093.57104-ce20b4a

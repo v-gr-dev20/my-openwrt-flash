@@ -191,6 +191,15 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: ddns-scripts-services
+Version: 2.8.2-25
+Depends: libc
+Provides: ddns-scripts_service
+Status: install ok installed
+Architecture: all
+Installed-Time: 1682770537
+Auto-Installed: yes
+
 Package: f2fs-tools
 Version: 1.14.0-3
 Depends: libc, libf2fs6, mkf2fs, f2fsck
@@ -541,6 +550,15 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456960
 Auto-Installed: yes
 
+Package: ddns-scripts
+Version: 2.8.2-25
+Depends: libc, ddns-scripts-services
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/ddns 1ac88bf986580f2b3f0869ba58256c3e335f6f3734aaa09210b0add876ad56b8
+Installed-Time: 1682770537
+
 Package: libsmartcols1
 ABIVersion: 1
 Version: 2.37.4-1
@@ -729,6 +747,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456976
 Auto-Installed: yes
 
+Package: ddns-scripts-noip
+Version: 2.8.2-25
+Depends: libc, ddns-scripts
+Provides: ddns-scripts_no-ip_com
+Status: install user installed
+Architecture: all
+Installed-Time: 1682770538
+
 Package: kmod-usb-net-rndis
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-usb-net, kmod-usb-net-cdc-ether
@@ -790,6 +816,13 @@ Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-nft-core, 
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: luci-app-ddns
+Version: git-23.093.42303-d0d5cd1
+Depends: libc, luci-mod-admin-full, ddns-scripts
+Status: install user installed
+Architecture: all
+Installed-Time: 1682770545
 
 Package: netperf
 Version: 2.7.0-3
