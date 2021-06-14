@@ -174,6 +174,14 @@ Essential: yes
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: ddns-scripts-services
+Version: 2.8.2-7
+Depends: libc
+Status: install ok installed
+Architecture: all
+Installed-Time: 1623695545
+Auto-Installed: yes
+
 Package: f2fs-tools
 Version: 1.14.0-1
 Depends: libc, libf2fs6, mkf2fs, f2fsck
@@ -464,6 +472,15 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: ddns-scripts
+Version: 2.8.2-7
+Depends: libc, ddns-scripts-services
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/ddns 1ac88bf986580f2b3f0869ba58256c3e335f6f3734aaa09210b0add876ad56b8
+Installed-Time: 1623695545
+
 Package: libf2fs6
 ABIVersion: 6
 Version: 1.14.0-1
@@ -605,6 +622,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: ddns-scripts-noip
+Version: 2.8.2-7
+Depends: libc, ddns-scripts
+Status: install user installed
+Architecture: all
+Installed-Time: 1623738391
+
 Package: kmod-usb-net-rndis
 Version: 5.4.119-1
 Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-usb-net, kmod-usb-net-cdc-ether
@@ -640,6 +664,13 @@ Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-nls-base, k
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623664271
+
+Package: luci-app-ddns
+Version: git-21.018.50423-4d5facb
+Depends: libc, luci-lib-ipkg, luci-mod-admin-full, ddns-scripts
+Status: install user installed
+Architecture: all
+Installed-Time: 1623695554
 
 Package: netperf
 Version: 2.7.0-2
@@ -694,6 +725,14 @@ Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: luci-lib-ipkg
+Version: git-18.318.71164-4bbe325
+Depends: libc, luci-base
+Status: install ok installed
+Architecture: all
+Installed-Time: 1623695553
+Auto-Installed: yes
 
 Package: libblkid1
 ABIVersion: 1
