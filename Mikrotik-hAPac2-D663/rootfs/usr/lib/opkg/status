@@ -164,6 +164,14 @@ Essential: yes
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 
+Package: ddns-scripts-services
+Version: 2.8.2-12
+Depends: libc
+Status: install ok installed
+Architecture: all
+Installed-Time: 1652010960
+Auto-Installed: yes
+
 Package: f2fs-tools
 Version: 1.14.0-1
 Depends: libc, libf2fs6, mkf2fs, f2fsck
@@ -496,6 +504,15 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1651875666
 Auto-Installed: yes
 
+Package: ddns-scripts
+Version: 2.8.2-12
+Depends: libc, ddns-scripts-services
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/ddns 1ac88bf986580f2b3f0869ba58256c3e335f6f3734aaa09210b0add876ad56b8
+Installed-Time: 1652010961
+
 Package: libsmartcols1
 ABIVersion: 1
 Version: 2.36.1-2
@@ -634,6 +651,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 
+Package: ddns-scripts-noip
+Version: 2.8.2-12
+Depends: libc, ddns-scripts
+Status: install user installed
+Architecture: all
+Installed-Time: 1652010963
+
 Package: kmod-usb-net-rndis
 Version: 5.4.179-1
 Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-usb-net, kmod-usb-net-cdc-ether
@@ -669,6 +693,13 @@ Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-nls-base, k
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1651875712
+
+Package: luci-app-ddns
+Version: git-22.123.50005-9139ad4
+Depends: libc, luci-lib-ipkg, luci-mod-admin-full, ddns-scripts
+Status: install user installed
+Architecture: all
+Installed-Time: 1652010973
 
 Package: netperf
 Version: 2.7.0-2
@@ -723,6 +754,14 @@ Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+
+Package: luci-lib-ipkg
+Version: git-18.318.71164-4bbe325
+Depends: libc, luci-base
+Status: install ok installed
+Architecture: all
+Installed-Time: 1652010971
+Auto-Installed: yes
 
 Package: libblkid1
 ABIVersion: 1
