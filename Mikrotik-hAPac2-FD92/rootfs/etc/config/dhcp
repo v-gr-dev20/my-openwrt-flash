@@ -42,3 +42,9 @@ config odhcpd 'odhcpd'
 	option leasetrigger '/usr/sbin/odhcpd-update'
 	option loglevel '4'
 
+config host
+	option mac '7C:2F:80:2A:C9:C7'
+	option name 'DX800A'
+	option dns '1'
+	option ip '192.168.21.6'
+
