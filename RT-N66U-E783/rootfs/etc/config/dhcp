@@ -42,3 +42,9 @@ config odhcpd 'odhcpd'
 	option leasetrigger '/usr/sbin/odhcpd-update'
 	option loglevel '4'
 
+config host
+	option mac '7C:2F:80:55:E2:93'
+	option name 'C610A-IP'
+	option dns '1'
+	option ip '192.168.12.6'
+
