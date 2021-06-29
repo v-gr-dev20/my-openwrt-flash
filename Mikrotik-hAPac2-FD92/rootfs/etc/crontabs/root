@@ -4,3 +4,5 @@
 # restart if internet is lost
 */10 * * * *	bound=4; up=$( uptime |sed 's/^.*\W\+up\W\+\(.*\),\W\+load.*$/\1/' |awk '$2=="min" { print $1 }' ); up=${up:=$bound}; [ $up -lt $bound  ] || { ping -c2 8.8.8.8 &>/dev/null || reboot; }
 
+# writes to the log and calls the handler when WAN ip changed
+* * * * *	atnowWanIp=$( { mkfifo dummy; ( echo -n $'\003' >> dummy & ); ( echo 'ifconfig wan0'; echo exit; sleep 1 ) |cat - dummy | nc 192.168.8.1 23 |awk '"inet"==$1 {print $2}'| sed 's/addr://'; rm dummy; } 2> /dev/null ); lastWanIp=$( tail -1 /home/log/wan-ip-was-changed.log 2> /dev/null |awk '{ print $2 }' ); [ "$atnowWanIp" != "$lastWanIp" ] && { echo $( date +%Y-%m-%d-%H:%M:%S )$'\t'${atnowWanIp} >> /home/log/wan-ip-was-changed.log; /root/scripts/on-external-wan-ip-changed.sh; }
