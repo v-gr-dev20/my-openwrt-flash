@@ -215,8 +215,10 @@ function Invoke-Command-by-SSH
 			}
 		}
 	}
+	if( $null -ne $config.projectPath ) { Push-Location $config.projectPath }
 	# и здесь магия Powershell: $input
 	$input |Invoke-Command -ScriptBlock $sshTargetCommandBlock
+	if( $null -ne $config.projectPath ) { Pop-Location }
 }
 
 # Выполняет копирование файлов с/на удаленного сервера с помощью scp
@@ -255,7 +257,9 @@ function Invoke-SCP( [Parameter( Mandatory, Position = 0 )] $config,
 			}
 		}
 	}
+	if( $null -ne $config.projectPath ) { Push-Location $config.projectPath }
 	scp $sshParameters "$source" "$destination"
+	if( $null -ne $config.projectPath ) { Pop-Location }
 }
 
 # Выполняет скрипт на удаленном хосте
