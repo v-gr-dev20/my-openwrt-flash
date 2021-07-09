@@ -15,11 +15,10 @@ function main
 		[Parameter( ValueFromPipeline )][PSObject[]]$inputLine
 	)
 
-	$anURNpartOfConfig = getURNpartFromConfig $config
 	$input |Invoke-Command-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo `
 		-RedirectStandardOutput:$RedirectStandardOutput `
 		-WithTimestamp:( -not $WithoutTimestamp ) -Description:"$Description" `
-		$anURNpartOfConfig $command $commandArgs
+		$config $command $commandArgs
 }
 
 # include

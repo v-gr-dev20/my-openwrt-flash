@@ -4,8 +4,7 @@
 function main( [Parameter( Mandatory )][string[]] $files,
 		[Parameter( Mandatory )][string] $destination )
 {
-	$anURNpartOfConfig = getURNpartFromConfig $config
-	Put-Files $anURNpartOfConfig -files:$files -remoteDestinationDirectory:$destination 
+	Put-Files $config -files:$files -remoteDestinationDirectory:$destination 
 }
 
 # Копирует и перезаписывает локальные файлы и папки на удаленный хост в указанную папку

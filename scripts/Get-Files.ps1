@@ -4,11 +4,10 @@
 function main( [Parameter( Mandatory )][string[]] $files,
 		[string] $destination = ( Join-Path ( $config.configPath |Split-Path -parent ) "rootfs" ) )
 {
-	$anURNpartOfConfig = getURNpartFromConfig $config
 	if( !( Test-Path $destination ) ) {
 		New-Item -Path $destination -ItemType Directory > $null
 	}
-	Get-Files $anURNpartOfConfig -remoteFiles:$files -localDestinationDirectory:$destination 
+	Get-Files $config -remoteFiles:$files -localDestinationDirectory:$destination 
 }
 
 # include

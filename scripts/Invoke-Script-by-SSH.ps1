@@ -26,12 +26,10 @@ function main
 			break
 		}
 	}
-	$anURNpartOfConfig = getURNpartFromConfig $config
-	
 	<#assert#> if( -not ( Test-Path -Path $scriptPath ) ) { throw }
 	Invoke-Script-by-SSH -MustSaveLog:( -not $WithoutLog ) -SaveLogTo:$SaveLogTo `
 		-WithTimestamp:( -not $WithoutTimestamp )  -Description:"$Description" `
-		$anURNpartOfConfig $scriptPath $scriptArgs
+		$config $scriptPath $scriptArgs
 }
 
 # include
