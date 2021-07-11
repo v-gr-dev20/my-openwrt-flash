@@ -30,35 +30,37 @@ function Put-Files( [Parameter( Mandatory, Position = 0 )] $config,
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent |Split-Path -parent )" -ChildPath "scripts/common.ps1" )
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent |Split-Path -parent )" -ChildPath "scripts/ssh-functions.ps1" )
 
-# Выводит подсказку
-function outputHelp()
+# Выводит подсказку и завершает программу
+function outputHelpAndExit()
 {
 	$commandName = $ThisScriptPath |Split-Path -Leaf
 	if( ".ps1" -eq [System.IO.Path]::GetExtension( $commandName ).ToLower() ) {
 		$commandName = [System.IO.Path]::GetFileNameWithoutExtension( $commandName )
 	}
 "	Usage:
-		$commandName [ <device> ] <Path/of/localFile1>[,*2,..] <Path/of/destinationDir>
+		$commandName	[ <device> ] [ -files ] <Path/of/localFile1>[ ,<*File2>... ] [ -destination ] </Path/of/destinationDir>
 		$commandName	-h | --help
 "
+	exit
 }
 
 # Точка входа
 [string] $ThisScriptPath = $MyInvocation.MyCommand.Path
-if( ( 1 -le $Args.Count -and $Args[0].ToLower() -in @( "-h", "--help" ) ) `
-	-or ( $Args.Count -lt 2 ) -or ( 3 -lt $Args.Count ) ) `
-{
-	outputHelp
-	exit
+if( ( 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) ) {
+	outputHelpAndExit
 }
 $toSkipArgsCount = 0
 New-Variable -Scope script -Name config  -Value $(
 	# интерпретируем контекст аргументов скрипта, см. Usage:
-	if( 2 -eq $Args.Count ) {
+	if( ( '-' -eq $Args[0][0] ) -or ( 2 -eq $Args.Count ) ) {
 		getConfig
 	} else {
-		$toSkipArgsCount += 1 
-		getConfig $Args[0] 
+		$toSkipArgsCount += 1
+		getConfig $Args[0]
 	}
 )
-Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip $toSkipArgsCount )
+try {
+	Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip $toSkipArgsCount )
+} catch [System.Management.Automation.ParameterBindingException] {
+	outputHelpAndExit
+}

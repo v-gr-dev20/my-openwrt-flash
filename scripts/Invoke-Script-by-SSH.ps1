@@ -8,7 +8,7 @@ function main
 		[String] $SaveLogTo,
 		[switch] $WithoutTimestamp,
 		[string] $Description,
-		[Parameter( Mandatory, Position = 0 )][string] $script,
+		[Parameter( Mandatory, Position = 0 )][Alias( 's' )][string] $script,
 		[Parameter( Position = 1, ValueFromRemainingArguments = $true )][string[]] $scriptArgs
 	)
 
@@ -38,8 +38,8 @@ function main
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
-# Выводит подсказку
-function outputHelp()
+# Выводит подсказку и завершает программу
+function outputHelpAndExit()
 {
 	$commandName = $ThisScriptPath |Split-Path -Leaf
 	if( ".ps1" -eq [System.IO.Path]::GetExtension( $commandName ).ToLower() ) {
@@ -47,34 +47,30 @@ function outputHelp()
 	}
 "	Usage:
 		$commandName	[ -s ] <script>
-		$commandName	<device> [ -s ] <script> [ <arg1> <arg2> ...]
+		$commandName	<device> [ -s ] <script> [ <arg1> <arg2> ... ]
 		$commandName	-s <script> <arg1> [ <arg2> ... ]
 		$commandName	-h | --help
 "
+	exit
 }
 
 # Точка входа
 [string] $ThisScriptPath = $MyInvocation.MyCommand.Path
-if( ( 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) `
-	-or ( $Args.Count -in @( 1, 2 ) -and ( $Args[-1].ToLower() -in @( "-s", "--script" ) ) ) )
-{
-	outputHelp
-	exit
+if( ( 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) ) {
+	outputHelpAndExit
 }
 $toSkipArgsCount = 0
 New-Variable -Scope script -Name config  -Value $(
 	# интерпретируем контекст аргументов скрипта, см. Usage:
-	if( $Args[0].ToLower() -in @( "-s", "--script" ) ) {
-		$toSkipArgsCount += 1
-		getConfig
-	} elseif( 1 -eq $Args.Count ) {
+	if( ( '-' -eq $Args[0][0] ) -or ( 1 -eq $Args.Count ) ) {
 		getConfig
 	} else {
 		$toSkipArgsCount += 1
-		if( $Args[1].ToLower() -in @( "-s", "--script" ) ) {
-			$toSkipArgsCount += 1
-		}
 		getConfig $Args[0]
 	}
 )
-Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip $toSkipArgsCount )
+try {
+	Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip $toSkipArgsCount )
+} catch [System.Management.Automation.ParameterBindingException] {
+	outputHelpAndExit
+}
