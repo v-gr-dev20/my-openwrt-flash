@@ -2,7 +2,7 @@
 # Скрипт копирует указанные файлы с удаленного хоста в локальную папку
 
 function main( [Parameter( Mandatory )][string[]] $files,
-		[string] $destination = ( Join-Path ( getProject $config.projectName ) "rootfs" ) )
+		[string] $destination = ( Join-Path ( $config.configPath |Split-Path -parent ) "rootfs" ) )
 {
 	$anURNpartOfConfig = getURNpartFromConfig $config
 	if( !( Test-Path $destination ) ) {

@@ -34,18 +34,37 @@ function outputHelp()
 		$commandName = [System.IO.Path]::GetFileNameWithoutExtension( $commandName )
 	}
 "	Usage:
-		$commandName <device> command
-		$commandName <device> command line
-		$commandName <device> `"command line`"
+		$commandName	[ -c ] <command>
+		$commandName	[ -c ] `"<command> [ <arg1> <arg2> ... ]`"
+		$commandName	<device> [ -c ] <command> [ <arg1> <arg2> ... ]
+		$commandName	<device> [ -c ] `"<command> [ <arg1> <arg2> ... ]`"
+		$commandName	-c <command> <arg1> [ <arg2> ... ]
 		$commandName	-h | --help
 "
 }
 
 # Точка входа
 [string] $ThisScriptPath = $MyInvocation.MyCommand.Path
-if( 1 -eq $Args.Count -or 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) {
+if( ( 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) `
+	-or ( $Args.Count -in @( 1, 2 ) -and ( $Args[-1].ToLower() -in @( "-c", "--command" ) ) ) )
+{
 	outputHelp
 	exit
 }
-New-Variable -Scope script -Name config  -Value ( getConfig $Args[0] ) -Option ReadOnly
-$input |Invoke-Command { $input| main @Args } -ArgumentList ( $Args |Select-Object -Skip 1 )
+$toSkipArgsCount = 0
+New-Variable -Scope script -Name config  -Value $(
+	# интерпретируем контекст аргументов скрипта, см. Usage:
+	if( $Args[0].ToLower() -in @( "-c", "--command" ) ) {
+		$toSkipArgsCount += 1 
+		getConfig
+	} elseif( 1 -eq $Args.Count ) {
+		getConfig
+	} else {
+		$toSkipArgsCount += 1 
+		if( $Args[1].ToLower() -in @( "-c", "--command" ) ) {
+			$toSkipArgsCount += 1 
+		}
+		getConfig $Args[0] 
+	}
+)
+$input |Invoke-Command { $input| main @Args } -ArgumentList ( $Args |Select-Object -Skip $toSkipArgsCount )

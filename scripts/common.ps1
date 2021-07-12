@@ -6,13 +6,19 @@
 # Считывает параметры программы из файла config.json
 function getConfig( [Parameter( Position = 0 )][string] $projectName )
 {
+	$result = @{}
 	$projectPath = getProject( $projectName )
-	$result = Get-Content "$projectPath/config.json" |ConvertFrom-Json -AsHashtable
-	# вызов без параметров - считаем папку скрипта папкой проекта
+	$configPath = Join-Path $projectPath 'config.json'
+	if( Test-Path $configPath -PathType leaf ) {
+		$result = Get-Content $configPath |ConvertFrom-Json -AsHashtable
+		$result.configPath = $configPath
+	}
+	# вызов без параметров - получаем имя проекта из папки конфига
 	if( [string]::IsNullOrEmpty( $projectName ) ) {
-		$projectName = $ThisScriptPath |Split-Path -parent |Split-Path -leaf
+		$projectName = $configPath |Split-Path -parent |Split-Path -leaf
 	}
 	$result.projectName = $projectName
+	$result.projectPath = $projectPath
 	$result
 }
 
@@ -20,14 +26,24 @@ function getConfig( [Parameter( Position = 0 )][string] $projectName )
 function getProject( [Parameter( Position = 0 )][string] $projectName )
 {
 	$thisScriptDirPath = $ThisScriptPath |Split-Path -parent
-	# вызов без параметров - считаем папку скрипта папкой проекта
-	if( [string]::IsNullOrEmpty( $projectName ) ) {
-		$projectPath = $thisScriptDirPath
-	} else {
-		$projectPath = Join-Path -Path ( $thisScriptDirPath |Split-Path -parent ) -ChildPath $projectName
+	# вызов без параметров - считаем папкой проекта папку скрипта или родительскую
+	if( $null -eq $projectName ) {
+		$projectName = ''
 	}
+	$projectPath = $(
+		if( Test-Path ( Join-Path $thisScriptDirPath $projectName 'config.json' ) -PathType leaf ) {
+			Join-Path $thisScriptDirPath $projectName
+		} elseif( Test-Path ( Join-Path ( $thisScriptDirPath |Split-Path -parent ) $projectName 'config.json' ) -PathType leaf ) {
+			Join-Path ( $thisScriptDirPath |Split-Path -parent ) $projectName
+		} elseif( Test-Path ( Join-Path $thisScriptDirPath $projectName ) -PathType Container ) {
+			Join-Path $thisScriptDirPath $projectName
+		} elseif( Test-Path ( Join-Path ( $thisScriptDirPath |Split-Path -parent ) $projectName ) -PathType Container ) {
+			Join-Path ( $thisScriptDirPath |Split-Path -parent ) $projectName
+		} else {
+			$thisScriptDirPath
+		}
+	)
 	<#assert#> if( [string]::IsNullOrEmpty( $projectPath ) ) { throw }
-
 	$projectPath
 }
 
