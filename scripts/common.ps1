@@ -6,16 +6,19 @@
 # Считывает параметры программы из файла config.json
 function getConfig( [Parameter( Position = 0 )][string] $projectName )
 {
+	$result = @{}
 	$projectPath = getProject( $projectName )
 	$configPath = Join-Path $projectPath 'config.json'
-	<#assert#> if( -not ( Test-Path $configPath -PathType leaf ) ) { throw }
-	$result = Get-Content $configPath |ConvertFrom-Json -AsHashtable
+	if( Test-Path $configPath -PathType leaf ) {
+		$result = Get-Content $configPath |ConvertFrom-Json -AsHashtable
+		$result.configPath = $configPath
+	}
 	# вызов без параметров - получаем имя проекта из папки конфига
 	if( [string]::IsNullOrEmpty( $projectName ) ) {
 		$projectName = $configPath |Split-Path -parent |Split-Path -leaf
 	}
 	$result.projectName = $projectName
-	$result.configPath = $configPath
+	$result.projectPath = $projectPath
 	$result
 }
 
