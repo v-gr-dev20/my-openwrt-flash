@@ -348,9 +348,9 @@ function Put-Files( [Parameter( Mandatory, Position = 0 )] $config,
 		return
 	}
 	$tempFile = New-TemporaryFile
-	tar -cf $tempFile.FullName -C "$( $files[0] |Split-Path -parent )" "$( $files[0] |Split-Path -leaf )"
+	tar -cf $tempFile.FullName -C "$( Resolve-Path $files[0] |Split-Path -parent )" "$( $files[0] |Split-Path -leaf )"
 	foreach( $file in ( $files |Select-Object -Skip 1 ) ) {
-		tar -rf $tempFile.FullName -C "$( $file |Split-Path -parent )" "$( $file |Split-Path -leaf )"
+		tar -rf $tempFile.FullName -C "$( Resolve-Path $file |Split-Path -parent )" "$( $file |Split-Path -leaf )"
 	}
 	Invoke-Command-by-SSH -MustSaveLog:$false -WithTimestamp:$false -RedirectStandardInput:$tempFile.FullName `
 		-SshOptions:$SshOptions `
