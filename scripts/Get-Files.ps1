@@ -7,7 +7,8 @@ function main( [Parameter( Mandatory )][string[]] $files,
 	if( !( Test-Path $destination ) ) {
 		New-Item -Path $destination -ItemType Directory > $null
 	}
-	Get-Files $config -remoteFiles:$files -localDestinationDirectory:$destination 
+	Get-Files $config -remoteFiles:$files -localDestinationDirectory:$destination `
+		|?{ -not ( $_ -match "tar: removing leading '/' from member names" ) }
 }
 
 # include
