@@ -2,8 +2,8 @@
 
 uci -q batch << EOF
 
-set ddns.myddns_ipv4.lookup_host='grigorovich-fam.ddns.net'
-set ddns.myddns_ipv4.domain='grigorovich-fam.ddns.net'
+set ddns.myddns_ipv4.lookup_host='grigorovich2.ddns.net'
+set ddns.myddns_ipv4.domain='grigorovich2.ddns.net'
 set ddns.myddns_ipv4.username='grigorovich-fam'
 set ddns.myddns_ipv4.password='password'\''s changed'
 set ddns.myddns_ipv4.interface='lte'

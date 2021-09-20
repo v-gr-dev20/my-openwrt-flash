@@ -2,7 +2,7 @@
 config autossh
 	option gatetime '0'
 	option poll '600'
-	option ssh '-TN -y -K 60 -i /etc/dropbear/dropbear_rsa_host_key -o ExitOnForwardFailure=yes -R 8022:localhost:22 admin@grigorovich-fam4.ddns.net'
+	option ssh '-TN -y -K 60 -i /etc/dropbear/dropbear_rsa_host_key -o ExitOnForwardFailure=yes -R 8022:localhost:22 admin@grigorovich4.ddns.net'
 	option monitorport '8023'
 	option enabled '1'
 
