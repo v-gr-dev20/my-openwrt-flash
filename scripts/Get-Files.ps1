@@ -2,51 +2,56 @@
 # Скрипт копирует указанные файлы с удаленного хоста в локальную папку
 
 function main( [Parameter( Mandatory )][string[]] $files,
-		[string] $destination = ( Join-Path ( getProject $config.projectName ) "rootfs" ) )
+		[string] $destination = ( Join-Path ( $config.configPath |Split-Path -parent ) "rootfs" ) )
 {
-	$anURNpartOfConfig = getURNpartFromConfig $config
 	if( !( Test-Path $destination ) ) {
 		New-Item -Path $destination -ItemType Directory > $null
 	}
-	Get-Files $anURNpartOfConfig -remoteFiles:$files -localDestinationDirectory:$destination 
+	Get-Files $config -remoteFiles:$files -localDestinationDirectory:$destination `
+		|?{ -not ( $_ -match "tar: removing leading '/' from member names" ) }
 }
 
 # include
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "common.ps1" )
 . $( Join-Path -Path "$( $MyInvocation.MyCommand.Path |Split-Path -parent )" -ChildPath "ssh-functions.ps1" )
 
-# Выводит подсказку
-function outputHelp()
+# Выводит подсказку и завершает программу
+function outputHelpAndExit()
 {
 	$commandName = $ThisScriptPath |Split-Path -Leaf
 	if( ".ps1" -eq [System.IO.Path]::GetExtension( $commandName ).ToLower() ) {
 		$commandName = [System.IO.Path]::GetFileNameWithoutExtension( $commandName )
 	}
 "	Usage:
-		$commandName [ <device> ] -files <file1>,<file1> [ -destination <directory> ]
+		$commandName	[ <device> ] <file1>[ ,<file2>... ]
+		$commandName	[ <device> ] -files <file1>[ ,<file2>... ] [ -destination <directory> ]
 		$commandName	-h | --help
 "
+	exit
 }
 
 # Точка входа
 [string] $ThisScriptPath = $MyInvocation.MyCommand.Path
-if( ( 1 -le $Args.Count -and $Args[0].ToLower() -in @( "-h", "--help" ) ) `
-	-or ( -not ( $Args.Count -in @( 2, 3, 4, 5 ) ) ) `
-	-or ( $Args.Count -in @( 2, 4 ) -and -not ( $Args[0].ToLower() -in @( "-f", "-files" ) ) ) `
-	-or ( $Args.Count -in @( 3, 5 ) -and -not ( $Args[1].ToLower() -in @( "-f", "-files" ) ) ) `
-	-or ( $Args.Count -in @( 4, 5 ) -and -not ( $Args[-2].ToLower() -in @( "-d", "-destination" ) ) ) )
-{
-	outputHelp
-	exit
+if( ( 0 -eq $Args.Count -or $Args[0].ToLower() -in @( "-h", "--help" ) ) ) {
+	outputHelpAndExit
 }
 $toSkipArgsCount = 0
 New-Variable -Scope script -Name config  -Value $(
 	# интерпретируем контекст аргументов скрипта, см. Usage:
-	if( $Args[0].ToLower() -in @( "-f", "-files" ) ) {
+	if( ( '-' -eq $Args[0][0] ) -or ( 1 -eq $Args.Count ) ) {
 		getConfig
 	} else {
-		$toSkipArgsCount += 1 
-		getConfig $Args[0] 
+		$toSkipArgsCount += 1
+		getConfig $Args[0]
 	}
 )
-Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip $toSkipArgsCount )
+try {
+	if( 1 -eq $Args.Count ) {
+		# "магический" способ передать единственный параметр-массив
+		Invoke-Command { main @Args } -ArgumentList ( , $Args )
+	} else {
+		Invoke-Command { main @Args } -ArgumentList ( $Args |Select-Object -Skip $toSkipArgsCount )
+	}
+} catch [System.Management.Automation.ParameterBindingException] {
+	outputHelpAndExit
+}

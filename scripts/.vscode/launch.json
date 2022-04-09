@@ -9,8 +9,8 @@
             "name": "PowerShell: Launch Script",
             "type": "PowerShell",
             "request": "launch",
-            "script": "./get-uci-config.ps1",
-            "args": ["RT-N66U-E783"],
+            "script": "./Who-is-Home-Now.ps1",
+            "args": ["TL-MR3420-FCB6"],
             "cwd": "${workspaceFolder}",
             "createTemporaryIntegratedConsole": true
         }
