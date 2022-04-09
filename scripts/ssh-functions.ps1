@@ -43,6 +43,12 @@ function Get-URNs-Chain( [Parameter( Mandatory, Position = 0 )] $config )
 	$result
 }
 
+# Извлекает из конфига адресную часть удаленного хоста
+function getURNpartFromConfig()
+{
+	Select-Hashtable-by-Keys $config "user","server","URN","URNs","ssh","port"
+}
+
 # Извлекает из конфига опции для ssh (без адресной части)
 function getSshOptionsFromConfig( [Parameter( Mandatory, Position = 0 )] $config )
 {
