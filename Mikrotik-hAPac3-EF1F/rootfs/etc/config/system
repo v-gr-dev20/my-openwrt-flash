@@ -1,11 +1,12 @@
 
 config system
-	option hostname 'OpenWrt'
-	option timezone 'UTC'
 	option ttylogin '0'
 	option log_size '64'
 	option urandom_seed '0'
 	option compat_version '1.0'
+	option hostname 'Mikrotik-hAPac3-EF1F'
+	option zonename 'Europe/Moscow'
+	option timezone 'MSK-3MSD,M3.5.0,M10.5.0/3'
 
 config timeserver 'ntp'
 	option enabled '1'
