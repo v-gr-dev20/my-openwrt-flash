@@ -10,6 +10,7 @@ fstools - 2022-06-02-93369be0-2
 fwtool - 2019-11-12-8f7fe925-1
 getrandom - 2021-08-03-205defb5-2
 hostapd-common - 2022-01-16-cff80b4f-16.2
+hub-ctrl - 1.0-2
 iw - 5.16-1
 iwinfo - 2022-12-15-8d158096-1
 jansson4 - 2.13.1-2
@@ -66,6 +67,7 @@ kmod-usb-xhci-hcd - 5.10.176-1
 kmod-usb3 - 5.10.176-1
 libblobmsg-json20220515 - 2022-05-15-d2223ef9-1
 libc - 1.2.3-4
+libevdev - 1.13.0-1
 libgcc1 - 11.2.0-4
 libiwinfo-data - 2022-12-15-8d158096-1
 libiwinfo-lua - 2022-12-15-8d158096-1
@@ -79,12 +81,16 @@ libmnl0 - 1.0.5-1
 libnftnl11 - 1.2.1-2
 libnl-tiny1 - 2021-11-21-8e0555fb-1
 libpthread - 1.2.3-4
+librt - 1.2.3-4
 libubox20220515 - 2022-05-15-d2223ef9-1
 libubus-lua - 2022-06-01-2bebf93c-1
 libubus20220601 - 2022-06-01-2bebf93c-1
 libuci20130104 - 2021-10-22-f84f49f0-6
 libuclient20201210 - 2021-05-14-6a6011df-1
 libucode20220812 - 2022-12-02-46d93c9c-1
+libudev-zero - 1.0.1-1
+libusb-1.0-0 - 1.0.24-5
+libusb-compat4 - 0.1.7-2
 libustream-wolfssl20201210 - 2022-12-08-9217ab46-2
 libwolfssl5.5.4.ee39414e - 5.5.4-stable-1
 logd - 2021-08-03-205defb5-2
@@ -137,8 +143,10 @@ ucode-mod-ubus - 2022-12-02-46d93c9c-1
 ucode-mod-uci - 2022-12-02-46d93c9c-1
 uhttpd - 2022-10-31-23977554-1
 uhttpd-mod-ubus - 2022-10-31-23977554-1
+uhubctl - 2.4.0-1
 urandom-seed - 3
 urngd - 2020-01-21-c7f7b6b6-1
+usbutils - 014-1
 usign - 2020-05-23-f1f65026-1
 wireless-regdb - 2023.02.13-1
 wpad-basic-wolfssl - 2022-01-16-cff80b4f-16.2

@@ -1,3 +1,10 @@
+Package: hub-ctrl
+Version: 1.0-2
+Depends: libc, libusb-compat4
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682455716
+
 Package: iwinfo
 Version: 2022-12-15-8d158096-1
 Depends: libc, libiwinfo20210430
@@ -59,6 +66,14 @@ Conffiles:
  /etc/opkg.conf f38c19f696ea87c0b30eb5bfeb8657237f4625e1a749c58b99f01595edfb6446
  /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
 Installed-Time: 1681043266
+
+Package: libevdev
+Version: 1.13.0-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682455709
+Auto-Installed: yes
 
 Package: kmod-usb-core
 Version: 5.10.176-1
@@ -293,6 +308,16 @@ Architecture: all
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: libusb-1.0-0
+ABIVersion: -0
+Version: 1.0.24-5
+Depends: libc, libpthread, librt
+Provides: libusb-1.0
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682455707
+Auto-Installed: yes
+
 Package: kmod-pppoe
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-ppp, kmod-pppox
@@ -447,6 +472,23 @@ Conflicts: procd-selinux
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: libudev-zero
+Version: 1.0.1-1
+Depends: libc, libevdev
+Provides: libudev
+Conflicts: libudev, eudev, udev
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682455710
+Auto-Installed: yes
+
+Package: usbutils
+Version: 014-1
+Depends: libc, libusb-1.0-0, libudev, librt, libpthread
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682455710
 
 Package: kmod-crypto-hmac
 Version: 5.10.176-1
@@ -809,6 +851,15 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 
+Package: librt
+Version: 1.2.3-4
+Depends: libpthread
+Status: install hold installed
+Essential: yes
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682455706
+Auto-Installed: yes
+
 Package: kmod-mac80211
 Version: 5.10.176+5.15.92-1-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-cfg80211, kmod-crypto-cmac, kmod-crypto-ccm, kmod-crypto-gcm, hostapd-common
@@ -861,16 +912,26 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
-Package: kmod-nft-offload
-Version: 5.10.176-1
-Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-nf-flow, kmod-nft-nat
-Status: install user installed
+Package: libusb-compat4
+ABIVersion: 4
+Version: 0.1.7-2
+Depends: libc, libusb-1.0-0
+Provides: libusb-compat
+Status: install ok installed
 Architecture: arm_cortex-a7_neon-vfpv4
-Installed-Time: 1681043266
+Installed-Time: 1682455716
+Auto-Installed: yes
 
 Package: kmod-ppp
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-lib-crc-ccitt, kmod-slhc
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1681043266
+
+Package: kmod-nft-offload
+Version: 5.10.176-1
+Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-nf-flow, kmod-nft-nat
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
@@ -1100,6 +1161,13 @@ Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-nfnetlink,
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: uhubctl
+Version: 2.4.0-1
+Depends: libc, libusb-1.0-0
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682455714
 
 Package: kmod-nls-base
 Version: 5.10.176-1
