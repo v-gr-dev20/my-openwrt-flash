@@ -11,6 +11,7 @@ fstools - 2021-01-04-c53b1882-1
 fwtool - 2019-11-12-8f7fe925-1
 getrandom - 2020-10-25-9ef88681-2
 hostapd-common - 2020-06-08-5a8b3662-39
+hub-ctrl - 1.0-2
 ip6tables - 1.8.7-1
 ipq-wifi-mikrotik_hap-ac2 - 1
 iptables - 1.8.7-1
@@ -51,6 +52,7 @@ kmod-usb-dwc3-qcom - 5.4.179-1
 kmod-usb3 - 5.4.179-1
 libblobmsg-json20210516 - 2021-05-16-b14c4688-2
 libc - 1.1.24-3
+libevdev - 1.12.0-1
 libgcc1 - 8.4.0-3
 libip4tc2 - 1.8.7-1
 libip6tc2 - 1.8.7-1
@@ -64,11 +66,15 @@ liblucihttp-lua - 2021-06-11-3dc89af4-1
 liblucihttp0 - 2021-06-11-3dc89af4-1
 libnl-tiny1 - 2020-08-05-c291088f-2
 libpthread - 1.1.24-3
+librt - 1.1.24-3
 libubox20210516 - 2021-05-16-b14c4688-2
 libubus-lua - 2021-06-30-4fc532c8-2
 libubus20210630 - 2021-06-30-4fc532c8-2
 libuci20130104 - 2021-04-14-4b3db117-5
 libuclient20201210 - 2021-05-14-6a6011df-1
+libudev-zero - 1.0.0-1
+libusb-1.0-0 - 1.0.24-4
+libusb-compat4 - 0.1.7-2
 libustream-wolfssl20201210 - 2022-01-16-868fd881-1
 libwolfssl5.1.1.99a5b54a - 5.1.1-stable-1
 libxtables12 - 1.8.7-1
@@ -115,8 +121,11 @@ uci - 2021-04-14-4b3db117-5
 uclient-fetch - 2021-05-14-6a6011df-1
 uhttpd - 2021-03-21-15346de8-2
 uhttpd-mod-ubus - 2021-03-21-15346de8-2
+uhubctl - 2.4.0-1
 urandom-seed - 3
 urngd - 2020-01-21-c7f7b6b6-1
+usbids - 0.354-1
+usbutils - 013-2
 usign - 2020-05-23-f1f65026-1
 wireless-regdb - 2021.08.28-1
 wpad-basic-wolfssl - 2020-06-08-5a8b3662-39
