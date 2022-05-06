@@ -5,12 +5,16 @@ busybox - 1.35.0-5
 ca-bundle - 20211016-1
 cgi-io - 2022-08-10-901b0f04-21
 dnsmasq - 2.86-16
+dosfstools - 4.2-2
 dropbear - 2022.82-2
 e2fsprogs - 1.46.5-2
+f2fs-tools - 1.14.0-3
+f2fsck - 1.14.0-3
 fdisk - 2.37.4-1
 firewall4 - 2022-10-18-7ae5e14b-1
 fstools - 2022-06-02-93369be0-2
 fwtool - 2019-11-12-8f7fe925-1
+gdisk - 1.0.8-3
 getrandom - 2021-08-03-205defb5-2
 hostapd-common - 2022-01-16-cff80b4f-16.2
 hub-ctrl - 1.0-2
@@ -26,6 +30,7 @@ kmod-cfg80211 - 5.10.176+5.15.92-1-1
 kmod-crypto-aead - 5.10.176-1
 kmod-crypto-ccm - 5.10.176-1
 kmod-crypto-cmac - 5.10.176-1
+kmod-crypto-crc32 - 5.10.176-1
 kmod-crypto-crc32c - 5.10.176-1
 kmod-crypto-ctr - 5.10.176-1
 kmod-crypto-gcm - 5.10.176-1
@@ -38,7 +43,11 @@ kmod-crypto-null - 5.10.176-1
 kmod-crypto-rng - 5.10.176-1
 kmod-crypto-seqiv - 5.10.176-1
 kmod-crypto-sha256 - 5.10.176-1
+kmod-fs-exfat - 5.10.176-1
 kmod-fs-ext4 - 5.10.176-1
+kmod-fs-f2fs - 5.10.176-1
+kmod-fs-vfat - 5.10.176-1
+kmod-fuse - 5.10.176-1
 kmod-gpio-button-hotplug - 5.10.176-3
 kmod-hwmon-core - 5.10.176-1
 kmod-leds-gpio - 5.10.176-1
@@ -83,8 +92,11 @@ libc - 1.2.3-4
 libcomerr0 - 1.46.5-2
 libevdev - 1.13.0-1
 libext2fs2 - 1.46.5-2
+libf2fs6 - 1.14.0-3
 libfdisk1 - 2.37.4-1
 libgcc1 - 11.2.0-4
+libgcrypt - 1.9.4-1
+libgpg-error - 1.45-2
 libiwinfo-data - 2022-12-15-8d158096-1
 libiwinfo-lua - 2022-12-15-8d158096-1
 libiwinfo20210430 - 2022-12-15-8d158096-1
@@ -101,6 +113,7 @@ libpthread - 1.2.3-4
 librt - 1.2.3-4
 libsmartcols1 - 2.37.4-1
 libss2 - 1.46.5-2
+libstdcpp6 - 11.2.0-4
 libubox20220515 - 2022-05-15-d2223ef9-1
 libubus-lua - 2022-06-01-2bebf93c-1
 libubus20220601 - 2022-06-01-2bebf93c-1
@@ -131,9 +144,12 @@ luci-proto-ipv6 - git-21.148.48881-79947af
 luci-proto-ppp - git-21.158.38888-88b9d84
 luci-ssl - git-20.244.36115-e10f954
 luci-theme-bootstrap - git-23.093.42704-b47268a
+mkf2fs - 1.14.0-3
 mtd - 26
 netifd - 2022-08-25-76d2d41b-1
 nftables-json - 1.0.2-2.1
+ntfs-3g - 2021.8.22-2-fuseint
+ntfs-3g-utils - 2021.8.22-2-fuseint
 odhcp6c - 2022-08-05-7d21e8d8-18
 odhcpd-ipv6only - 2023-01-02-4a673e1c-2
 openwrt-keyring - 2022-03-25-62471e69-3
@@ -151,6 +167,7 @@ rpcd-mod-luci - 20210614
 rpcd-mod-rrdns - 20170710
 swconfig - 12
 terminfo - 6.3-2
+tune2fs - 1.46.5-2
 ubi-utils - 2.1.4-1
 uboot-envtools - 2022.01-38
 ubox - 2021-08-03-205defb5-2
