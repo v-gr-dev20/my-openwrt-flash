@@ -62,6 +62,22 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 Auto-Installed: yes
 
+Package: ntfs-3g-utils
+Version: 2017.3.23-6-fuseint
+Depends: libc, ntfs-3g, libgcrypt, libuuid1
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875696
+
+Package: mkf2fs
+Version: 1.14.0-1
+Depends: libc, libf2fs6
+Conflicts: mkf2fs-selinux
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875667
+Auto-Installed: yes
+
 Package: opkg
 Version: 2021-06-13-1bf042dd-1
 Depends: libc, uclient-fetch, libpthread, libubox20210516
@@ -147,6 +163,14 @@ Status: install user installed
 Essential: yes
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+
+Package: f2fs-tools
+Version: 1.14.0-1
+Depends: libc, libf2fs6, mkf2fs, f2fsck
+Conflicts: f2fs-tools-selinux
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875669
 
 Package: luci-lib-ip
 Version: git-20.250.76529-62505bd
@@ -255,6 +279,14 @@ Depends: libc
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+
+Package: libgcrypt
+Version: 1.8.7-2
+Depends: libc, libgpg-error
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875692
+Auto-Installed: yes
 
 Package: luci-theme-bootstrap
 Version: git-22.047.35373-cc582eb
@@ -387,6 +419,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1651506049
 Auto-Installed: yes
 
+Package: dosfstools
+Version: 4.1-4
+Depends: libc
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875674
+
 Package: libwolfssl5.1.1.99a5b54a
 ABIVersion: 5.1.1.99a5b54a
 Version: 5.1.1-stable-1
@@ -413,6 +452,17 @@ Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-usb-dwc3, k
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+
+Package: libf2fs6
+ABIVersion: 6
+Version: 1.14.0-1
+Depends: libc, libuuid1
+Provides: libf2fs
+Conflicts: libf2fs-selinux
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875666
+Auto-Installed: yes
 
 Package: libsmartcols1
 ABIVersion: 1
@@ -490,6 +540,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 Auto-Installed: yes
 
+Package: libgpg-error
+Version: 1.42-2
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875687
+Auto-Installed: yes
+
 Package: libxtables12
 ABIVersion: 12
 Version: 1.8.7-1
@@ -521,12 +579,26 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1651510863
 
+Package: kmod-fs-vfat
+Version: 5.4.179-1
+Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-nls-base, kmod-nls-cp437, kmod-nls-iso8859-1, kmod-nls-utf8
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875712
+
 Package: kmod-usb3
 Version: 5.4.179-1
 Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-usb-core
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+
+Package: kmod-fs-exfat
+Version: 5.4.179+5.12.3-1
+Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-nls-base
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875716
 
 Package: firewall
 Version: 2021-03-23-61db17ed-1
@@ -839,6 +911,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 Auto-Installed: yes
 
+Package: tune2fs
+Version: 1.45.6-2
+Depends: libc, e2fsprogs
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875654
+
 Package: luci-proto-ipv6
 Version: git-21.148.49484-14511e5
 Depends: libc
@@ -872,6 +951,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 Auto-Installed: yes
 
+Package: ntfs-3g
+Version: 2017.3.23-6-fuseint
+Depends: libc, kmod-fuse, libpthread
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875685
+Auto-Installed: yes
+
 Package: libext2fs2
 ABIVersion: 2
 Version: 1.45.6-2
@@ -890,6 +977,14 @@ Provides: libubox
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+Auto-Installed: yes
+
+Package: kmod-fuse
+Version: 5.4.179-1
+Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263)
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875682
 Auto-Installed: yes
 
 Package: jshn
@@ -942,6 +1037,13 @@ Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-lib-crc-cci
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+
+Package: kmod-fs-f2fs
+Version: 5.4.179-1
+Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-crypto-hash, kmod-crypto-crc32, kmod-nls-base
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875707
 
 Package: libncurses6
 ABIVersion: 6
@@ -1030,6 +1132,15 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 
+Package: f2fsck
+Version: 1.14.0-1
+Depends: libc, libf2fs6
+Conflicts: f2fsck-selinux
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875669
+Auto-Installed: yes
+
 Package: luci-lib-nixio
 Version: git-20.234.06894-c4a4e43
 Depends: libc, liblua5.1.5
@@ -1116,6 +1227,16 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 Auto-Installed: yes
 
+Package: libstdcpp6
+ABIVersion: 6
+Version: 8.4.0-3
+Provides: libstdcpp
+Status: install hold installed
+Essential: yes
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875660
+Auto-Installed: yes
+
 Package: kmod-ath
 Version: 5.4.179+5.10.85-1-1
 Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-mac80211
@@ -1140,6 +1261,13 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 Auto-Installed: yes
+
+Package: kmod-crypto-crc32
+Version: 5.4.179-1
+Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-crypto-hash
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875700
 
 Package: rpcd-mod-iwinfo
 Version: 2021-03-11-ccb75178-1
@@ -1207,6 +1335,13 @@ Depends: kernel (= 5.4.179-1-36898223a93fb0e1e335151c1ba99263), kmod-ipt-core, k
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+
+Package: gdisk
+Version: 1.0.6-1
+Depends: libc, libstdcpp6, libuuid1
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1651875661
 
 Package: wireless-regdb
 Version: 2021.08.28-1
