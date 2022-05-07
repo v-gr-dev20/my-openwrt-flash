@@ -29,6 +29,8 @@ config dhcp 'lan'
 	option ra_slaac '1'
 	list ra_flags 'managed-config'
 	list ra_flags 'other-config'
+	option force '1'
+	option ra_management '1'
 
 config dhcp 'wan'
 	option interface 'wan'
