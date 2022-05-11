@@ -857,6 +857,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: sshfs
+Version: 3.7.2-2
+Depends: libc, fuse3-utils, glib2, libpthread
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682769438
+
 Package: odhcp6c
 Version: 2022-08-05-7d21e8d8-18
 Depends: libc, libubox20220515
@@ -1175,6 +1182,16 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682455706
 Auto-Installed: yes
 
+Package: libfuse3-3
+ABIVersion: -3
+Version: 3.10.5-1
+Depends: libc, kmod-fuse, libpthread
+Provides: libfuse3
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682769436
+Auto-Installed: yes
+
 Package: kmod-mac80211
 Version: 5.10.176+5.15.92-1-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-cfg80211, kmod-crypto-cmac, kmod-crypto-ccm, kmod-crypto-gcm, hostapd-common
@@ -1295,6 +1312,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1682456141
+
+Package: fuse3-utils
+Version: 3.10.5-1
+Depends: libc, libfuse3-3
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682769437
+Auto-Installed: yes
 
 Package: libusb-compat4
 ABIVersion: 4
