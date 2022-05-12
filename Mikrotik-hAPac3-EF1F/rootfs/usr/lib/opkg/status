@@ -561,6 +561,15 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
+Package: autossh
+Version: 1.4g-4
+Depends: libc
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/config/autossh 37ad757714c37b45a57238219d70e3df05ab16eb1065fc572a7bdce22c5c8937
+Installed-Time: 1682769706
+
 Package: firewall4
 Version: 2022-10-18-7ae5e14b-1
 Depends: ucode (>= 2022-03-22), libc, kmod-nft-core, kmod-nft-fib, kmod-nft-offload, kmod-nft-nat, nftables-json, ucode, ucode-mod-fs, ucode-mod-ubus, ucode-mod-uci
@@ -857,13 +866,6 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
 Auto-Installed: yes
 
-Package: sshfs
-Version: 3.7.2-2
-Depends: libc, fuse3-utils, glib2, libpthread
-Status: install user installed
-Architecture: arm_cortex-a7_neon-vfpv4
-Installed-Time: 1682769438
-
 Package: odhcp6c
 Version: 2022-08-05-7d21e8d8-18
 Depends: libc, libubox20220515
@@ -872,6 +874,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Conffiles:
  /etc/odhcp6c.user 6d2b77cbb3ff311ea6e7237fe150bf272bf0b3a6c0b4e9e00c6423fd6b637557
 Installed-Time: 1681043266
+
+Package: sshfs
+Version: 3.7.2-2
+Depends: libc, fuse3-utils, glib2, libpthread
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682769438
 
 Package: fstools
 Version: 2022-06-02-93369be0-2
