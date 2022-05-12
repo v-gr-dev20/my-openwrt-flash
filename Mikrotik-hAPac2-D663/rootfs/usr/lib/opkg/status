@@ -523,6 +523,15 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1651506075
 Auto-Installed: yes
 
+Package: autossh
+Version: 1.4g-3
+Depends: libc
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/config/autossh 263375ae66cd9e2c2115315f741539da87764e18cdcbb794b06d3a80c4dd7270
+Installed-Time: 1652379835
+
 Package: uboot-envtools
 Version: 2021.01-10
 Depends: libc
@@ -798,19 +807,19 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
 
-Package: sshfs
-Version: 3.7.1-1
-Depends: libc, fuse3-utils, glib2, libpthread
-Status: install user installed
-Architecture: arm_cortex-a7_neon-vfpv4
-Installed-Time: 1652212133
-
 Package: odhcp6c
 Version: 2021-01-09-53f07e90-16
 Depends: libc, libubox20210516
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1645043350
+
+Package: sshfs
+Version: 3.7.1-1
+Depends: libc, fuse3-utils, glib2, libpthread
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1652212133
 
 Package: fstools
 Version: 2021-01-04-c53b1882-1
