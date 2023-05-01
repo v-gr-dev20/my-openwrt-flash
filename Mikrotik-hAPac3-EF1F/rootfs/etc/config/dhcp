@@ -1,20 +1,16 @@
 
 config dnsmasq
 	option domainneeded '1'
-	option boguspriv '1'
-	option filterwin2k '0'
 	option localise_queries '1'
 	option rebind_protection '1'
 	option rebind_localhost '1'
 	option local '/lan/'
 	option domain 'lan'
 	option expandhosts '1'
-	option nonegcache '0'
 	option authoritative '1'
 	option readethers '1'
 	option leasefile '/tmp/dhcp.leases'
 	option resolvfile '/tmp/resolv.conf.d/resolv.conf.auto'
-	option nonwildcard '1'
 	option localservice '1'
 	option ednspacket_max '1232'
 
@@ -39,4 +35,46 @@ config odhcpd 'odhcpd'
 	option leasefile '/tmp/hosts/odhcpd'
 	option leasetrigger '/usr/sbin/odhcpd-update'
 	option loglevel '4'
+
+config host
+	option name 'RT-AC87U'
+	option dns '1'
+	option mac '48:D6:D5:0C:1B:08'
+	option ip '192.168.40.2'
+
+config host
+	option mac 'E8:DE:27:AF:CB:A6'
+	option ip '192.168.40.3'
+	option name 'TL-WA750RE'
+	option dns '1'
+
+config host
+	option mac '68:B5:99:8F:64:9A'
+	option ip '192.168.40.4'
+	option name 'NPI8F649A'
+	option dns '1'
+
+config host
+	option name 'Speakers'
+	option dns '1'
+	option mac '40:B8:9A:A3:18:85'
+	option ip '192.168.40.5'
+
+config host
+	option mac '7C:2F:80:55:E2:93'
+	option ip '192.168.40.6'
+	option name 'C610A-IP'
+	option dns '1'
+
+config host
+	option mac 'D4:12:43:78:F8:5E'
+	option ip '192.168.40.7'
+	option name 'Yandex'
+	option dns '1'
+
+config host
+	option mac 'D0:03:4B:4F:82:25'
+	option ip '192.168.40.8'
+	option name 'Gostinaa'
+	option dns '1'
 
