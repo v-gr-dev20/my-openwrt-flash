@@ -251,12 +251,28 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 Auto-Installed: yes
 
+Package: kmod-nfnetlink
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881857
+Auto-Installed: yes
+
 Package: libubus-lua
 Version: 2021-02-15-2537be01-1
 Depends: libc, libubus20210215, liblua5.1.5
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: kmod-ipt-tproxy
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-ipt-conntrack, kmod-nf-conntrack6, kmod-ip6tables, kmod-ipt-core
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881862
+Auto-Installed: yes
 
 Package: kmod-crypto-hash
 Version: 5.4.119-1
@@ -302,6 +318,13 @@ Conflicts: ipq-wifi-8dev_habanero-dvk, ipq-wifi-aruba_ap-303, ipq-wifi-avm_fritz
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: shadowsocks-libev-ss-tunnel
+Version: 3.3.5-1
+Depends: libc, libev, libmbedtls12, libpthread, libsodium, shadowsocks-libev-config
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881866
 
 Package: kmod-usb-dwc3
 Version: 5.4.119-1
@@ -389,6 +412,14 @@ Conffiles:
  /etc/mc/mc.menu c607d7c023ff82e16fb0efd615b88650712336f2b23b9a31b7a8cbf33a92f57f
  /etc/mc/skins/default.ini 5e4a9c862db65e4b6e8663a51617dd84cc332d953442787f5b9fe03e80a01a89
 Installed-Time: 1623665652
+
+Package: libev
+Version: 4.31-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881804
+Auto-Installed: yes
 
 Package: luci-theme-bootstrap
 Version: git-20.363.32570-6ffd159
@@ -499,6 +530,14 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: libpcre
+Version: 8.44-3
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881851
+Auto-Installed: yes
+
 Package: libjson-script20210516
 ABIVersion: 20210516
 Version: 2021-05-16-b14c4688-1
@@ -600,6 +639,23 @@ Conffiles:
  /etc/config/autossh 263375ae66cd9e2c2115315f741539da87764e18cdcbb794b06d3a80c4dd7270
 Installed-Time: 1623692615
 
+Package: shadowsocks-libev-config
+Version: 3.3.5-1
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/config/shadowsocks-libev 293a268ddf48e48a20dd18f70cad7aca8636a45ba4d3b182c807e6dfbb3e3b12
+Installed-Time: 1659881850
+Auto-Installed: yes
+
+Package: luci-app-shadowsocks-libev
+Version: git-20.216.14006-3a7c6df
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1659881914
+
 Package: speedtest-netperf
 Version: 1.0.0-1
 Depends: libc, netperf
@@ -642,6 +698,14 @@ Conflicts: libudev, eudev, udev
 Status: install ok installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623662495
+Auto-Installed: yes
+
+Package: resolveip
+Version: 2
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881864
 Auto-Installed: yes
 
 Package: libmount1
@@ -776,6 +840,25 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623665965
 
+Package: libmbedtls12
+ABIVersion: 12
+Version: 2.16.12-1
+Depends: libc
+Provides: libmbedtls
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881847
+Auto-Installed: yes
+
+Package: libmbedtls12
+ABIVersion: 12
+Version: 2.16.10-1
+Depends: libc
+Provides: libmbedtls
+Status: install ok not-installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Auto-Installed: yes
+
 Package: usbids
 Version: 0.347-1
 Depends: libc
@@ -882,6 +965,20 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: libsodium
+Version: 1.0.18-4
+Depends: libc
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881848
+Auto-Installed: yes
+
+Package: libsodium
+Version: 1.0.18-3
+Depends: libc
+Status: install ok not-installed
+Architecture: arm_cortex-a7_neon-vfpv4
+
 Package: luci-lib-ipkg
 Version: git-18.318.71164-4bbe325
 Depends: libc, luci-base
@@ -905,6 +1002,16 @@ Provides: libblkid
 Status: install ok installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623663342
+Auto-Installed: yes
+
+Package: libmnl0
+ABIVersion: 0
+Version: 1.0.4-2
+Depends: libc
+Provides: libmnl
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881809
 Auto-Installed: yes
 
 Package: jansson4
@@ -1189,6 +1296,14 @@ Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
 
+Package: ipset
+Version: 7.6-1
+Depends: libc, kmod-ipt-ipset, libmnl0, libipset13
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881861
+Auto-Installed: yes
+
 Package: luci-proto-ppp
 Version: git-21.148.49484-9eee69a
 Depends: libc
@@ -1319,6 +1434,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623662491
 Auto-Installed: yes
 
+Package: iptables-mod-tproxy
+Version: 1.8.7-1
+Depends: libc, iptables, kmod-ipt-tproxy
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881863
+Auto-Installed: yes
+
 Package: kmod-mac80211
 Version: 5.4.119+5.10.34-1-1
 Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-cfg80211, hostapd-common
@@ -1344,6 +1467,13 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623665645
 Auto-Installed: yes
 
+Package: shadowsocks-libev-ss-local
+Version: 3.3.5-1
+Depends: libc, libev, libmbedtls12, libpthread, libsodium, shadowsocks-libev-config, libpcre
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881851
+
 Package: libpjsip-simple
 Version: 2.10-3
 Depends: libc, uclibcxx, libopenssl1.1, libuuid1, libpthread, libpj, libpjlib-util, libpjsip, librt
@@ -1365,6 +1495,16 @@ Depends: libc, librt, libblkid1
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1628005810
+
+Package: libipset13
+ABIVersion: 13
+Version: 7.6-1
+Depends: libc, kmod-ipt-ipset, libmnl0
+Provides: libipset
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881860
+Auto-Installed: yes
 
 Package: luci-proto-ipv6
 Version: git-21.148.49484-14511e5
@@ -1390,6 +1530,13 @@ Provides: libip6tc
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: shadowsocks-libev-ss-rules
+Version: 3.3.5-1
+Depends: libc, ip, ipset, iptables-mod-tproxy, resolveip, shadowsocks-libev-ss-redir, shadowsocks-libev-config
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881864
 
 Package: iptables
 Version: 1.8.7-1
@@ -1543,6 +1690,14 @@ Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1623663359
 Auto-Installed: yes
 
+Package: kmod-ipt-ipset
+Version: 5.4.119-1
+Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c), kmod-ipt-core, kmod-nfnetlink
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881859
+Auto-Installed: yes
+
 Package: asterisk
 Version: 18.4.0-1
 Depends: libc, uclibcxx, jansson4, libcap, libedit, libopenssl1.1, libsqlite30, libuuid1, libxml2, zlib
@@ -1573,6 +1728,16 @@ Conffiles:
  /etc/config/asterisk eb4e3911f1162330b4599e8a426e16ff597037f0e1f06cff282bafafe5bcc3be
  /etc/init.d/asterisk f2337a3b315e0f3b477f375664ce7e66a352c49321dff67a4d3e08a9ac7359de
 Installed-Time: 1623746897
+
+Package: ip-tiny
+Version: 5.11.0-3
+Depends: libc, libnl-tiny1, libmnl0
+Provides: ip
+Status: install ok installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881856
+Auto-Installed: yes
+Alternatives: 200:/sbin/ip:/usr/libexec/ip-tiny
 
 Package: libss2
 ABIVersion: 2
@@ -1625,6 +1790,13 @@ Depends: kernel (= 5.4.119-1-15fdcac71817f7486c6bd9dfb88f068c)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1622210644
+
+Package: shadowsocks-libev-ss-redir
+Version: 3.3.5-1
+Depends: libc, libev, libmbedtls12, libpthread, libsodium, shadowsocks-libev-config
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1659881853
 
 Package: libcurl4
 ABIVersion: 4

@@ -141,3 +141,7 @@ config rule
 	option target 'ACCEPT'
 	option name 'Allow-SSH'
 
+config include 'ss_rules'
+	option path '/etc/firewall.ss-rules'
+	option reload '1'
+
