@@ -1,5 +1,5 @@
 # reset network if the connection to the administrative host is lost
-25 * * * *	[ "$( /usr/bin/ssh -fT -y -K 60 -i /etc/dropbear/dropbear_rsa_host_key root@grigorovich5.ddns.net ssh -T -y -K30 -i /etc/dropbear/dropbear_rsa_host_key -p8022 root@127.0.0.1 /usr/bin/dropbearkey -y -f /etc/dropbear/dropbear_rsa_host_key 2>/dev/null |/bin/grep '^ssh-rsa ' )" == "$( /usr/bin/dropbearkey -y -f /etc/dropbear/dropbear_rsa_host_key 2>/dev/null |/bin/grep '^ssh-rsa ' )" ] || /etc/init.d/autossh restart
+25 * * * *	[ "$( /usr/bin/ssh -fT -y -K 60 -i /etc/dropbear/dropbear_ed25519_host_key root@grigorovich5.freeddns.org ssh -T -y -K30 -i /etc/dropbear/dropbear_ed25519_host_key -p8022 root@127.0.0.1 /usr/bin/dropbearkey -y -f /etc/dropbear/dropbear_ed25519_host_key 2>/dev/null |/bin/grep '^ssh-ed25519 ' )" == "$( /usr/bin/dropbearkey -y -f /etc/dropbear/dropbear_ed25519_host_key 2>/dev/null |/bin/grep '^ssh-ed25519 ' )" ] || /etc/init.d/autossh restart
 
 # restart if internet is lost
 #*/10 * * * *	bound=4; up=$( uptime |sed 's/^.*\W\+up\W\+\(.*\),\W\+load.*$/\1/' |awk '$2=="min" { print $1 }' ); up=${up:=$bound}; [ $up -lt $bound  ] || { ping -c2 8.8.8.8 &>/dev/null || reboot; }
