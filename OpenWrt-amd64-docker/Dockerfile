@@ -1,7 +1,10 @@
 FROM openwrt-x86-64
 RUN mkdir -p /var/lock
 RUN opkg update
-RUN opkg install mc nano lsof
+RUN opkg update
+RUN opkg install mc
+RUN opkg install nano
+RUN opkg install lsof
 RUN opkg install uhttpd-mod-lua
 
 RUN echo $'\n\
