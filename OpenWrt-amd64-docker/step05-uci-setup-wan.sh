@@ -23,6 +23,6 @@ uci commit || exit 1
 #uci commit network || exit 1
 echo 002
 #uci commit firewall || exit 1
-/etc/init.d/network reload
-#/etc/init.d/network restart
+#/etc/init.d/network reload
+/etc/init.d/network restart
 #/etc/init.d/firewall restart

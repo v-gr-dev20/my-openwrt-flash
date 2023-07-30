@@ -1,7 +1,8 @@
-FROM openwrt-x86-64
+#FROM openwrt-x86-64
+FROM openwrt/rootfs
 RUN mkdir -p /var/lock
 RUN opkg update
-RUN opkg update
+RUN opkg install tmate
 RUN opkg install mc
 RUN opkg install nano
 RUN opkg install lsof
