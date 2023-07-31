@@ -6,6 +6,7 @@ RUN opkg install tmate
 RUN opkg install mc
 RUN opkg install nano
 RUN opkg install lsof
+RUN opkg install luci
 RUN opkg install uhttpd-mod-lua
 
 # RUN echo $'\n\
