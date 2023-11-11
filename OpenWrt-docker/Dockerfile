@@ -28,5 +28,16 @@ RUN opkg install uhttpd-mod-lua
 RUN uci set uhttpd.main.interpreter='.lua=/usr/bin/lua'
 RUN uci commit uhttpd
 RUN mkdir -p /var/run
+
+COPY ./configure/network /etc/config/network
+RUN chmod 600 /etc/config/network
+RUN uci commit network
+#RUN sleep 1
+#RUN /sbin/init &
+#RUN sleep 20
+#RUN /sbin/ifconfig veth0 up
+
 USER root
-CMD ["/sbin/init"]
+ENTRYPOINT ["/sbin/init"]
+#CMD ["/sbin/ifconfig", "veth0" ,"up"]
+

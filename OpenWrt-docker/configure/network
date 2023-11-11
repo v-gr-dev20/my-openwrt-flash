@@ -9,9 +9,15 @@ config globals 'globals'
 	option ula_prefix 'fdc3:1fe0:abca::/48'
 
 config device
+	option type 'veth'
+	option name 'eth1'
+	option mtu '1500'
+	option macaddr '02:42:C0:A8:99:02'
+
+config device
 	option name 'br-lan'
 	option type 'bridge'
-	list ports 'eth0'
+	list ports 'eth1'
 
 config interface 'lan'
 	option device 'br-lan'
@@ -20,16 +26,9 @@ config interface 'lan'
 	option netmask '255.255.255.0'
 	option ip6assign '60'
 
-config device
-	option type 'veth'
-	option name 'eth1'
-	option mtu '1500'
-	option macaddr '02:42:C0:A8:99:02'
-
 config interface 'wan'
 	option proto 'static'
-	option device 'eth1'
+	option device 'eth0'
 	option ipaddr '172.17.0.2'
 	option netmask '255.255.0.0'
 	option gateway '172.17.0.1'
-

@@ -8,7 +8,6 @@ if( ! $? ) {
 docker run --rm --detach --name openwrt `
 	--privileged `
 	--cap-add=NET_ADMIN `
-	-p 8022:22 `
-	-p 8080:80 `
-	--network="mynetwork" `
-	-it openwrt
+	--network="bridge" `
+	-it openwrt sh -c "sleep 10; ifconfig veth1 up"
+
