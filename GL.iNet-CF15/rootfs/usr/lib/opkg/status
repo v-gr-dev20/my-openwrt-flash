@@ -869,6 +869,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: sshfs
+Version: 3.7.2-r3
+Depends: libc, fuse3-utils, glib2, libpthread
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771880091
+
 Package: odhcp6c
 Version: 2024.09.25~b6ae9ffa-r1
 Depends: libc, libubox20240329
@@ -1235,6 +1242,16 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: libfuse3-3
+ABIVersion: -3
+Version: 3.16.2-r1
+Depends: libc, kmod-fuse, libpthread
+Provides: libfuse3
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771880091
+Auto-Installed: yes
+
 Package: wifi-scripts
 Version: 1.0-r1
 Depends: libc, netifd, ucode, ucode-mod-nl80211, ucode-mod-rtnl, ucode-mod-ubus, ucode-mod-uci
@@ -1380,6 +1397,14 @@ Architecture: aarch64_cortex-a53
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1766005702
+
+Package: fuse3-utils
+Version: 3.16.2-r1
+Depends: libc, libfuse3-3
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771880091
+Auto-Installed: yes
 
 Package: libusb-compat4
 ABIVersion: 4
