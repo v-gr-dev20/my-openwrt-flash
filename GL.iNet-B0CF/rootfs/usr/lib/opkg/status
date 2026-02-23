@@ -1,3 +1,10 @@
+Package: hub-ctrl
+Version: 1.0-r2
+Depends: libc, libusb-compat4
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870676
+
 Package: iwinfo
 Version: 2024.10.20~b94f066e-r1
 Depends: libc, libiwinfo20230701
@@ -46,6 +53,14 @@ Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1)
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+Auto-Installed: yes
+
+Package: libevdev
+Version: 1.13.1-r1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870673
 Auto-Installed: yes
 
 Package: opkg
@@ -276,6 +291,16 @@ Architecture: all
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: libusb-1.0-0
+ABIVersion: -0
+Version: 1.0.27-r1
+Depends: libc, libpthread, librt, libatomic1
+Provides: libusb-1.0
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870673
+Auto-Installed: yes
+
 Package: kmod-pppoe
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-ppp, kmod-pppox
@@ -424,14 +449,6 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 
-Package: kmod-usb-xhci-hcd
-Version: 6.6.119-r1
-Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-usb-core
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1766005702
-Auto-Installed: yes
-
 Package: dnsmasq
 Version: 2.90-r4
 Depends: libc, libubus20250102
@@ -442,6 +459,14 @@ Conffiles:
  /etc/dnsmasq.conf 1e6ab19c1ae5e70d609ac7b6246541d52042e4dee1892f825266507ef52d7dfd
 Installed-Time: 1766005702
 
+Package: kmod-usb-xhci-hcd
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-usb-core
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1766005702
+Auto-Installed: yes
+
 Package: procd
 Version: 2024.12.22~42d39376-r1
 Depends: libc, ubusd, ubus, libjson-script20240329, ubox, libubox20240329, libudebug, libubus20250102, libblobmsg-json20240329, libjson-c5, jshn
@@ -450,6 +475,23 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: libudev-zero
+Version: 1.0.3-r1
+Depends: libc, libevdev
+Provides: libudev
+Conflicts: libudev, eudev, udev
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870673
+Auto-Installed: yes
+
+Package: usbutils
+Version: 017-r1
+Depends: libc, libusb-1.0-0, libudev, librt, libpthread, usbids
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870674
 
 Package: kmod-crypto-sha256
 Version: 6.6.119-r1
@@ -536,6 +578,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: usbids
+Version: 0.387-r1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870674
+Auto-Installed: yes
+
 Package: kmod-crypto-seqiv
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-aead, kmod-crypto-rng, kmod-crypto-geniv
@@ -566,14 +616,6 @@ Architecture: all
 Installed-Time: 1766005702
 Auto-Installed: yes
 
-Package: kmod-thermal
-Version: 6.6.119-r1
-Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-hwmon-core
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1766005702
-Auto-Installed: yes
-
 Package: libmbedtls21
 ABIVersion: 21
 Version: 3.6.5-r1
@@ -582,6 +624,14 @@ Provides: libmbedtls
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+
+Package: kmod-thermal
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-hwmon-core
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1766005702
+Auto-Installed: yes
 
 Package: libblkid1
 ABIVersion: 1
@@ -1026,6 +1076,16 @@ Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1766005702
 
+Package: libusb-compat4
+ABIVersion: 4
+Version: 0.1.8-r1
+Depends: libc, libusb-1.0-0
+Provides: libusb-compat
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870676
+Auto-Installed: yes
+
 Package: kmod-nft-offload
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-nf-flow, kmod-nft-nat
@@ -1255,6 +1315,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 
+Package: uhubctl
+Version: 2.6.0-r1
+Depends: libc, libusb-1.0-0
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870675
+
 Package: libucode20230711
 ABIVersion: 20230711
 Version: 2025.07.18~3f64c808-r1
@@ -1263,6 +1330,17 @@ Provides: libucode
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+Auto-Installed: yes
+
+Package: libatomic1
+ABIVersion: 1
+Version: 13.3.0-r4
+Depends: libgcc1
+Provides: libatomic
+Status: install hold installed
+Essential: yes
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870672
 Auto-Installed: yes
 
 Package: kmod-nls-base
@@ -1331,17 +1409,17 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
-Package: kmod-crypto-sha1
-Version: 6.6.119-r1
-Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-hash
+Package: libudebug
+Version: 2025.08.24~edeb4d6d
+Depends: libc, libubox20240329, libubus20250102
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
-Package: libudebug
-Version: 2025.08.24~edeb4d6d
-Depends: libc, libubox20240329, libubus20250102
+Package: kmod-crypto-sha1
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-hash
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
