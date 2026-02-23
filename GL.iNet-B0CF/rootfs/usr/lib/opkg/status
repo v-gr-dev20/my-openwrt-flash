@@ -5,6 +5,21 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1771870676
 
+Package: terminfo
+Version: 6.4-r2
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876556
+Auto-Installed: yes
+
+Package: kmod-usb-storage
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-scsi-core, kmod-usb-core
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876553
+
 Package: iwinfo
 Version: 2024.10.20~b94f066e-r1
 Depends: libc, libiwinfo20230701
@@ -339,6 +354,14 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 
+Package: kmod-lib-crc16
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876552
+Auto-Installed: yes
+
 Package: base-files
 Version: 1668~d9c5716d1d
 Depends: libc, netifd, jsonfilter, usign, openwrt-keyring, ubi-utils, fstools, fwtool, procd, procd-seccomp, busybox
@@ -421,6 +444,16 @@ Conflicts: libf2fs-selinux
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+Auto-Installed: yes
+
+Package: libsmartcols1
+ABIVersion: 1
+Version: 2.40.2-r1
+Depends: libc, librt
+Provides: libsmartcols
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876555
 Auto-Installed: yes
 
 Package: kmod-mt7986-firmware
@@ -586,6 +619,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1771870674
 Auto-Installed: yes
 
+Package: block-mount
+Version: 2024.07.14~408c2cc4-r1
+Depends: libc, ubox, libubox20240329, libuci20250120, libblobmsg-json20240329, libjson-c5
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876552
+
 Package: kmod-crypto-seqiv
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-aead, kmod-crypto-rng, kmod-crypto-geniv
@@ -717,6 +757,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: kmod-fs-ext4
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-lib-crc16, kmod-crypto-hash, kmod-crypto-crc32c
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876552
 
 Package: luci-ssl
 Version: 25.340.26705~d88390b
@@ -1067,10 +1114,20 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: libfdisk1
+ABIVersion: 1
+Version: 2.40.2-r1
+Depends: libc, libuuid1, libblkid1
+Provides: libfdisk
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876555
+Auto-Installed: yes
+
 Package: e2fsprogs
 Version: 1.47.0-r2
 Depends: libc, libuuid1, libext2fs2, libe2p2
-Status: install ok installed
+Status: install user installed
 Architecture: aarch64_cortex-a53
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
@@ -1099,6 +1156,16 @@ Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-lib-crc-cc
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+
+Package: libncurses6
+ABIVersion: 6
+Version: 6.4-r2
+Depends: libc, terminfo
+Provides: libncursesw, libncurses, libncursesw6
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876556
+Auto-Installed: yes
 
 Package: kmod-crypto-null
 Version: 6.6.119-r1
@@ -1234,6 +1301,13 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1766005702
 
+Package: fdisk
+Version: 2.40.2-r1
+Depends: libc, libblkid1, libsmartcols1, libfdisk1, libncursesw6
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876556
+
 Package: kmod-nf-conntrack6
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-nf-conntrack
@@ -1277,7 +1351,7 @@ Auto-Installed: yes
 Package: ubox
 Version: 2024.04.26~85f10530-r1
 Depends: libc, libubox20240329, ubusd, ubus, libubus20250102, libuci20250120
-Status: install ok installed
+Status: install user installed
 Architecture: aarch64_cortex-a53
 Conffiles:
  /etc/modules.conf 83dab538976e37112de89ad9569f77410553bd0a8393d19ed656353218ccf6ae
@@ -1315,13 +1389,6 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 
-Package: uhubctl
-Version: 2.6.0-r1
-Depends: libc, libusb-1.0-0
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1771870675
-
 Package: libucode20230711
 ABIVersion: 20230711
 Version: 2025.07.18~3f64c808-r1
@@ -1331,6 +1398,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: uhubctl
+Version: 2.6.0-r1
+Depends: libc, libusb-1.0-0
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771870675
 
 Package: libatomic1
 ABIVersion: 1
@@ -1440,6 +1514,13 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: kmod-scsi-core
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1)
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771876553
 
 Package: urngd
 Version: 2023.11.01~44365eb1-r1
