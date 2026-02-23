@@ -184,6 +184,15 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: ddns-scripts-services
+Version: 2.8.2-r64
+Depends: libc
+Provides: ddns-scripts_service
+Status: install ok installed
+Architecture: all
+Installed-Time: 1771880754
+Auto-Installed: yes
+
 Package: f2fs-tools
 Version: 1.16.0-r3
 Depends: libc, libf2fs6, mkf2fs, f2fsck
@@ -518,6 +527,15 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: ddns-scripts
+Version: 2.8.2-r64
+Depends: libc, ddns-scripts-services
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/ddns 1ac88bf986580f2b3f0869ba58256c3e335f6f3734aaa09210b0add876ad56b8
+Installed-Time: 1771880754
+
 Package: libsmartcols1
 ABIVersion: 1
 Version: 2.40.2-r1
@@ -727,6 +745,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: ddns-scripts-noip
+Version: 2.8.2-r64
+Depends: libc, ddns-scripts
+Provides: ddns-scripts_no-ip_com
+Status: install user installed
+Architecture: all
+Installed-Time: 1771880754
+
 Package: kmod-usb-net-rndis
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-usb-net, kmod-usb-net-cdc-ether
@@ -785,6 +811,13 @@ Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-nft-core, 
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+
+Package: luci-app-ddns
+Version: 26.052.42948~5f0d7d5
+Depends: libc, luci-base, ddns-scripts
+Status: install user installed
+Architecture: all
+Installed-Time: 1771880756
 
 Package: netperf
 Version: 2.7.0-r3
