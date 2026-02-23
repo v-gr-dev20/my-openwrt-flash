@@ -52,3 +52,7 @@ config device
 	option name 'lan5'
 	option macaddr '94:83:c4:b0:cf:1E'
 
+config interface 'smartphone'
+	option device 'usb0'
+	option proto 'dhcp'
+
