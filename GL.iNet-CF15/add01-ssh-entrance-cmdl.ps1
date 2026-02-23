@@ -1,3 +1,3 @@
 # !Powershell
 # Вход в консоль удаленного хоста
-while( 1 ) { ssh root@192.168.1.1; sleep 10; }
+while( 1 ) { ssh '-Jroot@grigorovich4.freeddns.org' root@192.168.40.177; sleep 10; }
