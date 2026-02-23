@@ -572,6 +572,14 @@ Conffiles:
  /etc/dnsmasq.conf 1e6ab19c1ae5e70d609ac7b6246541d52042e4dee1892f825266507ef52d7dfd
 Installed-Time: 1766005702
 
+Package: kmod-mii
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771879289
+Auto-Installed: yes
+
 Package: kmod-usb-xhci-hcd
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-usb-core
@@ -709,6 +717,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: kmod-usb-net-rndis
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-usb-net, kmod-usb-net-cdc-ether
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771879290
 
 Package: kmod-mt76-connac
 Version: 6.6.119.2025.11.06~eb567bc7-r1
@@ -1048,6 +1063,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 
+Package: usb-modeswitch
+Version: 2022.02.24~3c8595a4-r1
+Depends: libc, libubox20240329, libblobmsg-json20240329, libusb-1.0-0
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771879287
+
 Package: ucode
 Version: 2025.07.18~3f64c808-r1
 Depends: libc, libucode20230711
@@ -1196,6 +1218,13 @@ Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-nf-log
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+
+Package: kmod-usb-net
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-mii, kmod-usb-core
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771879289
 
 Package: librt
 Version: 1.2.5-r4
@@ -1765,6 +1794,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: kmod-usb-net-cdc-ether
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-usb-net
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771879289
 
 Package: libattr
 Version: 2.5.2-r3
