@@ -54,6 +54,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: ntfs-3g-utils
+Version: 2022.10.3-r1
+Depends: libc, ntfs-3g, libgcrypt, libuuid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878389
+
 Package: mkf2fs
 Version: 1.16.0-r3
 Depends: libc, libf2fs6
@@ -166,6 +173,14 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: f2fs-tools
+Version: 1.16.0-r3
+Depends: libc, libf2fs6, mkf2fs, f2fsck
+Conflicts: f2fs-tools-selinux
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878385
 
 Package: libiwinfo20230701
 ABIVersion: 20230701
@@ -298,6 +313,14 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 
+Package: libgcrypt
+Version: 1.10.3-r1
+Depends: libc, libgpg-error
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878389
+Auto-Installed: yes
+
 Package: luci-theme-bootstrap
 Version: 25.340.26705~d88390b
 Depends: libc, luci-base
@@ -407,6 +430,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: dosfstools
+Version: 4.2-r4
+Depends: libc
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878386
 
 Package: libustream-mbedtls20201210
 ABIVersion: 20201210
@@ -595,6 +625,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: libgpg-error
+Version: 1.49-r1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878389
+Auto-Installed: yes
+
 Package: kmod-crypto-sha512
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-hash
@@ -626,13 +664,6 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1771876552
 
-Package: kmod-nls-cp1251
-Version: 6.6.119-r1
-Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-nls-base
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1771877624
-
 Package: kmod-crypto-seqiv
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-aead, kmod-crypto-rng, kmod-crypto-geniv
@@ -640,6 +671,20 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: kmod-nls-cp1251
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-nls-base
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771877624
+
+Package: kmod-fs-vfat
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-nls-base, kmod-nls-cp437, kmod-nls-iso8859-1, kmod-nls-utf8
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878393
 
 Package: kmod-nft-nat
 Version: 6.6.119-r1
@@ -654,6 +699,13 @@ Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-usb-xhci-h
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+
+Package: kmod-fs-exfat
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-nls-base
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878394
 
 Package: luci-app-firewall
 Version: 25.340.26705~d88390b
@@ -1054,6 +1106,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: tune2fs
+Version: 1.47.0-r2
+Depends: libc, e2fsprogs
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878382
+
 Package: mt7986-wo-firmware
 Version: 20241110-r2
 Depends: libc
@@ -1108,6 +1167,14 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 
+Package: ntfs-3g
+Version: 2022.10.3-r1
+Depends: libc, kmod-fuse, libpthread
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878388
+Auto-Installed: yes
+
 Package: libext2fs2
 ABIVersion: 2
 Version: 1.47.0-r2
@@ -1116,6 +1183,14 @@ Provides: libext2fs
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+Auto-Installed: yes
+
+Package: kmod-fuse
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878388
 Auto-Installed: yes
 
 Package: jshn
@@ -1177,6 +1252,13 @@ Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-lib-crc-cc
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
+
+Package: kmod-fs-f2fs
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-hash, kmod-crypto-crc32, kmod-nls-base
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878392
 
 Package: libncurses6
 ABIVersion: 6
@@ -1368,6 +1450,16 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
 
+Package: libstdcpp6
+ABIVersion: 6
+Version: 13.3.0-r4
+Provides: libstdcpp
+Status: install hold installed
+Essential: yes
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878383
+Auto-Installed: yes
+
 Package: kmod-lib-lzo
 Version: 6.6.119-r1
 Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-acompress
@@ -1401,6 +1493,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: kmod-crypto-crc32
+Version: 6.6.119-r1
+Depends: kernel (= 6.6.119~6a9e125268c43e0bae8cecb014c8ab03-r1), kmod-crypto-hash
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878390
 
 Package: rpcd-mod-iwinfo
 Version: 2025.09.01~bba95191-r1
@@ -1517,6 +1616,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1766005702
 Auto-Installed: yes
+
+Package: gdisk
+Version: 1.0.10-r1
+Depends: libc, libstdcpp6, libuuid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1771878383
 
 Package: libudebug
 Version: 2025.08.24~edeb4d6d
