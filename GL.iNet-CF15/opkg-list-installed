@@ -75,6 +75,11 @@ kmod-nft-fib - 6.6.119-r1
 kmod-nft-nat - 6.6.119-r1
 kmod-nft-offload - 6.6.119-r1
 kmod-nls-base - 6.6.119-r1
+kmod-nls-cp1251 - 6.6.119-r1
+kmod-nls-cp437 - 6.6.119-r1
+kmod-nls-cp866 - 6.6.119-r1
+kmod-nls-iso8859-1 - 6.6.119-r1
+kmod-nls-utf8 - 6.6.119-r1
 kmod-phy-aquantia - 6.6.119-r1
 kmod-ppp - 6.6.119-r1
 kmod-pppoe - 6.6.119-r1
