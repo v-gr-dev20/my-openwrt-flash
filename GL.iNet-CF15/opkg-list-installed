@@ -67,6 +67,7 @@ kmod-lib-crc32c - 6.6.119-r1
 kmod-lib-lzo - 6.6.119-r1
 kmod-libphy - 6.6.119-r1
 kmod-mac80211 - 6.6.119.6.12.61-r1
+kmod-mii - 6.6.119-r1
 kmod-mt76-connac - 6.6.119.2025.11.06~eb567bc7-r1
 kmod-mt76-core - 6.6.119.2025.11.06~eb567bc7-r1
 kmod-mt7915e - 6.6.119.2025.11.06~eb567bc7-r1
@@ -98,6 +99,9 @@ kmod-scsi-core - 6.6.119-r1
 kmod-slhc - 6.6.119-r1
 kmod-thermal - 6.6.119-r1
 kmod-usb-core - 6.6.119-r1
+kmod-usb-net - 6.6.119-r1
+kmod-usb-net-cdc-ether - 6.6.119-r1
+kmod-usb-net-rndis - 6.6.119-r1
 kmod-usb-storage - 6.6.119-r1
 kmod-usb-xhci-hcd - 6.6.119-r1
 kmod-usb-xhci-mtk - 6.6.119-r1
@@ -219,6 +223,7 @@ uhttpd-mod-ubus - 2025.07.06~7e64e8ba-r4
 uhubctl - 2.6.0-r1
 urandom-seed - 3
 urngd - 2023.11.01~44365eb1-r1
+usb-modeswitch - 2022.02.24~3c8595a4-r1
 usbids - 0.387-r1
 usbutils - 017-r1
 usign - 2020.05.23~f1f65026-r1
