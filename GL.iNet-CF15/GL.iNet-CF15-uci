@@ -75,6 +75,7 @@ dropbear.main.enable='1'
 dropbear.main.PasswordAuth='on'
 dropbear.main.RootPasswordAuth='on'
 dropbear.main.Port='22'
+dropbear.main.GatewayPorts='on'
 firewall.@defaults[0]=defaults
 firewall.@defaults[0].syn_flood='1'
 firewall.@defaults[0].input='REJECT'
