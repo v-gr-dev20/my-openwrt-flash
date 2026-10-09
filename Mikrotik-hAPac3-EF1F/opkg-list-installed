@@ -57,6 +57,7 @@ dnsmasq - 2.86-16
 dosfstools - 4.2-2
 dropbear - 2022.82-2
 e2fsprogs - 1.46.5-2
+etherwake - 1.09-5
 f2fs-tools - 1.14.0-3
 f2fsck - 1.14.0-3
 fdisk - 2.37.4-1
@@ -214,6 +215,7 @@ luci - git-23.093.42303-d58cd69
 luci-app-ddns - git-23.093.42303-d0d5cd1
 luci-app-firewall - git-23.093.42704-1c01c64
 luci-app-opkg - git-23.093.42303-e16f620
+luci-app-wol - git-21.154.28269-c7b7b42
 luci-base - git-23.093.57104-ce20b4a
 luci-lib-base - git-20.232.39649-1f6dc29
 luci-lib-ip - git-20.250.76529-62505bd

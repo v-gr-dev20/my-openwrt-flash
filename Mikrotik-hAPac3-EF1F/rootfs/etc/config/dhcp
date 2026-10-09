@@ -75,6 +75,12 @@ config host
 config host
 	option mac 'D0:03:4B:4F:82:25'
 	option ip '192.168.40.8'
+	option dns '1'
+	option name 'Gostinaa-old'
+
+config host
 	option name 'Gostinaa'
 	option dns '1'
+	option mac '48:E1:5C:5E:5C:A5'
+	option ip '192.168.40.9'
 

@@ -214,13 +214,6 @@ Conffiles:
  /etc/syslog.conf e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 Installed-Time: 1681043266
 
-Package: asterisk-sounds
-Version: 18.15.1-1
-Depends: libc, asterisk
-Status: install user installed
-Architecture: arm_cortex-a7_neon-vfpv4
-Installed-Time: 1682965828
-
 Package: kmod-crypto-ctr
 Version: 5.10.176-1
 Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299), kmod-crypto-manager, kmod-crypto-seqiv
@@ -237,6 +230,13 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1682770537
 Auto-Installed: yes
+
+Package: asterisk-sounds
+Version: 18.15.1-1
+Depends: libc, asterisk
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Installed-Time: 1682965828
 
 Package: f2fs-tools
 Version: 1.14.0-3
@@ -825,6 +825,15 @@ Depends: kernel (= 5.10.176-1-0c6eb2b86c138b2e0bfbe6e891f49299)
 Status: install user installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1681043266
+
+Package: etherwake
+Version: 1.09-5
+Depends: libc
+Status: install user installed
+Architecture: arm_cortex-a7_neon-vfpv4
+Conffiles:
+ /etc/config/etherwake 96ceb2e8389056a00013f49118ee2edbfc5b147c8a2b3fa886710df8c31f7ec0
+Installed-Time: 1710583462
 
 Package: screen
 Version: 4.8.0-2
@@ -1718,6 +1727,13 @@ Status: install ok installed
 Architecture: arm_cortex-a7_neon-vfpv4
 Installed-Time: 1682456146
 Auto-Installed: yes
+
+Package: luci-app-wol
+Version: git-21.154.28269-c7b7b42
+Depends: libc, etherwake
+Status: install user installed
+Architecture: all
+Installed-Time: 1710583480
 
 Package: kmod-crypto-null
 Version: 5.10.176-1
